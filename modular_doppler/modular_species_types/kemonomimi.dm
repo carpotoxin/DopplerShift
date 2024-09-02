@@ -5,13 +5,16 @@
 	id = SPECIES_KEMONOMIMI
 	examine_limb_id = SPECIES_HUMAN
 	inherent_traits = list(
-		TRAIT_USES_SKINTONES,
 		KEMONOMIMI_TRAIT,
+		TRAIT_USES_SKINTONES,
 	)
+//	mutantears = /obj/item/organ/internal/ears/kemonomimi
 	mutant_organs = list(
-	//	/obj/item/organ/external/tail/kemonomimi = "Cat",
-	//	/obj/item/organ/internal/ears/kemonomimi = "Cat",
-	//	/obj/item/organ/external/horns/kemonomimi = "None",
+//		/obj/item/organ/external/horns/kemonomimi = "None",
+//		/obj/item/organ/external/tail/kemonomimi = "Cat",
+		/obj/item/organ/external/tail/lizard = "None",
+		/obj/item/organ/external/spines = "None",
+//		/obj/item/organ/internal/ears/kemonomimi = "Cat",
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 
