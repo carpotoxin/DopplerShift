@@ -6,7 +6,12 @@
 	examine_limb_id = SPECIES_HUMAN
 	inherent_traits = list(
 		TRAIT_USES_SKINTONES,
-		TRAIT_ANIMAL_HYBRID,
+		KEMONOMIMI_TRAIT,
+	)
+	mutant_organs = list(
+	//	/obj/item/organ/external/tail/kemonomimi = "Cat",
+	//	/obj/item/organ/internal/ears/kemonomimi = "Cat",
+	//	/obj/item/organ/external/horns/kemonomimi = "None",
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 
@@ -20,6 +25,10 @@
 	return list(
 		"N/a.",
 	)
+
+/datum/species/human/kemonomimi/on_species_loss(mob/living/carbon/target, datum/species/new_species, pref_load)
+	REMOVE_TRAITS_IN(target, KEMONOMIMI_TRAIT)
+	return ..()
 
 /datum/species/human/kemonomimi/check_roundstart_eligible()
 	return TRUE
