@@ -1,6 +1,6 @@
 //// Doppler Golems - Overwrites and continuiations of
 // code/modules/mob/living/carbon/human/species_types/golems.dm
-/datum/species/golem
+/datum/species/golem/roundstart
 	inherent_traits = list(
 		TRAIT_GENELESS,
 		TRAIT_LAVA_IMMUNE,
@@ -26,10 +26,10 @@
 	no_equip_flags = ITEM_SLOT_MASK | ITEM_SLOT_OCLOTHING | ITEM_SLOT_FEET | ITEM_SLOT_ICLOTHING | ITEM_SLOT_SUITSTORE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN //golem ERT
 
-/datum/species/golem/get_species_lore()
+/datum/species/golem/roundstart/get_species_lore()
 	return list(
 		"@Lobster",
 	)
 
-/datum/species/golem/check_roundstart_eligible()
+/datum/species/golem/roundstart/check_roundstart_eligible()
 	return TRUE
