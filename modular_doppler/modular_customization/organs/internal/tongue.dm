@@ -1,4 +1,4 @@
-/// Dog tongue
+/ /* Dog tongue
 /obj/item/organ/internal/tongue/dog
 	name = "canine tongue"
 	desc = "A fleshy muscle mostly used for barking."
@@ -35,3 +35,4 @@
 	name = "piscine tongue"
 	desc = "A fleshy muscle mostly used for gnashing."
 	say_mod = "gnashes"
+*/
