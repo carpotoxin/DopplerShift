@@ -1,7 +1,7 @@
 import { Feature } from '../../base';
 import { FeatureDropdownInput } from '../../dropdowns';
 
-export const kemonomimi_traits: Feature<string> = {
-  name: 'Animal Trait',
+export const feature_animalistic: Feature<string> = {
+  name: 'Animalistic trait',
   component: FeatureDropdownInput,
 };

@@ -6375,7 +6375,7 @@
 #include "modular_doppler\modular_customization\organs\external\tails.dm"
 #include "modular_doppler\modular_customization\organs\internal\tongue.dm"
 #include "modular_doppler\modular_species_types\golems.dm"
-#include "modular_doppler\modular_species_types\kemonomimi.dm"
+#include "modular_doppler\modular_species_types\preferences\species_traits.dm"
 #include "modular_doppler\sprite_accessories\code\hair.dm"
 #include "modular_doppler\tableflip\tableflip.dm"
 #include "modular_doppler\wargaming\code\game_kit.dm"
