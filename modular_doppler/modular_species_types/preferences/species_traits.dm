@@ -1,10 +1,10 @@
 //// Pref logic for kemonimimi species traits
 // defines in `code/__DEFINES/~doppler_defines/traits/declarations.dm`
 /datum/preference/choiced/animalistic
+	main_feature_name = "Animalistic trait"
 	savefile_key = "feature_animalistic"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_FEATURES
-	main_feature_name = "Animalistic trait"
 	priority = PREFERENCE_PRIORITY_DEFAULT //important flag
 	relevant_inherent_trait = TRAIT_ANIMALISTIC
 	should_generate_icons = TRUE

@@ -41,9 +41,9 @@
 	if(!ishuman(target) || !animal_trait)
 		return
 	/// Var for the target's species
-//	var/datum/species/species = target.dna.species
+	var/datum/species/species = target.dna.species
 	// Steal their tongue so we can replace it
-/*	qdel(target.get_organ_slot(ORGAN_SLOT_TONGUE))
+	qdel(target.get_organ_slot(ORGAN_SLOT_TONGUE))
 
 	switch(animal_trait) // Lots of empty space for additional content
 		if(TRAIT_FELINE)
@@ -73,7 +73,7 @@
 	var/obj/new_tongue = target.get_organ_slot(ORGAN_SLOT_TONGUE)
 	species.mutanttongue = new_tongue.type
 	target.update_body()
-*/
+
 
 /datum/species/human/kemonomimi/prepare_human_for_preview(mob/living/carbon/human/human_for_preview)
 	// remember to make a puppygirl
