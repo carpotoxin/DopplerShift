@@ -5,11 +5,11 @@
 	id = SPECIES_KEMONOMIMI
 	examine_limb_id = SPECIES_HUMAN
 	inherent_traits = list(
-	//	TRAIT_ANIMALISTIC,
+		TRAIT_ANIMALISTIC,
 		TRAIT_USES_SKINTONES,
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
-/*
+
 /datum/species/human/kemonomimi/get_physical_attributes()
 	return "N/a."
 
@@ -80,4 +80,3 @@
 	human_for_preview.set_haircolor("#3a2d22", update = FALSE)
 	human_for_preview.set_hairstyle("Short twintails", update = TRUE)
 	human_for_preview.update_body()
-*/
