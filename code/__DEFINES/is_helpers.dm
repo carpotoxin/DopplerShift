@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(turfs_pass_meteor, typecacheof(list(
 //Human sub-species
 #define isabductor(A) (is_species(A, /datum/species/abductor))
 #define isgolem(A) (is_species(A, /datum/species/golem))
-#define islizard(A) (is_species(A, /datum/species/lizard) || HAS_TRAIT(A, TRAIT_REPTILE)) //Doppler edit / old code: #define islizard(A) (is_species(A, /datum/species/lizard))
+#define islizard(A) (is_species(A, /datum/species/lizard))
 #define isashwalker(A) (is_species(A, /datum/species/lizard/ashwalker))
 #define isplasmaman(A) (is_species(A, /datum/species/plasmaman))
 #define ispodperson(A) (is_species(A, /datum/species/pod))
@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(turfs_pass_meteor, typecacheof(list(
 #define iszombie(A) (is_species(A, /datum/species/zombie))
 #define isskeleton(A) (is_species(A, /datum/species/skeleton))
 #define ismoth(A) (is_species(A, /datum/species/moth))
-#define isfelinid(A) (is_species(A, /datum/species/human/felinid) || HAS_TRAIT(A, TRAIT_FELINE)) //Doppler edit / old code: #define isfelinid(A) (is_species(A, /datum/species/human/felinid))
+#define isfelinid(A) (is_species(A, /datum/species/human/felinid))
 #define isethereal(A) (is_species(A, /datum/species/ethereal))
 #define isvampire(A) (is_species(A,/datum/species/vampire))
 #define isdullahan(A) (is_species(A, /datum/species/dullahan))
