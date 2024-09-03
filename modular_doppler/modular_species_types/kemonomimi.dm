@@ -25,7 +25,6 @@
 	)
 
 /datum/species/human/kemonomimi/on_species_gain(mob/living/carbon/human/target, datum/species/old_species, pref_load)
-	. = ..()
 	/// Trait which is given to the target, canine by default
 	var/animal_trait = TRAIT_CANINE
 	// Lets find the chosen trait, exciting!
@@ -35,6 +34,7 @@
 			break
 
 	apply_animal_trait(target, animal_trait)
+	return ..()
 
 /datum/species/human/kemonomimi/on_species_loss(mob/living/carbon/human/target, datum/species/new_species, pref_load)
 	. = .. ()
@@ -43,8 +43,9 @@
 /proc/apply_animal_trait(mob/living/carbon/human/target, animal_trait)
 	if(!ishuman(target) || !animal_trait)
 		return
-
-	/// Steal their tongue so we can replace it
+	/// Var for the target's species
+	var/datum/species/species = target.dna.species
+	// Steal their tongue so we can replace it
 	qdel(target.get_organ_slot(ORGAN_SLOT_TONGUE))
 
 	switch(animal_trait) // Lots of empty space for additional content
@@ -71,6 +72,10 @@
 		if(TRAIT_PISCINE)
 			var/obj/item/organ/internal/tongue/fish/fish_tongue = new
 			fish_tongue.Insert(target, special = TRUE)
+
+	var/obj/new_tongue = target.get_organ_slot(ORGAN_SLOT_TONGUE)
+	species.mutanttongue = new_tongue.type
+	target.update_body()
 
 
 /datum/species/human/kemonomimi/prepare_human_for_preview(mob/living/carbon/human/human_for_preview)
