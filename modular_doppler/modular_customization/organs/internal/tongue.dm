@@ -1,7 +1,7 @@
 /// Cat tongue
 //
 /obj/item/organ/internal/tongue/cat
-	say_mod = "meows-"
+	say_mod = "meows"
 
 /// Dog tongue
 //
