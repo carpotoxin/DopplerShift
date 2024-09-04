@@ -6372,6 +6372,7 @@
 #include "modular_doppler\modular_cosmetics\code\neck\collar.dm"
 #include "modular_doppler\modular_cosmetics\code\suits\jacket.dm"
 #include "modular_doppler\modular_cosmetics\GAGS\greyscale_configs_neck.dm"
+#include "modular_doppler\modular_customization\organs\external\tails.dm"
 #include "modular_doppler\modular_customization\organs\internal\tongue.dm"
 #include "modular_doppler\modular_species_types\kemonomimi.dm"
 #include "modular_doppler\modular_species_types\preferences\species_traits.dm"
