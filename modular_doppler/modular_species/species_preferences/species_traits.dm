@@ -19,7 +19,7 @@
 		if(TRAIT_CANINE)
 			return icon('icons/mob/simple/pets.dmi', "corgi", WEST)
 		if(TRAIT_REPTILE)
-			return icon('icons/mob/simple/animal.dmi', "snake", EAST)
+			return icon('icons/mob/simple/animal.dmi', "lizard", EAST)
 		if(TRAIT_LEPORID)
 			return icon('icons/mob/simple/rabbit.dmi', "rabbit_white", WEST)
 		if(TRAIT_AVIAN)

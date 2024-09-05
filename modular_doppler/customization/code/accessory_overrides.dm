@@ -5,6 +5,7 @@
 /// Tails fixing
 /obj/item/organ/external/tail
 	name = "tail"
+	preference = "feature_human_tail"
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail
 
 /datum/bodypart_overlay/mutant/tail
