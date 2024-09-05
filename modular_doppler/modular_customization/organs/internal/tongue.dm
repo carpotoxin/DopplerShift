@@ -54,3 +54,7 @@
 	name = "piscine tongue"
 	desc = "A fleshy muscle mostly used for gnashing."
 	say_mod = "gnashes"
+
+/// Monkey tongue
+//
+/obj/item/organ/internal/tongue/monkey

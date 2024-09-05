@@ -301,17 +301,17 @@
  */
 /mob/living/carbon/human/proc/get_mob_height()
 	if(HAS_TRAIT(src, TRAIT_DWARF))
-		if(ismonkey(src))
+		if(ismonkey(src) && !HAS_TRAIT(src, TRAIT_SIMIAN)) // Doppler edit, animal trait. our helper would like to exlude these - old code: if(ismonkey(src))
 			return MONKEY_HEIGHT_DWARF
 		else
 			return HUMAN_HEIGHT_DWARF
 	if(HAS_TRAIT(src, TRAIT_TOO_TALL))
-		if(ismonkey(src))
+		if(ismonkey(src) && !HAS_TRAIT(src, TRAIT_SIMIAN)) // Doppler edit, animal trait - old code: if(ismonkey(src))
 			return MONKEY_HEIGHT_TALL
 		else
 			return HUMAN_HEIGHT_TALLEST
 
-	else if(ismonkey(src))
+	else if(ismonkey(src) && !HAS_TRAIT(src, TRAIT_SIMIAN)) // Doppler edit, animal trait - old code: else if(ismonkey(src))
 		return MONKEY_HEIGHT_MEDIUM
 
 	return mob_height

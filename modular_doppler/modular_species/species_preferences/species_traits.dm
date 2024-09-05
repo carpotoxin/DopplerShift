@@ -9,16 +9,6 @@
 	relevant_inherent_trait = TRAIT_ANIMALISTIC
 	should_generate_icons = TRUE
 
-GLOBAL_LIST_INIT(animalistic_traits, list(
-	TRAIT_FELINE,
-	TRAIT_CANINE,
-	TRAIT_REPTILE,
-	TRAIT_LEPORID,
-	TRAIT_AVIAN,
-	TRAIT_MURIDAE,
-	TRAIT_PISCINE,
-))
-
 /datum/preference/choiced/animalistic/init_possible_values()
 	return GLOB.animalistic_traits
 
@@ -38,6 +28,8 @@ GLOBAL_LIST_INIT(animalistic_traits, list(
 			return icon('icons/mob/simple/animal.dmi', "mouse_white", WEST)
 		if(TRAIT_PISCINE)
 			return icon('icons/mob/simple/carp.dmi', "carp", EAST)
+		if(TRAIT_SIMIAN)
+			return icon('icons/mob/human/human.dmi', "monkey", WEST)
 
 
 /datum/preference/choiced/animalistic/apply_to_human(mob/living/carbon/human/target, value)

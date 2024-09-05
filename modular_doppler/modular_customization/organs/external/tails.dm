@@ -28,3 +28,7 @@
 /// Fish tail
 //
 /obj/item/organ/external/tail/fish
+
+/// Monkey tail
+//
+/obj/item/organ/external/tail/monkey

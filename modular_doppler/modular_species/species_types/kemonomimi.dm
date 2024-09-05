@@ -4,6 +4,7 @@
 	name = "Kemonomimi"
 	id = SPECIES_KEMONOMIMI
 	examine_limb_id = SPECIES_HUMAN
+	mutantears = /obj/item/organ/internal/ears/dog
 	mutant_organs = list(
 		/obj/item/organ/external/tail/dog = "Dog",
 	)
@@ -25,7 +26,7 @@
 	)
 
 /datum/species/human/kemonomimi/on_species_gain(mob/living/carbon/human/target, datum/species/old_species, pref_load)
-	apply_animal_trait(target, find_animal_trait(target, pref_load))
+	apply_animal_trait(target, find_animal_trait(target))
 	return ..()
 
 /datum/species/human/kemonomimi/on_species_loss(mob/living/carbon/human/target, datum/species/new_species, pref_load)
