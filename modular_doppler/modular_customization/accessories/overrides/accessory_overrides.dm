@@ -5,7 +5,6 @@
 	features += /datum/preference/choiced/frills::savefile_key
 	features += /datum/preference/choiced/horns::savefile_key
 	features += /datum/preference/choiced/tail::savefile_key
-	features += /datum/preference/choiced/body_markings::savefile_key
 
 	GLOB.features_by_species[type] = features
 

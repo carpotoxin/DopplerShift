@@ -1,10 +1,5 @@
 /// Generic reptile accessories
 //	This is lizard content
-/datum/sprite_accessory/body_markings/reptile_markings
-	icon = 'modular_doppler/modular_customization/accessories/icons/bodymarkings/reptile_bodymarkings.dmi'
-	name = SPRITE_ACCESSORY_NONE
-	icon_state = "None"
-
 /datum/sprite_accessory/snouts/reptile_snouts
 	icon = 'modular_doppler/modular_customization/accessories/icons/snouts/reptile_snouts.dmi'
 	name = SPRITE_ACCESSORY_NONE
@@ -26,8 +21,14 @@
 
 /// Slugcat accessories
 //	I'm pretty sure these are reptiles
-/datum/sprite_accessory/body_markings/reptile_markings/slugcat
+/datum/sprite_accessory/lizard_markings/none
+	name = SPRITE_ACCESSORY_NONE
+	icon = 'modular_doppler/modular_customization/accessories/icons/bodymarkings/slugcat_bodymarkings.dmi'
+	icon_state = "None"
+
+/datum/sprite_accessory/lizard_markings/slugcat
 	name = "Slugcat Underbelly"
+	icon = 'modular_doppler/modular_customization/accessories/icons/bodymarkings/slugcat_bodymarkings.dmi'
 	icon_state = "scug_lbelly"
 	gender_specific = TRUE
 
@@ -97,21 +98,6 @@
 
 /// Lizard overwrites
 //	We do need a duplicate of these, yes
-/datum/sprite_accessory/body_markings/reptile_markings/dtiger
-	name = "Dark Tiger Body"
-	icon_state = "dtiger"
-	gender_specific = TRUE
-
-/datum/sprite_accessory/body_markings/reptile_markings/ltiger
-	name = "Light Tiger Body"
-	icon_state = "ltiger"
-	gender_specific = TRUE
-
-/datum/sprite_accessory/body_markings/reptile_markings/lbelly
-	name = "Light Belly"
-	icon_state = "lbelly"
-	gender_specific = TRUE
-
 /datum/sprite_accessory/tails/reptile_tails/smooth
 	name = "Smooth"
 	icon_state = "smooth"

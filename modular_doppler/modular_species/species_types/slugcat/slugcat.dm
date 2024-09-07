@@ -19,12 +19,11 @@
 		TRAIT_TACKLING_TAILED_DEFENDER,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	body_markings = list(/datum/bodypart_overlay/simple/body_marking/lizard = "None")
+	body_markings = list(/datum/bodypart_overlay/simple/body_marking/lizard = "Slugcat Underbelly")
 	mutant_organs = list(
-		/obj/item/organ/external/horns = "Slugcat",
-		/obj/item/organ/external/frills = "None",
-		/obj/item/organ/external/snout = "Slugcat",
-		/obj/item/organ/external/tail/lizard = "Slugcat",
+		/obj/item/organ/external/horns/modular = "Slugcat",
+		/obj/item/organ/external/snout/modular = "Slugcat",
+		/obj/item/organ/external/tail/modular = "Slugcat",
 	)
 	payday_modifier = 1.0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT

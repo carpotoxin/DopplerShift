@@ -285,7 +285,7 @@
 	return TRUE
 
 // Gotta add to the selector too
-/datum/preference/choiced/body_markings/compile_constant_data()
+/datum/preference/choiced/lizard_body_markings/compile_constant_data()
 	var/list/data = ..()
 
 	data[SUPPLEMENTAL_FEATURE_KEY] = /datum/preference/tri_color/body_markings_color::savefile_key

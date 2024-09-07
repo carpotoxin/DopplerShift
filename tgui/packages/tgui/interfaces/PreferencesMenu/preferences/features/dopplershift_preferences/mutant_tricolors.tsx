@@ -103,15 +103,6 @@ export const caps_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
-export const has_markings: FeatureToggle = {
-  name: 'Add Part: Basic Markings',
-  category: 'GAMEPLAY',
-  description: `
-    When toggled, adds basic bodymarkings to your character.
-  `,
-  component: CheckboxInput,
-};
-
 export const body_markings_color: Feature<string[]> = {
   name: 'Body Markings Color',
   component: FeatureTriColorInput,
@@ -124,11 +115,6 @@ export const has_moth_markings: FeatureToggle = {
     When toggled, adds moth-style bodymarkings to your character.
   `,
   component: CheckboxInput,
-};
-
-export const moth_markings_color: Feature<string[]> = {
-  name: 'Moth Markings Color',
-  component: FeatureTriColorInput,
 };
 
 export const has_wings: FeatureToggle = {
@@ -154,11 +140,6 @@ export const has_moth_wings: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const moth_wings_color: Feature<string[]> = {
-  name: 'Moth Wings Color',
-  component: FeatureTriColorInput,
-};
-
 export const has_antennae: FeatureToggle = {
   name: 'Add Part: Antennae',
   category: 'GAMEPLAY',
@@ -180,9 +161,4 @@ export const has_moth_antennae: FeatureToggle = {
     When toggled, adds matrix-colored moth antennae to your character.
   `,
   component: CheckboxInput,
-};
-
-export const moth_antennae_color: Feature<string[]> = {
-  name: 'Moth Antennae Color',
-  component: FeatureTriColorInput,
 };

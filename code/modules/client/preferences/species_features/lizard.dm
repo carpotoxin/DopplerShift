@@ -46,7 +46,7 @@
 	return assoc_to_keys_features(SSaccessories.lizard_markings_list)
 
 /datum/preference/choiced/lizard_body_markings/icon_for(value)
-	var/datum/sprite_accessory/sprite_accessory = value ? SSaccessories.lizard_markings_list[value] : /datum/sprite_accessory/blank // DOPPLER EDIT, old code: var/datum/sprite_accessory/sprite_accessory = SSaccessories.lizard_markings_list[value]
+	var/datum/sprite_accessory/sprite_accessory = SSaccessories.lizard_markings_list[value]
 
 	var/icon/final_icon = icon('icons/mob/human/species/lizard/bodyparts.dmi', "lizard_chest_m")
 
@@ -67,7 +67,7 @@
 
 /datum/preference/choiced/lizard_body_markings/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["lizard_markings"] = value
-
+/* DOPPLER EDIT REMOVAL START
 /datum/preference/choiced/lizard_frills
 	savefile_key = "feature_lizard_frills"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -99,7 +99,7 @@
 
 /datum/preference/choiced/lizard_horns/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["horns"] = value
-
+ DOPPLER EDIT REMOVAL END */
 /datum/preference/choiced/lizard_legs
 	savefile_key = "feature_lizard_legs"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -149,7 +149,7 @@
 	var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
 
 	return initial(species_type.digitigrade_customization) & DIGITIGRADE_OPTIONAL
-
+/* DOPPLER EDIT REMOVAL START
 /datum/preference/choiced/lizard_snout
 	savefile_key = "feature_lizard_snout"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -165,7 +165,7 @@
 
 /datum/preference/choiced/lizard_snout/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["snout"] = value
-
+ DOPPLER EDIT REMOVAL END */
 /datum/preference/choiced/lizard_spines
 	savefile_key = "feature_lizard_spines"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -177,7 +177,7 @@
 
 /datum/preference/choiced/lizard_spines/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["spines"] = value
-
+/* DOPPLER EDIT REMOVAL START
 /datum/preference/choiced/lizard_tail
 	savefile_key = "feature_lizard_tail"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -192,3 +192,4 @@
 
 /datum/preference/choiced/lizard_tail/create_default_value()
 	return /datum/sprite_accessory/tails/lizard/smooth::name
+ DOPPLER EDIT REMOVAL END */
