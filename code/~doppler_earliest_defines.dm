@@ -20,7 +20,7 @@
 	name = "No Horns"
 	icon_state = "none"
 
-/datum/sprite_accessory/tails/lizard/none
+/datum/sprite_accessory/tails/none
 	icon = 'modular_doppler/customization/icons/fallbacks.dmi'
 	name = "No Tail"
 	icon_state = "none"

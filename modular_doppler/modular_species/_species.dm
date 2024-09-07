@@ -1,3 +1,24 @@
+///
+//
+/datum/species/regenerate_organs(mob/living/carbon/target, datum/species/old_species, replace_current = TRUE, list/excluded_zones, visual_only = FALSE)
+	. = ..()
+	if(target == null)
+		return
+	if(target.dna.features["tail_lizard"])
+		if(target.dna.features["tail_lizard"] != /datum/sprite_accessory/tails/none::name && target.dna.features["tail_lizard"] != /datum/sprite_accessory/blank::name)
+			var/obj/item/organ/replacement = SSwardrobe.provide_type(/obj/item/organ/external/tail/lizard)
+			replacement.Insert(target, special = TRUE, movement_flags = DELETE_IF_REPLACED)
+			return .
+	if(target.dna.features["tail_cat"])
+		if(target.dna.features["tail_cat"] != /datum/sprite_accessory/tails/none::name && target.dna.features["tail_lizard"] != /datum/sprite_accessory/blank::name)
+			var/obj/item/organ/replacement = SSwardrobe.provide_type(text2path("/obj/item/organ/external/tail/[find_animal_trait(target)]"))
+			replacement.Insert(target, special = TRUE, movement_flags = DELETE_IF_REPLACED)
+			return .
+	var/obj/item/organ/external/tail/old_part = target.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
+	if(istype(old_part))
+		old_part.Remove(target, special = TRUE, movement_flags = DELETE_IF_REPLACED)
+		old_part.moveToNullspace()
+
 /// Animal trait logic goes here!
 //	Used for the kemonomimi and anthro species
 

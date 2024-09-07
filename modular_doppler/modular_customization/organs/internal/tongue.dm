@@ -34,7 +34,7 @@
 	signer.verb_whisper = "murmurs"
 	signer.verb_yell = "shrieks"
 
-/obj/item/organ/internal/tongue/bird/Remove(mob/living/carbon/speaker, special = FALSE)
+/obj/item/organ/internal/tongue/bird/Remove(mob/living/carbon/speaker, special = FALSE, movement_flags)
 	. = ..()
 	speaker.verb_ask = initial(verb_ask)
 	speaker.verb_exclaim = initial(verb_exclaim)

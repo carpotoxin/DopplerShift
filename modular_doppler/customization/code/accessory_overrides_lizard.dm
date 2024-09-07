@@ -212,70 +212,26 @@
 /datum/preference/choiced/lizard_frills/create_default_value()
 	return /datum/sprite_accessory/frills/none::name
 
-
-
-
-
-/// Tails fixing
-/obj/item/organ/external/tail/lizard
-	name = "tail"
-
-/datum/bodypart_overlay/mutant/tail/lizard
-	layers = EXTERNAL_FRONT | EXTERNAL_FRONT_2 | EXTERNAL_FRONT_3 | EXTERNAL_BEHIND | EXTERNAL_BEHIND_2 | EXTERNAL_BEHIND_3
-	feature_key_sprite = "tail"
-
-/datum/bodypart_overlay/mutant/tail/lizard/color_image(image/overlay, draw_layer, obj/item/bodypart/limb)
-	if(limb == null)
-		return ..()
-	if(limb.owner == null)
-		return ..()
-	if(draw_layer == bitflag_to_layer(EXTERNAL_FRONT))
-		overlay.color = limb.owner.dna.features["tail_color_1"]
-		return overlay
-	else if(draw_layer == bitflag_to_layer(EXTERNAL_BEHIND))
-		overlay.color = limb.owner.dna.features["tail_color_1"]
-		return overlay
-	else if(draw_layer == bitflag_to_layer(EXTERNAL_FRONT_2))
-		overlay.color = limb.owner.dna.features["tail_color_2"]
-		return overlay
-	else if(draw_layer == bitflag_to_layer(EXTERNAL_BEHIND_2))
-		overlay.color = limb.owner.dna.features["tail_color_2"]
-		return overlay
-	else if(draw_layer == bitflag_to_layer(EXTERNAL_FRONT_3))
-		overlay.color = limb.owner.dna.features["tail_color_3"]
-		return overlay
-	else if(draw_layer == bitflag_to_layer(EXTERNAL_BEHIND_3))
-		overlay.color = limb.owner.dna.features["tail_color_3"]
-		return overlay
-	return ..()
-
 //core toggle
-/datum/preference/toggle/tail
-	savefile_key = "has_tail"
+/datum/preference/toggle/lizard_tail
+	savefile_key = "has_lizard_tail"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	priority = PREFERENCE_PRIORITY_DEFAULT
 
-/datum/preference/toggle/tail/apply_to_human(mob/living/carbon/human/target, value)
-	if(value == FALSE)
-		target.dna.features["tail_lizard"] = /datum/sprite_accessory/tails/lizard/none::name
-
-/datum/preference/toggle/tail/create_default_value()
+/datum/preference/toggle/lizard_tail/is_accessible(datum/preferences/preferences)
+	. = ..()
+	var/has_tail_already = preferences.read_preference(/datum/preference/toggle/tail_human)
+	if(has_tail_already == FALSE)
+		return TRUE
 	return FALSE
 
-/datum/species/regenerate_organs(mob/living/carbon/target, datum/species/old_species, replace_current = TRUE, list/excluded_zones, visual_only = FALSE)
-	. = ..()
-	if(target == null)
-		return
-	if(target.dna.features["tail_lizard"])
-		if(target.dna.features["tail_lizard"] != /datum/sprite_accessory/tails/lizard/none::name && target.dna.features["tail_lizard"] != /datum/sprite_accessory/blank::name)
-			var/obj/item/organ/replacement = SSwardrobe.provide_type(/obj/item/organ/external/tail/lizard)
-			replacement.Insert(target, special = TRUE, movement_flags = DELETE_IF_REPLACED)
-			return .
-	var/obj/item/organ/external/tail/lizard/old_part = target.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(istype(old_part))
-		old_part.Remove(target, special = TRUE, movement_flags = DELETE_IF_REPLACED)
-		old_part.moveToNullspace()
+/datum/preference/toggle/lizard_tail/apply_to_human(mob/living/carbon/human/target, value)
+	if(value == FALSE)
+		target.dna.features["tail_lizard"] = /datum/sprite_accessory/tails/none::name
+
+/datum/preference/toggle/lizard_tail/create_default_value()
+	return FALSE
 
 //sprite selection
 /datum/preference/choiced/lizard_tail
@@ -286,13 +242,13 @@
 
 /datum/preference/choiced/lizard_tail/is_accessible(datum/preferences/preferences)
 	. = ..()
-	var/has_tail = preferences.read_preference(/datum/preference/toggle/tail)
-	if(has_tail == TRUE)
+	var/has_lizard_tail = preferences.read_preference(/datum/preference/toggle/lizard_tail)
+	if(has_lizard_tail == TRUE)
 		return TRUE
 	return FALSE
 
 /datum/preference/choiced/lizard_tail/create_default_value()
-	return /datum/sprite_accessory/tails/lizard/none::name
+	return /datum/sprite_accessory/tails/none::name
 
 /datum/preference/choiced/lizard_tail/icon_for(value)
 	var/datum/sprite_accessory/sprite_accessory = SSaccessories.tails_list_lizard[value]
