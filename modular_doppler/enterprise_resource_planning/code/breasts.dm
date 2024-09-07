@@ -1,13 +1,11 @@
 /datum/species/get_features()
 	var/list/features = ..()
 
-	features += /datum/preference/choiced/breasts
+	features += /datum/preference/choiced/breasts::savefile_key
 
 	GLOB.features_by_species[type] = features
 
 	return features
-
-
 
 /// SSAccessories setup
 /datum/controller/subsystem/accessories
@@ -17,8 +15,6 @@
 	. = ..()
 	breasts_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/breasts)["default_sprites"] // FLAKY DEFINE: this should be using DEFAULT_SPRITE_LIST
 	//damnit SSAccessories
-
-
 
 /// The boobage in question
 /obj/item/organ/external/breasts
