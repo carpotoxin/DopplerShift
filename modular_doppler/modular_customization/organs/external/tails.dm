@@ -1,31 +1,31 @@
 /// Cat tail
 //
-/obj/item/organ/external/tail/cat
+/obj/item/organ/external/tail/modular/cat
 
 
 /// Dog tail
 //	Buffs people if they're closeby while you're wagging it!
 #define DOG_WAG_MOOD "dog_wag"
 
-/obj/item/organ/external/tail/dog
+/obj/item/organ/external/tail/modular/dog
 	var/datum/proximity_monitor/advanced/dog_wag/mood_buff
 	var/timer
 
-/obj/item/organ/external/tail/dog/start_wag(mob/living/carbon/organ_owner, stop_after = INFINITY)
+/obj/item/organ/external/tail/modular/dog/start_wag(mob/living/carbon/organ_owner, stop_after = INFINITY)
 	. = ..()
 	if(!timer)
 		mood_buff = new(_host = src, range = 4)
 		timer = addtimer(CALLBACK(src, PROC_REF(reset_timer), organ_owner), 1 MINUTES, TIMER_UNIQUE|TIMER_DELETE_ME)
 
-/obj/item/organ/external/tail/dog/proc/reset_timer()
+/obj/item/organ/external/tail/modular/dog/proc/reset_timer()
 	deltimer(timer)
 
-/obj/item/organ/external/tail/dog/stop_wag(mob/living/carbon/organ_owner)
+/obj/item/organ/external/tail/modular/dog/stop_wag(mob/living/carbon/organ_owner)
 	. = ..()
 	if(mood_buff)
 		QDEL_NULL(mood_buff)
 
-/obj/item/organ/external/tail/dog/on_mob_remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
+/obj/item/organ/external/tail/modular/dog/on_mob_remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
 	. = ..()
 	if(mood_buff)
 		QDEL_NULL(mood_buff)
@@ -59,47 +59,29 @@
 
 /// Lizard tail
 //
-/obj/item/organ/external/tail/lizard
+/obj/item/organ/external/tail/modular/lizard
 
 
 /// Bunny tail
 //
-/obj/item/organ/external/tail/bunny
+/obj/item/organ/external/tail/modular/bunny
 
 
 /// Bird tail
 //
-/obj/item/organ/external/tail/bird
+/obj/item/organ/external/tail/modular/bird
 
 
 /// Mouse tail
 //
-/obj/item/organ/external/tail/mouse
+/obj/item/organ/external/tail/modular/mouse
 
-/obj/item/organ/external/tail/mouse/Initialize(mapload)
-	. = ..()
-	create_storage(storage_type = /datum/storage/mouse_tail)
-
-/datum/storage/mouse_tail
-	max_slots = 1
-	max_specific_storage = WEIGHT_CLASS_NORMAL
-
-/datum/storage/mouse_tail/New(
-	atom/parent,
-	max_slots,
-	max_specific_storage,
-	max_total_storage,
-)
-	. = ..()
-	set_holdable(list(
-		/obj/item/,
-		))
 
 /// Fish tail
 //
-/obj/item/organ/external/tail/fish
+/obj/item/organ/external/tail/modular/fish
 
 
 /// Monkey tail
 //
-/obj/item/organ/external/tail/monkey
+/obj/item/organ/external/tail/modular/monkey

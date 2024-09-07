@@ -4,7 +4,7 @@
 	prompt_name = "icemoon dweller"
 	icon = 'icons/mob/simple/lavaland/nest.dmi'
 	icon_state = "hole"
-	mob_species = /datum/species/human/felinid/primitive
+	mob_species = /datum/species/human/kemonomimi/primitive
 	outfit = /datum/outfit/primitive_catgirl
 	density = FALSE
 	you_are_text = "You are an icemoon dweller."
@@ -20,7 +20,7 @@
 	/// The team the spawner will assign players to and use to keep track of people that have already used the spawner
 	var/datum/team/primitive_catgirls/team
 
-	restricted_species = list(/datum/species/human/felinid/primitive)
+	restricted_species = list(/datum/species/human/kemonomimi/primitive)
 	infinite_use = TRUE
 	deletes_on_zero_uses_left = FALSE
 

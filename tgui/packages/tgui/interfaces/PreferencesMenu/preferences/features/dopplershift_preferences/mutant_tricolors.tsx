@@ -47,16 +47,7 @@ export const frills_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
-export const has_lizard_tail: FeatureToggle = {
-  name: 'Add Part: Lizard Tail',
-  category: 'GAMEPLAY',
-  description: `
-    When toggled, adds a lizard tail to your character.
-  `,
-  component: CheckboxInput,
-};
-
-export const has_human_tail: FeatureToggle = {
+export const has_tail: FeatureToggle = {
   name: 'Add Part: Tail',
   category: 'GAMEPLAY',
   description: `
