@@ -99,7 +99,7 @@
 
 /datum/preference/choiced/lizard_horns/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["horns"] = value
- DOPPLER EDIT REMOVAL END */
+DOPPLER EDIT REMOVAL END */
 /datum/preference/choiced/lizard_legs
 	savefile_key = "feature_lizard_legs"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -165,7 +165,7 @@
 
 /datum/preference/choiced/lizard_snout/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["snout"] = value
- DOPPLER EDIT REMOVAL END */
+DOPPLER EDIT REMOVAL END */
 /datum/preference/choiced/lizard_spines
 	savefile_key = "feature_lizard_spines"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -192,4 +192,4 @@
 
 /datum/preference/choiced/lizard_tail/create_default_value()
 	return /datum/sprite_accessory/tails/lizard/smooth::name
- DOPPLER EDIT REMOVAL END */
+DOPPLER EDIT REMOVAL END */
