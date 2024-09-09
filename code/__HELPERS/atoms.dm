@@ -74,8 +74,6 @@
 			break
 		if(IS_OPAQUE_TURF(current))
 			return FALSE
-		current = get_step_towards(current, target_turf)
-		steps++
 	return TRUE
 
 ///Get the cardinal direction between two atoms
