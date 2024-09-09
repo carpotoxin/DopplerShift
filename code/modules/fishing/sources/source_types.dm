@@ -225,7 +225,6 @@
 
 	///rewards not found in other fishing portals
 	fish_table = list(
-		/obj/item/fish/three_eyes = 3,
 		/obj/item/fish/holo/checkered = 1,
 	)
 
