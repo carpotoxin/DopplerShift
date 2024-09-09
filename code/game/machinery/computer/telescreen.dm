@@ -42,6 +42,8 @@
 	frame_type = /obj/item/wallframe/telescreen/entertainment
 	/// Virtual radio inside of the entertainment monitor to broadcast audio
 	var/obj/item/radio/entertainment/speakers/speakers
+	var/icon_state_off = "entertainment_blank"
+	var/icon_state_on = "entertainment"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertainment, 32)
 
