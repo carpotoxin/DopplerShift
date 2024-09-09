@@ -71847,13 +71847,9 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/item/radio/intercom/directional/west,
-/obj/machinery/camera/directional/west{
-	c_tag = "Service - Atrium Entrance"
-	},
-/turf/open/floor/stone,
-/area/station/service/bar/atrium)
+/obj/structure/closet/secure_closet/cytology,
+/turf/open/floor/iron/smooth_large,
+/area/station/science/cytology)
 "vvu" = (
 /obj/structure/railing,
 /obj/effect/turf_decal/trimline/neutral/warning{
@@ -80840,6 +80836,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
+"ycx" = (
+/obj/structure/railing,
+/obj/machinery/vending/cytopro,
+/turf/open/floor/iron/smooth_large,
+/area/station/science/cytology)
 "ycA" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/tile/blue{
