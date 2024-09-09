@@ -109,7 +109,7 @@ multiple modular subtrees with behaviors
 		return
 	var/list/temp_subtree_list = list()
 	for(var/subtree in planning_subtrees)
-		var/subtree_instance = SSai_controllers.ai_subtrees[subtree]
+		var/subtree_instance = GLOB.ai_subtrees[subtree]
 		temp_subtree_list += subtree_instance
 	planning_subtrees = temp_subtree_list
 
@@ -131,7 +131,7 @@ multiple modular subtrees with behaviors
 
 	var/turf/pawn_turf = get_turf(pawn)
 	if(pawn_turf)
-		SSai_controllers.ai_controllers_by_zlevel[pawn_turf.z] += src
+		GLOB.ai_controllers_by_zlevel[pawn_turf.z] += src
 
 	SEND_SIGNAL(src, COMSIG_AI_CONTROLLER_POSSESSED_PAWN)
 
@@ -280,9 +280,9 @@ multiple modular subtrees with behaviors
 		ai_movement.stop_moving_towards(src)
 	var/turf/pawn_turf = get_turf(pawn)
 	if(pawn_turf)
-		SSai_controllers.ai_controllers_by_zlevel[pawn_turf.z] -= src
+		GLOB.ai_controllers_by_zlevel[pawn_turf.z] -= src
 	if(ai_status)
-		SSai_controllers.ai_controllers_by_status[ai_status] -= src
+		GLOB.ai_controllers_by_status[ai_status] -= src
 	pawn.ai_controller = null
 	pawn = null
 	if(destroy)
@@ -405,15 +405,25 @@ multiple modular subtrees with behaviors
 
 	//remove old status, if we've got one
 	if(ai_status)
-		SSai_controllers.ai_controllers_by_status[ai_status] -= src
+		GLOB.ai_controllers_by_status[ai_status] -= src
+	stop_previous_processing()
 	ai_status = new_ai_status
-	SSai_controllers.ai_controllers_by_status[new_ai_status] += src
+	GLOB.ai_controllers_by_status[new_ai_status] += src
 	switch(ai_status)
 		if(AI_STATUS_ON)
 			START_PROCESSING(SSai_behaviors, src)
-		if(AI_STATUS_OFF, AI_STATUS_IDLE)
-			STOP_PROCESSING(SSai_behaviors, src)
+		if(AI_STATUS_IDLE)
+			START_PROCESSING(SSidle_ai_behaviors, src)
 			CancelActions()
+		if(AI_STATUS_OFF)
+			CancelActions()
+
+/datum/ai_controller/proc/stop_previous_processing()
+	switch(ai_status)
+		if(AI_STATUS_ON)
+			STOP_PROCESSING(SSai_behaviors, src)
+		if(AI_STATUS_IDLE)
+			STOP_PROCESSING(SSidle_ai_behaviors, src)
 
 /datum/ai_controller/proc/PauseAi(time)
 	paused_until = world.time + time
