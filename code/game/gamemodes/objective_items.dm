@@ -387,6 +387,7 @@
 /obj/item/clothing/accessory/medal/gold/captain/add_stealing_item_objective()
 	return add_item_to_steal(src, /obj/item/clothing/accessory/medal/gold/captain)
 
+/*	DOPPLER REMOVAL START - Removes the OG CMO hypospray
 /datum/objective_item/steal/hypo
 	name = "the hypospray"
 	targetitem = /obj/item/reagent_containers/hypospray/cmo
@@ -399,6 +400,7 @@
 
 /obj/item/reagent_containers/hypospray/cmo/add_stealing_item_objective()
 	return add_item_to_steal(src, /obj/item/reagent_containers/hypospray/cmo)
+	DOPPLER REMOVAL END */
 
 /datum/objective_item/steal/nukedisc
 	name = "the nuclear authentication disk"
