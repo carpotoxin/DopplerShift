@@ -53,17 +53,27 @@ SUBSYSTEM_DEF(events)
 
 //checks if we should select a random event yet, and reschedules if necessary
 /datum/controller/subsystem/events/proc/checkEvent()
+	// DOPPLER ADDITION START
+	if(scheduled_low_chaos <= world.time && CONFIG_GET(flag/low_chaos_event_system))
+		triger_low_chaos_event()
+	// DOPPLER ADDITION END
 	if(scheduled <= world.time)
 #ifdef MAP_TEST
 		message_admins("Random event skipped (Game is compiled in MAP_TEST mode)")
 #else
 		//spawnEvent() // DOPPLER EDIT REMOVAL
-		// DOPPLER EDIT START
-		if(CONFIG_GET(flag/events_public_voting))
-			start_player_vote_chaos(FALSE)
-		else
+		// DOPPLER ADDITION START
+		if(CONFIG_GET(flag/events_use_random))
 			spawnEvent()
-		// DOPPLER EDIT END
+		else
+			if(CONFIG_GET(flag/events_public_voting))
+				start_player_vote_chaos(FALSE)
+			else
+				if(CONFIG_GET(flag/admin_event_uses_chaos))
+					start_vote_admin_chaos()
+				else
+					start_vote_admin()
+		// DOPPLER ADDITION END
 #endif
 		reschedule()
 

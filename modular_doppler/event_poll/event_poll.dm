@@ -20,6 +20,8 @@
 	var/list/votes = list()
 	/// A list of events that can be chosen from
 	var/list/possible_events = list()
+	/// Events that have passed previously
+	var/list/passed = list()
 	/// Is the current vote admin only?
 	var/admin_only = TRUE
 	/// If we are not admin only, do we show the votes and vote outcome?
@@ -44,11 +46,8 @@
 	var/low_chaos_needs_reset = FALSE
 
 /// Reschedules our low-chaos event timer
-/datum/controller/subsystem/events/proc/reschedule_low_chaos(time)
-	if(time)
-		scheduled_low_chaos = world.time + time
-	else
-		scheduled_low_chaos = world.time + rand(LOW_CHAOS_TIMER_LOWER, LOW_CHAOS_TIMER_UPPER)
+/datum/controller/subsystem/events/proc/reschedule_low_chaos()
+	scheduled_low_chaos = world.time + rand(LOW_CHAOS_TIMER_LOWER, max(LOW_CHAOS_TIMER_LOWER,LOW_CHAOS_TIMER_UPPER))
 	low_chaos_needs_reset = FALSE
 
 /// Triggers a random low chaos event
@@ -59,6 +58,7 @@
 		if(preset_event.selectable_chaos_level == EVENT_CHAOS_LOW)
 			preset_event.run_event(TRUE)
 			low_chaos_needs_reset = TRUE
+			SSevents.passed += preset_event
 			return
 
 /// Starts a vote.
@@ -270,6 +270,7 @@
 
 	last_event_chaos_level = winner.chaos_level
 	winner.run_event(TRUE)
+	SSevents.passed += winner
 	reset()
 
 /// Sends the user a formatted message
@@ -381,15 +382,15 @@
 
 	data["admin_mode"] = check_rights_for(user.client, R_ADMIN)
 
-	data["next_vote_time"] = (scheduled - world.time) / 10
+	data["next_vote_time"] = 10 MINUTES
 
-	data["next_low_chaos_time"] = (scheduled_low_chaos - world.time) / 10
+	data["next_low_chaos_time"] = 5 MINUTES
 
 	data["show_votes"] = show_votes
 
 	data["previous_events"] = list()
 
-	for(var/datum/round_event_control/iterating_event in running)
+	for(var/datum/round_event_control/iterating_event in passed)
 		data["previous_events"] += iterating_event.name
 
 	// Build a list of runnable events.
@@ -465,33 +466,24 @@
 		if("reschedule")
 			if(!check_rights(R_PERMISSIONS))
 				return
-			var/alert = tgui_alert(usr, "Set custom time?", "Custom time", list("Yes", "No"))
-			if(!alert)
-				return
-			var/time
-			if(alert == "Yes")
-				time = tgui_input_number(usr, "Input custom time in seconds", "Custom time", 60, 6000, 1) * 10
-			reschedule_custom(time)
+			reschedule_custom()
 			message_admins("[key_name_admin(usr)] has rescheduled the event system.")
 			return
 		if("reschedule_low_chaos")
-			var/alert = tgui_alert(usr, "Set custom time?", "Custom time", list("Yes", "No"))
-			if(!alert)
-				return
-			var/time
-			if(alert == "Yes")
-				time = tgui_input_number(usr, "Input custom time in seconds", "Custom time", 60, 6000, 1) * 10
 			if(!check_rights(R_PERMISSIONS))
 				return
-			reschedule_low_chaos(time)
+			reschedule_low_chaos()
 			message_admins("[key_name_admin(usr)] has rescheduled the LOW CHAOS event system.")
 			return
 
-// Panel for admins
-/client/proc/event_panel()
-	set category = "Admin.Events"
-	set name = "Event Panel"
 
+ADMIN_VERB(event_panel, R_FUN, "Event Panel", "Event Poling Panel.", ADMIN_CATEGORY_EVENTS)
+	user.holder.event_panel()
+
+// Panel for admins
+/datum/admins/proc/event_panel()
+	if(!check_rights(R_FUN))
+		return
 	SSevents.ui_interact(usr)
 
 // Panel for everyone
