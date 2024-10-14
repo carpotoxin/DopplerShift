@@ -6,61 +6,29 @@
 /datum/round_event_control/anomaly
 	votable = FALSE
 
-/datum/round_event_control/preset
-	name = "ERROR"
-	typepath = "error"
+/datum/round_event_control/bitrunning_glitch
 	votable = FALSE
-	max_occurrences = 0
-	weight = 0
-	chaos_level = EVENT_CHAOS_DISABLED // We are abstract
 
-	/// What chaos levels can this preset choose from, empty is abstract.
-	var/selectable_chaos_level
+/datum/round_event_control/fake_virus
+	votable = FALSE
 
-	/// A list of possible events for us to select from. Cached the first time it's run.
-	var/list/possible_events = list()
+/datum/round_event_control/brain_trauma
+	votable = FALSE
 
-/datum/round_event_control/preset/run_event(random, announce_chance_override = null, admin_forced = FALSE, event_cause)
-	log_game("Preset Event Triggering: [name] ([typepath])")
-	if(random)
-		deadchat_broadcast(" has just been [random ? "randomly " : ""]triggered!", "<b>[name] preset</b>", message_type=DEADCHAT_ANNOUNCEMENT)
-	if(!LAZYLEN(possible_events)) // List hasn't been populated yet, let's do it now.
-		for(var/datum/round_event_control/iterating_event in SSevents.control)
-			if(!iterating_event.votable)
-				continue
-			if(iterating_event.chaos_level == selectable_chaos_level)
-				possible_events += iterating_event
+/datum/round_event_control/heart_attack
+	votable = FALSE
 
-	var/datum/round_event_control/event_to_run = pick(possible_events)
-
-	event_to_run.run_event()
-
-	occurrences++
-
-/datum/round_event_control/preset/low
-	name = "Disruptive Random Event"
-	earliest_start = 0
-	max_occurrences = 100
-	selectable_chaos_level = EVENT_CHAOS_LOW
-
-/datum/round_event_control/preset/moderate
-	name = "Highly Disruptive Random Event"
-	max_occurrences = 10
-	earliest_start = 10 MINUTES
-	selectable_chaos_level = EVENT_CHAOS_MED
-
-/datum/round_event_control/preset/high
-	name = "Catastrophic Random Event"
-	max_occurrences = 10
-	earliest_start = 30 MINUTES
-	selectable_chaos_level = EVENT_CHAOS_HIGH
-	min_players = 70
+/datum/round_event_control/tram_malfunction
+	votable = FALSE
 
 /**
  * EVENT CHAOS DECLARES
  */
 
 // LOW CHAOS EVENTS
+/datum/round_event_control/scrubber_overflow
+	chaos_level = EVENT_CHAOS_LOW
+
 /datum/round_event_control/stray_cargo
 	chaos_level = EVENT_CHAOS_LOW
 
@@ -130,13 +98,19 @@
 /datum/round_event_control/disease_outbreak
 	chaos_level = EVENT_CHAOS_LOW
 
-/datum/round_event_control/anomaly/anomaly_grav/high
-	chaos_level = EVENT_CHAOS_LOW
-
 /datum/round_event_control/morph
 	chaos_level = EVENT_CHAOS_LOW
 
+/datum/round_event_control/spacevine
+	chaos_level = EVENT_CHAOS_LOW
+
+/datum/round_event_control/vent_clog
+	chaos_level = EVENT_CHAOS_LOW
+
 // MODERATE CHAOS PRESETS
+
+/datum/round_event_control/radiation_storm
+	chaos_level = EVENT_CHAOS_MED
 
 /datum/round_event_control/space_ninja
 	chaos_level = EVENT_CHAOS_MED
@@ -174,6 +148,9 @@
 /datum/round_event_control/revenant
 	chaos_level = EVENT_CHAOS_MED
 
+/datum/round_event_control/supermatter_surge
+	chaos_level = EVENT_CHAOS_MED
+
 ///////////////////////
 // HIGH CHAOS EVENTS //
 ///////////////////////
@@ -193,18 +170,17 @@
 /datum/round_event_control/space_dragon
 	chaos_level = EVENT_CHAOS_HIGH
 
-/datum/round_event_control/resonance_cascade
+/datum/round_event_control/earthquake
 	chaos_level = EVENT_CHAOS_HIGH
 
-/datum/round_event_control/spacevine
+/datum/round_event_control/spider_infestation
 	chaos_level = EVENT_CHAOS_HIGH
 
-/datum/round_event_control/mold
+/datum/round_event_control/operative
 	chaos_level = EVENT_CHAOS_HIGH
 
-/datum/round_event_control/cme/extreme
+/datum/round_event_control/wizard
 	chaos_level = EVENT_CHAOS_HIGH
-
 
 // RANDOM EVENTS
 /datum/round_event_control/anomaly/anomaly_flux
@@ -216,25 +192,87 @@
 /datum/round_event_control/anomaly/anomaly_grav
 	chaos_level = EVENT_CHAOS_LOW
 
+/datum/round_event_control/anomaly/anomaly_grav/high
+	chaos_level = EVENT_CHAOS_LOW
+
 /datum/round_event_control/anomaly/anomaly_pyro
 	chaos_level = EVENT_CHAOS_LOW
 
 /datum/round_event_control/anomaly/anomaly_vortex
 	chaos_level = EVENT_CHAOS_LOW
 
-///////////////////////////
-// EVENT CHAOS OVERRIDES //
-//     FOR SUBTYPES      //
-///////////////////////////
+// wizard area
+/datum/round_event_control/wizard/robelesscasting
+	votable = FALSE
 
-/datum/round_event_control/pirates/enclave
-	chaos_level = EVENT_CHAOS_DISABLED
+/datum/round_event_control/wizard/improvedcasting
+	votable = FALSE
 
-/datum/round_event_control/pirates/dutchman
-	chaos_level = EVENT_CHAOS_DISABLED
+/datum/round_event_control/wizard/blobies
+	votable = FALSE
 
-/datum/round_event_control/pirates/silverscales
-	chaos_level = EVENT_CHAOS_DISABLED
+/datum/round_event_control/wizard/cursed_items
+	votable = FALSE
 
-/datum/round_event_control/pirates/rogues
-	chaos_level = EVENT_CHAOS_DISABLED
+/datum/round_event_control/wizard/deprevolt
+	votable = FALSE
+
+/datum/round_event_control/wizard/embedpocalypse
+	votable = FALSE
+
+/datum/round_event_control/wizard/fake_explosion
+	votable = FALSE
+
+/datum/round_event_control/wizard/ghost
+	votable = FALSE
+
+/datum/round_event_control/wizard/possession
+	votable = FALSE
+
+/datum/round_event_control/wizard/greentext
+	votable = FALSE
+
+/datum/round_event_control/wizard/identity_spoof
+	votable = FALSE
+
+/datum/round_event_control/wizard/imposter
+	votable = FALSE
+
+/datum/round_event_control/wizard/invincible
+	votable = FALSE
+
+/datum/round_event_control/wizard/lava
+	votable = FALSE
+
+/datum/round_event_control/wizard/madness
+	votable = FALSE
+
+/datum/round_event_control/wizard/magicarp
+	votable = FALSE
+
+/datum/round_event_control/wizard/petsplosion
+	votable = FALSE
+
+/datum/round_event_control/wizard/rpgloot
+	votable = FALSE
+
+/datum/round_event_control/wizard/rpgtitles
+	votable = FALSE
+
+/datum/round_event_control/wizard/shuffleloc
+	votable = FALSE
+
+/datum/round_event_control/wizard/shuffleminds
+	votable = FALSE
+
+/datum/round_event_control/wizard/shufflenames
+	votable = FALSE
+
+/datum/round_event_control/wizard/summonguns
+	votable = FALSE
+
+/datum/round_event_control/wizard/summonmagic
+	votable = FALSE
+
+/datum/round_event_control/wizard/tower_of_babel
+	votable = FALSE

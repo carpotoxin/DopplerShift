@@ -3,17 +3,10 @@
  */
 
 #define LOW_CHAOS_TIMER_LOWER 5 MINUTES
-
 #define LOW_CHAOS_TIMER_UPPER 15 MINUTES
 
 /// How long does the vote last?
 #define EVENT_VOTE_TIME 1 MINUTES
-
-/// Public vote amount
-#define EVENT_PUBLIC_VOTE_AMOUNT 5
-
-/// Admin vote amount
-#define EVENT_ADMIN_VOTE_AMOUNT 10
 
 /datum/controller/subsystem/events
 	/// List of current events and votes
@@ -46,19 +39,22 @@
 	var/low_chaos_needs_reset = FALSE
 
 /// Reschedules our low-chaos event timer
-/datum/controller/subsystem/events/proc/reschedule_low_chaos()
-	scheduled_low_chaos = world.time + rand(LOW_CHAOS_TIMER_LOWER, max(LOW_CHAOS_TIMER_LOWER,LOW_CHAOS_TIMER_UPPER))
+/datum/controller/subsystem/events/proc/reschedule_low_chaos(time)
+	if(time)
+		scheduled_low_chaos = world.time + time
+	else
+		scheduled_low_chaos = world.time + rand(LOW_CHAOS_TIMER_LOWER, max(LOW_CHAOS_TIMER_LOWER,LOW_CHAOS_TIMER_UPPER))
 	low_chaos_needs_reset = FALSE
 
 /// Triggers a random low chaos event
 /datum/controller/subsystem/events/proc/triger_low_chaos_event()
 	if(vote_in_progress || low_chaos_needs_reset) // No two events at once.
 		return
-	for(var/datum/round_event_control/preset/preset_event in control)
-		if(preset_event.selectable_chaos_level == EVENT_CHAOS_LOW)
-			preset_event.run_event(TRUE)
+	for(var/datum/round_event_control/event in control)
+		if(event.chaos_level == EVENT_CHAOS_LOW)
+			event.run_event(TRUE)
 			low_chaos_needs_reset = TRUE
-			SSevents.passed += preset_event
+			SSevents.passed += event
 			return
 
 /// Starts a vote.
@@ -70,7 +66,16 @@
 		message_admins("EVENT: Attempted to start a vote while one was already in progress.")
 		return
 
-	possible_events = populate_event_list()
+	for(var/datum/round_event_control/event in SSevents.control)
+		if(event.chaos_level > EVENT_CHAOS_MED)
+			continue
+		if(event.occurrences >= event.max_occurrences)
+			continue
+		if(event.holidayID && !check_holidays(event.holidayID))
+			continue
+		if(!event.votable)
+			continue
+		possible_events += event
 
 	// Direct chat link is good.
 	message_admins(span_boldannounce("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)"))
@@ -107,10 +112,16 @@
 			SEND_SOUND(admin_client.mob, sound('sound/misc/bloop.ogg')) // Admins need a little boop.
 
 	/// Set our events to the chaos levels.
-	for(var/datum/round_event_control/preset/iterating_preset in SSevents.control)
-		if(!iterating_preset.selectable_chaos_level) // We can assume these are abstract.
+	for(var/datum/round_event_control/event in SSevents.control)
+		if(event.chaos_level <= EVENT_CHAOS_MED)
 			continue
-		possible_events += iterating_preset
+		if(event.occurrences >= event.max_occurrences)
+			continue
+		if(event.holidayID && !check_holidays(event.holidayID))
+			continue
+		if(!event.votable)
+			continue
+		possible_events += event
 
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
@@ -122,10 +133,18 @@
 		return
 
 	show_votes = public_outcome
-
 	admin_only = FALSE
 
-	possible_events = populate_event_list(EVENT_PUBLIC_VOTE_AMOUNT)
+	for(var/datum/round_event_control/event in SSevents.control)
+		if(event.chaos_level > EVENT_CHAOS_MED)
+			continue
+		if(event.occurrences >= event.max_occurrences)
+			continue
+		if(event.holidayID && !check_holidays(event.holidayID))
+			continue
+		if(!event.votable)
+			continue
+		possible_events += event
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in get_eligible_players())
@@ -148,16 +167,18 @@
 		return
 
 	show_votes = public_outcome
-
 	admin_only = FALSE
 
-	/// Set our events to the chaos levels.
-	for(var/datum/round_event_control/preset/iterating_preset in SSevents.control)
-		if(!iterating_preset.selectable_chaos_level) // We can assume these are abstract.
+	for(var/datum/round_event_control/event in SSevents.control)
+		if(event.chaos_level <= EVENT_CHAOS_MED)
 			continue
-		if(iterating_preset.occurrences >= iterating_preset.max_occurrences)
+		if(event.occurrences >= event.max_occurrences)
 			continue
-		possible_events += iterating_preset
+		if(event.holidayID && !check_holidays(event.holidayID))
+			continue
+		if(!event.votable)
+			continue
+		possible_events += event
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in get_eligible_players())
@@ -173,24 +194,6 @@
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
-
-/// Builds the list of possible events depending on what type of vote it is.
-/datum/controller/subsystem/events/proc/populate_event_list(amount_of_options)
-	if(!amount_of_options) //Assume we want them all
-		amount_of_options = LAZYLEN(SSevents.control)
-	var/list/built_event_list = list()
-	var/list/event_weighted_list = list()
-	for(var/datum/round_event_control/iterating_event in SSevents.control)
-		if(!iterating_event.can_spawn_vote(get_active_player_count(TRUE, TRUE, TRUE)))
-			continue
-		event_weighted_list[iterating_event] = iterating_event.weight
-	for(var/i in 1 to amount_of_options)
-		if(!LAZYLEN(event_weighted_list)) // No more events to choose from break the loop.
-			break
-		var/picked_event = pick_weight(event_weighted_list)
-		event_weighted_list -= picked_event
-		built_event_list += picked_event
-	return built_event_list
 
 /// Cancels a vote outright, and does not execute the event.
 /datum/controller/subsystem/events/proc/cancel_vote(mob/user)
@@ -382,9 +385,9 @@
 
 	data["admin_mode"] = check_rights_for(user.client, R_ADMIN)
 
-	data["next_vote_time"] = 10 MINUTES
+	data["next_vote_time"] = (scheduled - world.time) / 10
 
-	data["next_low_chaos_time"] = 5 MINUTES
+	data["next_low_chaos_time"] = (scheduled_low_chaos - world.time) / 10
 
 	data["show_votes"] = show_votes
 
@@ -466,13 +469,27 @@
 		if("reschedule")
 			if(!check_rights(R_PERMISSIONS))
 				return
-			reschedule_custom()
+			var/alert = tgui_alert(usr, "Set custom time?", "Custom time", list("Yes", "No"))
+			if(!alert)
+				return
+			var/time
+			if(alert == "Yes")
+				time = tgui_input_number(usr, "Input custom time in seconds", "Custom time", 60, 6000, 1) * 10
+			reschedule_custom(time)
 			message_admins("[key_name_admin(usr)] has rescheduled the event system.")
 			return
 		if("reschedule_low_chaos")
 			if(!check_rights(R_PERMISSIONS))
 				return
-			reschedule_low_chaos()
+			var/alert = tgui_alert(usr, "Set custom time?", "Custom time", list("Yes", "No"))
+			if(!alert)
+				return
+			var/time
+			if(alert == "Yes")
+				time = tgui_input_number(usr, "Input custom time in seconds", "Custom time", 60, 6000, 1) * 10
+			if(!check_rights(R_PERMISSIONS))
+				return
+			reschedule_low_chaos(time)
 			message_admins("[key_name_admin(usr)] has rescheduled the LOW CHAOS event system.")
 			return
 
