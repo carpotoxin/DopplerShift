@@ -57,7 +57,13 @@ SUBSYSTEM_DEF(events)
 #ifdef MAP_TEST
 		message_admins("Random event skipped (Game is compiled in MAP_TEST mode)")
 #else
-		spawnEvent()
+		//spawnEvent() // DOPPLER EDIT REMOVAL
+		// DOPPLER EDIT START
+		if(CONFIG_GET(flag/events_public_voting))
+			start_player_vote_chaos(FALSE)
+		else
+			spawnEvent()
+		// DOPPLER EDIT END
 #endif
 		reschedule()
 
