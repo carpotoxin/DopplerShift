@@ -5,8 +5,7 @@
  * The random define is for events such as anomalies so they are still run during higher level events.
  */
 
+#define EVENT_CHAOS_DISABLED 0
 #define EVENT_CHAOS_LOW 1
 #define EVENT_CHAOS_MED 2
 #define EVENT_CHAOS_HIGH 3
-#define EVENT_CHAOS_RANDOM 4
-#define EVENT_CHAOS_DISABLED 5

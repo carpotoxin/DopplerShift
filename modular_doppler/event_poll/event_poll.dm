@@ -50,12 +50,26 @@
 /datum/controller/subsystem/events/proc/trigger_low_chaos_event()
 	if(vote_in_progress || low_chaos_needs_reset) // No two events at once.
 		return
+
+	var/list/possible_events = list()
 	for(var/datum/round_event_control/event in control)
-		if(event.chaos_level == EVENT_CHAOS_LOW)
-			event.run_event(TRUE)
-			low_chaos_needs_reset = TRUE
-			SSevents.passed += event
-			return
+		if(event.chaos_level == EVENT_CHAOS_DISABLED)
+			continue
+		if(event.chaos_level != EVENT_CHAOS_LOW)
+			continue
+		if(event.occurrences >= event.max_occurrences)
+			continue
+		if(event.holidayID && !check_holidays(event.holidayID))
+			continue
+		if(!event.votable)
+			continue
+		possible_events += event
+
+	var/datum/round_event_control/event = pick_n_take(possible_events)
+	SSevents.passed += event
+	event.run_event(TRUE)
+	low_chaos_needs_reset = TRUE
+	reschedule_low_chaos()
 
 /// Starts a vote.
 /datum/controller/subsystem/events/proc/start_vote_admin()
@@ -67,6 +81,8 @@
 		return
 
 	for(var/datum/round_event_control/event in SSevents.control)
+		if(event.chaos_level == EVENT_CHAOS_DISABLED)
+			continue
 		if(event.chaos_level > EVENT_CHAOS_MED)
 			continue
 		if(event.occurrences >= event.max_occurrences)
@@ -113,7 +129,7 @@
 
 	/// Set our events to the chaos levels.
 	for(var/datum/round_event_control/event in SSevents.control)
-		if(!event.chaos_level)
+		if(event.chaos_level == EVENT_CHAOS_DISABLED)
 			continue
 		if(event.occurrences >= event.max_occurrences)
 			continue
@@ -170,7 +186,7 @@
 	admin_only = FALSE
 
 	for(var/datum/round_event_control/event in SSevents.control)
-		if(!event.chaos_level)
+		if(event.chaos_level == EVENT_CHAOS_DISABLED)
 			continue
 		if(event.occurrences >= event.max_occurrences)
 			continue
