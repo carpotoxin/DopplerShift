@@ -203,6 +203,9 @@
 /datum/round_event_control/wizard
 	chaos_level = EVENT_CHAOS_HIGH
 
+/datum/round_event_control/meteor_wave/catastrophic
+	chaos_level = EVENT_CHAOS_HIGH
+
 // RANDOM EVENTS
 /datum/round_event_control/anomaly/anomaly_flux
 	chaos_level = EVENT_CHAOS_LOW
