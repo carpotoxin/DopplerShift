@@ -57,15 +57,12 @@
 			continue
 		if(event.chaos_level != EVENT_CHAOS_LOW)
 			continue
-		if(event.occurrences >= event.max_occurrences)
-			continue
-		if(event.holidayID && !check_holidays(event.holidayID))
-			continue
-		if(!event.votable)
-			continue
 		possible_events += event
 
 	var/datum/round_event_control/event = pick_n_take(possible_events)
+	if(!event.can_spawn_event())
+		message_admins("EVENT: For some reason [event.name] failed the can_spawn_event() proc!")
+		return
 	SSevents.passed += event
 	event.run_event(TRUE)
 	low_chaos_needs_reset = TRUE
