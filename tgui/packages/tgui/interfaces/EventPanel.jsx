@@ -44,6 +44,7 @@ export const EventPanel = (props, context) => {
                   icon="plus"
                   content="Start Admin Chaos Vote"
                   tooltip="Start a chaos vote for the next event."
+                  color="average"
                   disabled={vote_in_progress}
                   onClick={() => act('start_vote_admin_chaos')}
                 />
@@ -51,7 +52,6 @@ export const EventPanel = (props, context) => {
                   icon="user-plus"
                   content="Start Player Vote"
                   tooltip="This will start a vote that will be publically visible."
-                  color="average"
                   disabled={vote_in_progress}
                   onClick={() => act('start_player_vote')}
                 />
@@ -79,14 +79,14 @@ export const EventPanel = (props, context) => {
                 />
                 <Button
                   icon="clock"
-                  content="Rescedule Next Vote"
-                  tooltip="Rescedule the next timed vote."
+                  content="Reschedule Next Chaos Vote"
+                  tooltip="Reschedule the next timed CHAOS vote."
                   onClick={() => act('reschedule')}
                 />
                 <Button
                   icon="clock"
-                  content="Rescedule Next Low Chaos Event"
-                  tooltip="Rescedule the next timed LOW CHAOS event."
+                  content="Reschedule Next Vote"
+                  tooltip="Reschedule the next timed vote."
                   onClick={() => act('reschedule_low_chaos')}
                 />
               </Section>
