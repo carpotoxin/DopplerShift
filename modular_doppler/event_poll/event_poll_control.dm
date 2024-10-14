@@ -21,6 +21,9 @@
 /datum/round_event_control/tram_malfunction
 	votable = FALSE
 
+/datum/round_event_control/wizard
+	votable = FALSE
+
 /**
  * EVENT CHAOS DECLARES
  */
@@ -107,6 +110,21 @@
 /datum/round_event_control/vent_clog
 	chaos_level = EVENT_CHAOS_LOW
 
+/datum/round_event_control/radiation_leak
+	chaos_level = EVENT_CHAOS_LOW
+
+/datum/round_event_control/gravity_generator_blackout
+	chaos_level = EVENT_CHAOS_LOW
+
+/datum/round_event_control/space_dust
+	chaos_level = EVENT_CHAOS_LOW
+
+/datum/round_event_control/aurora_caelus
+	chaos_level = EVENT_CHAOS_LOW
+
+/datum/round_event_control/stray_meteor
+	chaos_level = EVENT_CHAOS_LOW
+
 // MODERATE CHAOS PRESETS
 
 /datum/round_event_control/radiation_storm
@@ -149,6 +167,9 @@
 	chaos_level = EVENT_CHAOS_MED
 
 /datum/round_event_control/supermatter_surge
+	chaos_level = EVENT_CHAOS_MED
+
+/datum/round_event_control/sappers
 	chaos_level = EVENT_CHAOS_MED
 
 ///////////////////////
@@ -200,79 +221,3 @@
 
 /datum/round_event_control/anomaly/anomaly_vortex
 	chaos_level = EVENT_CHAOS_LOW
-
-// wizard area
-/datum/round_event_control/wizard/robelesscasting
-	votable = FALSE
-
-/datum/round_event_control/wizard/improvedcasting
-	votable = FALSE
-
-/datum/round_event_control/wizard/blobies
-	votable = FALSE
-
-/datum/round_event_control/wizard/cursed_items
-	votable = FALSE
-
-/datum/round_event_control/wizard/deprevolt
-	votable = FALSE
-
-/datum/round_event_control/wizard/embedpocalypse
-	votable = FALSE
-
-/datum/round_event_control/wizard/fake_explosion
-	votable = FALSE
-
-/datum/round_event_control/wizard/ghost
-	votable = FALSE
-
-/datum/round_event_control/wizard/possession
-	votable = FALSE
-
-/datum/round_event_control/wizard/greentext
-	votable = FALSE
-
-/datum/round_event_control/wizard/identity_spoof
-	votable = FALSE
-
-/datum/round_event_control/wizard/imposter
-	votable = FALSE
-
-/datum/round_event_control/wizard/invincible
-	votable = FALSE
-
-/datum/round_event_control/wizard/lava
-	votable = FALSE
-
-/datum/round_event_control/wizard/madness
-	votable = FALSE
-
-/datum/round_event_control/wizard/magicarp
-	votable = FALSE
-
-/datum/round_event_control/wizard/petsplosion
-	votable = FALSE
-
-/datum/round_event_control/wizard/rpgloot
-	votable = FALSE
-
-/datum/round_event_control/wizard/rpgtitles
-	votable = FALSE
-
-/datum/round_event_control/wizard/shuffleloc
-	votable = FALSE
-
-/datum/round_event_control/wizard/shuffleminds
-	votable = FALSE
-
-/datum/round_event_control/wizard/shufflenames
-	votable = FALSE
-
-/datum/round_event_control/wizard/summonguns
-	votable = FALSE
-
-/datum/round_event_control/wizard/summonmagic
-	votable = FALSE
-
-/datum/round_event_control/wizard/tower_of_babel
-	votable = FALSE
