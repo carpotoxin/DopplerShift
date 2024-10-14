@@ -3,24 +3,6 @@
 	var/votable = TRUE
 	var/chaos_level = EVENT_CHAOS_DISABLED
 
-/datum/round_event_control/anomaly
-	votable = FALSE
-
-/datum/round_event_control/bitrunning_glitch
-	votable = FALSE
-
-/datum/round_event_control/fake_virus
-	votable = FALSE
-
-/datum/round_event_control/brain_trauma
-	votable = FALSE
-
-/datum/round_event_control/heart_attack
-	votable = FALSE
-
-/datum/round_event_control/tram_malfunction
-	votable = FALSE
-
 /datum/round_event_control/wizard
 	votable = FALSE
 
@@ -29,6 +11,9 @@
  */
 
 // LOW CHAOS EVENTS
+/datum/round_event_control/anomaly
+	chaos_level = EVENT_CHAOS_LOW
+
 /datum/round_event_control/scrubber_overflow
 	chaos_level = EVENT_CHAOS_LOW
 
@@ -125,12 +110,24 @@
 /datum/round_event_control/stray_meteor
 	chaos_level = EVENT_CHAOS_LOW
 
+/datum/round_event_control/bitrunning_glitch
+	chaos_level = EVENT_CHAOS_LOW
+
+/datum/round_event_control/fake_virus
+	chaos_level = EVENT_CHAOS_LOW
+
+/datum/round_event_control/brain_trauma
+	chaos_level = EVENT_CHAOS_LOW
+
+/datum/round_event_control/heart_attack
+	chaos_level = EVENT_CHAOS_LOW
+
+/datum/round_event_control/tram_malfunction
+	chaos_level = EVENT_CHAOS_LOW
+
 // MODERATE CHAOS PRESETS
 
 /datum/round_event_control/radiation_storm
-	chaos_level = EVENT_CHAOS_MED
-
-/datum/round_event_control/space_ninja
 	chaos_level = EVENT_CHAOS_MED
 
 /datum/round_event_control/portal_storm_syndicate
@@ -172,6 +169,9 @@
 /datum/round_event_control/sappers
 	chaos_level = EVENT_CHAOS_MED
 
+/datum/round_event_control/anomaly/anomaly_vortex
+	chaos_level = EVENT_CHAOS_MED
+
 ///////////////////////
 // HIGH CHAOS EVENTS //
 ///////////////////////
@@ -180,6 +180,9 @@
 	chaos_level = EVENT_CHAOS_HIGH
 
 /datum/round_event_control/alien_infestation
+	chaos_level = EVENT_CHAOS_HIGH
+
+/datum/round_event_control/space_ninja
 	chaos_level = EVENT_CHAOS_HIGH
 
 /datum/round_event_control/blob
@@ -206,21 +209,3 @@
 /datum/round_event_control/meteor_wave/catastrophic
 	chaos_level = EVENT_CHAOS_HIGH
 
-// RANDOM EVENTS
-/datum/round_event_control/anomaly/anomaly_flux
-	chaos_level = EVENT_CHAOS_LOW
-
-/datum/round_event_control/anomaly/anomaly_bluespace
-	chaos_level = EVENT_CHAOS_LOW
-
-/datum/round_event_control/anomaly/anomaly_grav
-	chaos_level = EVENT_CHAOS_LOW
-
-/datum/round_event_control/anomaly/anomaly_grav/high
-	chaos_level = EVENT_CHAOS_LOW
-
-/datum/round_event_control/anomaly/anomaly_pyro
-	chaos_level = EVENT_CHAOS_LOW
-
-/datum/round_event_control/anomaly/anomaly_vortex
-	chaos_level = EVENT_CHAOS_LOW

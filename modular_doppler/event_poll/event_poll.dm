@@ -113,7 +113,7 @@
 
 	/// Set our events to the chaos levels.
 	for(var/datum/round_event_control/event in SSevents.control)
-		if(event.chaos_level <= EVENT_CHAOS_MED)
+		if(!event.chaos_level)
 			continue
 		if(event.occurrences >= event.max_occurrences)
 			continue
@@ -170,7 +170,7 @@
 	admin_only = FALSE
 
 	for(var/datum/round_event_control/event in SSevents.control)
-		if(event.chaos_level <= EVENT_CHAOS_MED)
+		if(!event.chaos_level)
 			continue
 		if(event.occurrences >= event.max_occurrences)
 			continue

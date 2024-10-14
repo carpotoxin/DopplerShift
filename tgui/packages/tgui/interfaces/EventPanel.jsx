@@ -24,26 +24,26 @@ export const EventPanel = (props, context) => {
             <Stack.Item>
               <Section title={'Event Control'}>
                 <NoticeBox color="blue">
-                  {'Next chaos event vote in ' +
+                  {'Next event vote in ' +
                     toFixed(next_vote_time, 0) +
                     ' seconds.'}
                 </NoticeBox>
                 <NoticeBox color="blue">
-                  {'Next event vote in ' +
+                  {'Next event in ' +
                     toFixed(next_low_chaos_time, 0) +
                     ' seconds.'}
                 </NoticeBox>
                 <Button
                   icon="plus"
                   content="Start Admin Vote"
-                  tooltip="Start a vote for the next event."
+                  tooltip="This will start an admin vote of events below high intensity."
                   disabled={vote_in_progress}
                   onClick={() => act('start_vote_admin')}
                 />
                 <Button
                   icon="plus"
                   content="Start Admin Chaos Vote"
-                  tooltip="Start a chaos vote for the next event."
+                  tooltip="This will start an admin vote of every event available."
                   color="average"
                   disabled={vote_in_progress}
                   onClick={() => act('start_vote_admin_chaos')}
@@ -51,14 +51,14 @@ export const EventPanel = (props, context) => {
                 <Button
                   icon="user-plus"
                   content="Start Player Vote"
-                  tooltip="This will start a vote that will be publically visible."
+                  tooltip="This will start a vote of events below high intensity."
                   disabled={vote_in_progress}
                   onClick={() => act('start_player_vote')}
                 />
                 <Button
                   icon="user-plus"
                   content="Start Public Chaos Vote"
-                  tooltip="This will start a vote that will be publically visible."
+                  tooltip="This will start a vote of every event available."
                   color="average"
                   disabled={vote_in_progress}
                   onClick={() => act('start_player_vote_chaos')}
@@ -79,14 +79,14 @@ export const EventPanel = (props, context) => {
                 />
                 <Button
                   icon="clock"
-                  content="Reschedule Next Chaos Vote"
-                  tooltip="Reschedule the next timed CHAOS vote."
+                  content="Reschedule Next Event Vote"
+                  tooltip="Reschedule the next event vote."
                   onClick={() => act('reschedule')}
                 />
                 <Button
                   icon="clock"
-                  content="Reschedule Next Vote"
-                  tooltip="Reschedule the next timed vote."
+                  content="Reschedule Next Event"
+                  tooltip="Reschedule the next event."
                   onClick={() => act('reschedule_low_chaos')}
                 />
               </Section>
