@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(events)
 /datum/controller/subsystem/events/proc/checkEvent()
 	// DOPPLER ADDITION START
 	if(scheduled_low_chaos <= world.time && CONFIG_GET(flag/low_chaos_event_system))
-		triger_low_chaos_event()
+		trigger_low_chaos_event()
 	// DOPPLER ADDITION END
 	if(scheduled <= world.time)
 #ifdef MAP_TEST

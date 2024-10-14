@@ -3,7 +3,7 @@
  */
 
 #define LOW_CHAOS_TIMER_LOWER 10 MINUTES
-#define LOW_CHAOS_TIMER_UPPER 30 MINUTES
+#define LOW_CHAOS_TIMER_UPPER 20 MINUTES
 
 /// How long does the vote last?
 #define EVENT_VOTE_TIME 1 MINUTES
@@ -47,7 +47,7 @@
 	low_chaos_needs_reset = FALSE
 
 /// Triggers a random low chaos event
-/datum/controller/subsystem/events/proc/triger_low_chaos_event()
+/datum/controller/subsystem/events/proc/trigger_low_chaos_event()
 	if(vote_in_progress || low_chaos_needs_reset) // No two events at once.
 		return
 	for(var/datum/round_event_control/event in control)
