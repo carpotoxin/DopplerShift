@@ -24,10 +24,12 @@ export const EventPanel = (props, context) => {
             <Stack.Item>
               <Section title={'Event Control'}>
                 <NoticeBox color="blue">
-                  {'Next vote in ' + toFixed(next_vote_time, 0) + ' seconds.'}
+                  {'Next chaos event vote in ' +
+                    toFixed(next_vote_time, 0) +
+                    ' seconds.'}
                 </NoticeBox>
                 <NoticeBox color="blue">
-                  {'Low chaos event in ' +
+                  {'Next event vote in ' +
                     toFixed(next_low_chaos_time, 0) +
                     ' seconds.'}
                 </NoticeBox>

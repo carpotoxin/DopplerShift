@@ -11,9 +11,9 @@ SUBSYSTEM_DEF(events)
 	///The next world.time that a naturally occurring random event can be selected.
 	var/scheduled = 0
 	///The lower bound for how soon another random event can be scheduled.
-	var/frequency_lower = 10 MINUTES // DOPPLER EDIT, old code: 2.5 MINUTES
+	var/frequency_lower = 30 MINUTES // DOPPLER EDIT, old code: 2.5 MINUTES
 	///The upper bound for how soon another random event can be scheduled.
-	var/frequency_upper = 30 MINUTES // DOPPLER EDIT, old code: 7 MINUTES
+	var/frequency_upper = 1.5 HOURS // DOPPLER EDIT, old code: 7 MINUTES
 	///Will wizard events be included in the event pool?
 	var/wizardmode = FALSE
 

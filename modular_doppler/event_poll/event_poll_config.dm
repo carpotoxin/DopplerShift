@@ -8,10 +8,4 @@
 
 /datum/config_entry/flag/allow_consecutive_catastropic_events
 
-/datum/config_entry/number/event_frequency_upper
-	default = 20 MINUTES
-
-/datum/config_entry/number/event_frequency_lower
-	default = 15 MINUTES
-
 /datum/config_entry/flag/admin_event_uses_chaos
