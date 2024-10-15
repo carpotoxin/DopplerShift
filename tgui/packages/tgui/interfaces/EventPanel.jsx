@@ -17,7 +17,7 @@ export const EventPanel = (props, context) => {
     next_low_chaos_time,
   } = data;
   return (
-    <Window title={'Event Panel'} width={500} height={900} theme={'admin'}>
+    <Window title={'Event Panel'} width={470} height={500} theme={'ntos'}>
       <Window.Content>
         <Stack vertical fill>
           {!!admin_mode && (
@@ -28,7 +28,7 @@ export const EventPanel = (props, context) => {
                     toFixed(next_vote_time, 0) +
                     ' seconds.'}
                 </NoticeBox>
-                <NoticeBox color="blue">
+                <NoticeBox color="green">
                   {'Next event in ' +
                     toFixed(next_low_chaos_time, 0) +
                     ' seconds.'}
@@ -137,7 +137,7 @@ export const EventPanel = (props, context) => {
                 scrollable
                 grow
                 fill
-                height="150px"
+                height="100px"
                 title="Previous Events"
               >
                 {previous_events.length > 0 ? (

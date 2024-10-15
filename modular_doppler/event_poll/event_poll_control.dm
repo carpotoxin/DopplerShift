@@ -1,10 +1,6 @@
 /datum/round_event_control
-	/// Do we override the votable component? (For events that just end the round)
-	var/votable = TRUE
+	/// How chaotic is the event? Low chaos events will run automatically, anything above has to be voted for
 	var/chaos_level = EVENT_CHAOS_DISABLED
-
-/datum/round_event_control/wizard
-	votable = FALSE
 
 /**
  * EVENT CHAOS DECLARES

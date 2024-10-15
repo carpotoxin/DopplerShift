@@ -4,9 +4,10 @@
 
 #define LOW_CHAOS_TIMER_LOWER 10 MINUTES
 #define LOW_CHAOS_TIMER_UPPER 20 MINUTES
-
 /// How long does the vote last?
 #define EVENT_VOTE_TIME 1 MINUTES
+/// How many events will be selected for a particular vote?
+#define EVENT_VOTABLES 5
 
 /datum/controller/subsystem/events
 	/// List of current events and votes
@@ -33,8 +34,6 @@
 	var/low_chaos_timer_lower = LOW_CHAOS_TIMER_LOWER
 	/// Ditto, but max
 	var/low_chaos_timer_upper = LOW_CHAOS_TIMER_UPPER
-	/// What was the last chaos level run?
-	var/last_event_chaos_level
 
 /// Reschedules our low-chaos event timer
 /datum/controller/subsystem/events/proc/reschedule_low_chaos(time)
@@ -69,21 +68,24 @@
 		message_admins("EVENT: Attempted to start a vote while one was already in progress.")
 		return
 
+	var/possible_votes = list()
+	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
+
 	for(var/datum/round_event_control/event in SSevents.control)
-		if(event.chaos_level == EVENT_CHAOS_DISABLED)
+		if(!event.chaos_level || event.chaos_level > EVENT_CHAOS_MED)
 			continue
-		if(event.chaos_level > EVENT_CHAOS_MED)
+		if(!event.can_spawn_vote(players_amt))
 			continue
-		if(event.occurrences >= event.max_occurrences)
-			continue
-		if(event.holidayID && !check_holidays(event.holidayID))
-			continue
-		if(!event.votable)
-			continue
-		possible_events += event
+		possible_votes += event
+
+	for(var/i in 1 to EVENT_VOTABLES)
+		possible_events += pick_n_take(possible_votes)
 
 	// Direct chat link is good.
 	message_admins(span_boldannounce("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)"))
+
+	if(possible_events.len < EVENT_VOTABLES)
+		message_admins("EVENT: The poll has less possible results due to a player-count or round-time issue.")
 
 	for(var/client/admin_client in GLOB.admins)
 		var/datum/action/vote_event/event_action = new
@@ -116,17 +118,21 @@
 		if(admin_client?.prefs?.toggles & SOUND_ADMINHELP)
 			SEND_SOUND(admin_client.mob, sound('sound/misc/bloop.ogg')) // Admins need a little boop.
 
-	/// Set our events to the chaos levels.
+	var/possible_votes = list()
+	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
+
 	for(var/datum/round_event_control/event in SSevents.control)
 		if(event.chaos_level <= EVENT_CHAOS_LOW)
 			continue
-		if(event.occurrences >= event.max_occurrences)
+		if(!event.can_spawn_vote(players_amt))
 			continue
-		if(event.holidayID && !check_holidays(event.holidayID))
-			continue
-		if(!event.votable)
-			continue
-		possible_events += event
+		possible_votes += event
+
+	for(var/i in 1 to EVENT_VOTABLES)
+		possible_events += pick_n_take(possible_votes)
+
+	if(possible_events.len < EVENT_VOTABLES)
+		message_admins("EVENT: The poll has less possible results due to a player-count or round-time issue.")
 
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
@@ -140,16 +146,21 @@
 	show_votes = public_outcome
 	admin_only = FALSE
 
+	var/possible_votes = list()
+	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
+
 	for(var/datum/round_event_control/event in SSevents.control)
-		if(event.chaos_level > EVENT_CHAOS_MED)
+		if(!event.chaos_level || event.chaos_level > EVENT_CHAOS_MED)
 			continue
-		if(event.occurrences >= event.max_occurrences)
+		if(!event.can_spawn_vote(players_amt))
 			continue
-		if(event.holidayID && !check_holidays(event.holidayID))
-			continue
-		if(!event.votable)
-			continue
-		possible_events += event
+		possible_votes += event
+
+	for(var/i in 1 to EVENT_VOTABLES)
+		possible_events += pick_n_take(possible_votes)
+
+	if(possible_events.len < EVENT_VOTABLES)
+		message_admins("EVENT: The poll has less possible results due to a player-count or round-time issue.")
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in get_eligible_players())
@@ -174,16 +185,21 @@
 	show_votes = public_outcome
 	admin_only = FALSE
 
+	var/possible_votes = list()
+	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
+
 	for(var/datum/round_event_control/event in SSevents.control)
 		if(event.chaos_level <= EVENT_CHAOS_LOW)
 			continue
-		if(event.occurrences >= event.max_occurrences)
+		if(!event.can_spawn_vote(players_amt))
 			continue
-		if(event.holidayID && !check_holidays(event.holidayID))
-			continue
-		if(!event.votable)
-			continue
-		possible_events += event
+		possible_votes += event
+
+	for(var/i in 1 to EVENT_VOTABLES)
+		possible_events += pick_n_take(possible_votes)
+
+	if(possible_events.len < EVENT_VOTABLES)
+		message_admins("EVENT: The poll has less possible results due to a player-count or round-time issue.")
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in get_eligible_players())
@@ -276,7 +292,6 @@
 		for(var/mob/iterating_user in get_eligible_players())
 			vote_message(iterating_user, "Vote ended! Winning Event: [winner.name]")
 
-	last_event_chaos_level = winner.chaos_level
 	winner.run_event(TRUE)
 	SSevents.passed += winner
 	reset()
@@ -331,19 +346,19 @@
 
 /// Event can_spawn for the event voting system.
 /datum/round_event_control/proc/can_spawn_vote(players_amt)
-	if(!votable)
-		return FALSE
 	if(earliest_start >= world.time - SSticker.round_start_time)
 		return FALSE
-	if(wizardevent != SSevents.wizardmode)
-		return FALSE
 	if(players_amt < min_players)
+		return FALSE
+	if(occurrences >= max_occurrences)
+		return FALSE
+	if(holidayID && !check_holidays(holidayID))
+		return FALSE
+	if(wizardevent && !SSevents.wizardmode)
 		return FALSE
 	if(EMERGENCY_ESCAPED_OR_ENDGAMED)
 		return FALSE
 	if(ispath(typepath, /datum/round_event/ghost_role) && !(GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT))
-		return FALSE
-	if(!CONFIG_GET(flag/allow_consecutive_catastropic_events) && chaos_level == EVENT_CHAOS_HIGH && SSevents.last_event_chaos_level == EVENT_CHAOS_HIGH)
 		return FALSE
 
 	return TRUE
@@ -552,3 +567,8 @@ ADMIN_VERB(event_panel, R_FUN, "Event Panel", "Event Poling Panel.", ADMIN_CATEG
 /proc/debug_event_printout()
 	for(var/datum/round_event_control/event in SSevents.control)
 		to_chat(world, "[event.name] | [event.chaos_level]")
+
+#undef LOW_CHAOS_TIMER_LOWER
+#undef LOW_CHAOS_TIMER_UPPER
+#undef EVENT_VOTE_TIME
+#undef EVENT_VOTABLES
