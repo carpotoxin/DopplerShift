@@ -35,8 +35,6 @@
 	var/low_chaos_timer_upper = LOW_CHAOS_TIMER_UPPER
 	/// What was the last chaos level run?
 	var/last_event_chaos_level
-	/// Have we run the low chaos event system, meaning we need reset?
-	var/low_chaos_needs_reset = FALSE
 
 /// Reschedules our low-chaos event timer
 /datum/controller/subsystem/events/proc/reschedule_low_chaos(time)
@@ -44,13 +42,9 @@
 		scheduled_low_chaos = world.time + time
 	else
 		scheduled_low_chaos = world.time + rand(LOW_CHAOS_TIMER_LOWER, max(LOW_CHAOS_TIMER_LOWER,LOW_CHAOS_TIMER_UPPER))
-	low_chaos_needs_reset = FALSE
 
 /// Triggers a random low chaos event
 /datum/controller/subsystem/events/proc/trigger_low_chaos_event()
-	if(vote_in_progress || low_chaos_needs_reset) // No two events at once.
-		return
-
 	var/list/possible_events = list()
 	for(var/datum/round_event_control/event in control)
 		if(event.chaos_level == EVENT_CHAOS_DISABLED)
@@ -60,13 +54,16 @@
 		possible_events += event
 
 	var/datum/round_event_control/event = pick_n_take(possible_events)
-	if(!event.can_spawn_event())
+	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
+
+	reschedule_low_chaos()
+
+	if(!event.can_spawn_event(players_amt, wizardmode))
 		message_admins("EVENT: For some reason [event.name] failed the can_spawn_event() proc!")
 		return
+
 	SSevents.passed += event
 	event.run_event(TRUE)
-	low_chaos_needs_reset = TRUE
-	reschedule_low_chaos()
 
 /// Starts a vote.
 /datum/controller/subsystem/events/proc/start_vote_admin()
