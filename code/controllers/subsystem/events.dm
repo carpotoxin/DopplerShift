@@ -69,13 +69,7 @@ SUBSYSTEM_DEF(events)
 		if(CONFIG_GET(flag/events_use_random))
 			spawnEvent()
 		else
-			if(CONFIG_GET(flag/events_public_voting))
-				start_player_vote_chaos(FALSE)
-			else
-				if(CONFIG_GET(flag/admin_event_uses_chaos))
-					start_vote_admin_chaos()
-				else
-					start_vote_admin()
+			start_player_vote_chaos(FALSE)
 		// DOPPLER ADDITION END
 #endif
 		reschedule()

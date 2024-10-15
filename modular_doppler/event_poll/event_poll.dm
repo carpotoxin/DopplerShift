@@ -46,22 +46,19 @@
 /// Triggers a random low chaos event
 /datum/controller/subsystem/events/proc/trigger_low_chaos_event()
 	var/list/possible_events = list()
+	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 	for(var/datum/round_event_control/event in control)
 		if(event.chaos_level == EVENT_CHAOS_DISABLED)
 			continue
 		if(event.chaos_level != EVENT_CHAOS_LOW)
 			continue
+		if(!event.can_spawn_event(players_amt, wizardmode))
+			continue
 		possible_events += event
 
 	var/datum/round_event_control/event = pick_n_take(possible_events)
-	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 
 	reschedule_low_chaos()
-
-	if(!event.can_spawn_event(players_amt, wizardmode))
-		message_admins("EVENT: For some reason [event.name] failed the can_spawn_event() proc!")
-		return
-
 	SSevents.passed += event
 	event.run_event(TRUE)
 
