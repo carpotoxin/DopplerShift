@@ -49,7 +49,7 @@
 	for(var/datum/round_event_control/event in control)
 		if(!event.chaos_level == EVENT_CHAOS_LOW)
 			continue
-		if(!event.can_spawn_event(players_amt, wizardmode))
+		if(!event.can_spawn_event(players_amt, SSevents.wizardmode))
 			continue
 		low_chaos_events += event
 
@@ -354,7 +354,7 @@
 		return FALSE
 	if(holidayID && !check_holidays(holidayID))
 		return FALSE
-	if(wizardevent && !SSevents.wizardmode)
+	if(wizardevent && SSevents.wizardmode != wizardevent)
 		return FALSE
 	if(EMERGENCY_ESCAPED_OR_ENDGAMED)
 		return FALSE

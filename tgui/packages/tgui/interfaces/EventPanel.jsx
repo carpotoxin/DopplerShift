@@ -43,7 +43,7 @@ export const EventPanel = (props, context) => {
                 <Button
                   icon="plus"
                   content="Start Admin Chaos Vote"
-                  tooltip="This will start an admin vote of every event available."
+                  tooltip="This will start an admin vote of events above low intensity."
                   color="average"
                   disabled={vote_in_progress}
                   onClick={() => act('start_vote_admin_chaos')}
@@ -58,7 +58,7 @@ export const EventPanel = (props, context) => {
                 <Button
                   icon="user-plus"
                   content="Start Public Chaos Vote"
-                  tooltip="This will start a vote of every event available."
+                  tooltip="This will start a vote of events above low intensity."
                   color="average"
                   disabled={vote_in_progress}
                   onClick={() => act('start_player_vote_chaos')}
