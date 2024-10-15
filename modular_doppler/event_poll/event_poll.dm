@@ -84,9 +84,6 @@
 	// Direct chat link is good.
 	message_admins(span_boldannounce("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)"))
 
-	if(possible_events.len < EVENT_VOTABLES)
-		message_admins("EVENT: The poll has less possible results due to a player-count or round-time issue.")
-
 	for(var/client/admin_client in GLOB.admins)
 		var/datum/action/vote_event/event_action = new
 		admin_client.player_details.player_actions += event_action
@@ -131,9 +128,6 @@
 	for(var/i in 1 to EVENT_VOTABLES)
 		possible_events += pick_n_take(possible_votes)
 
-	if(possible_events.len < EVENT_VOTABLES)
-		message_admins("EVENT: The poll has less possible results due to a player-count or round-time issue.")
-
 	timer_id = addtimer(CALLBACK(src, .proc/end_vote), EVENT_VOTE_TIME, TIMER_STOPPABLE)
 	vote_in_progress = TRUE
 	vote_end_time = world.time + EVENT_VOTE_TIME
@@ -158,9 +152,6 @@
 
 	for(var/i in 1 to EVENT_VOTABLES)
 		possible_events += pick_n_take(possible_votes)
-
-	if(possible_events.len < EVENT_VOTABLES)
-		message_admins("EVENT: The poll has less possible results due to a player-count or round-time issue.")
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in get_eligible_players())
@@ -197,9 +188,6 @@
 
 	for(var/i in 1 to EVENT_VOTABLES)
 		possible_events += pick_n_take(possible_votes)
-
-	if(possible_events.len < EVENT_VOTABLES)
-		message_admins("EVENT: The poll has less possible results due to a player-count or round-time issue.")
 
 	// Direct chat link is good.
 	for(var/mob/iterating_user in get_eligible_players())
