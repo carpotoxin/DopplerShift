@@ -48,9 +48,7 @@
 	var/list/possible_events = list()
 	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 	for(var/datum/round_event_control/event in control)
-		if(event.chaos_level == EVENT_CHAOS_DISABLED)
-			continue
-		if(event.chaos_level != EVENT_CHAOS_LOW)
+		if(!event.chaos_level == EVENT_CHAOS_LOW)
 			continue
 		if(!event.can_spawn_event(players_amt, wizardmode))
 			continue
