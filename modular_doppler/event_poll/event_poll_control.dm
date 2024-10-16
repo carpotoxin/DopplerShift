@@ -196,12 +196,8 @@
 /datum/round_event_control/spider_infestation
 	chaos_level = EVENT_CHAOS_HIGH
 
-/datum/round_event_control/operative
-	chaos_level = EVENT_CHAOS_HIGH
-
 /datum/round_event_control/wizard
 	chaos_level = EVENT_CHAOS_HIGH
 
 /datum/round_event_control/meteor_wave/catastrophic
 	chaos_level = EVENT_CHAOS_HIGH
-
