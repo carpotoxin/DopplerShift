@@ -85,9 +85,6 @@
 /datum/round_event_control/morph
 	chaos_level = EVENT_CHAOS_LOW
 
-/datum/round_event_control/spacevine
-	chaos_level = EVENT_CHAOS_LOW
-
 /datum/round_event_control/vent_clog
 	chaos_level = EVENT_CHAOS_LOW
 
@@ -122,6 +119,9 @@
 	chaos_level = EVENT_CHAOS_LOW
 
 // MODERATE CHAOS PRESETS
+
+/datum/round_event_control/spacevine
+	chaos_level = EVENT_CHAOS_MED
 
 /datum/round_event_control/radiation_storm
 	chaos_level = EVENT_CHAOS_MED
