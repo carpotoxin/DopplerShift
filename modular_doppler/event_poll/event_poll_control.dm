@@ -2,6 +2,15 @@
 	/// How chaotic is the event? Low chaos events will run automatically, anything above has to be voted for
 	var/chaos_level = EVENT_CHAOS_DISABLED
 
+/datum/round_event_control/veto
+	typepath = /datum/round_event/veto
+	name = "Veto"
+	weight = 0
+
+/datum/round_event/veto
+	fakeable = FALSE
+	processing = FALSE
+
 /**
  * EVENT CHAOS DECLARES
  */

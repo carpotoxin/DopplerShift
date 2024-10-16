@@ -72,6 +72,9 @@
 	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 
 	for(var/datum/round_event_control/event in SSevents.control)
+		if(istype(event, /datum/round_event_control/veto))
+			possible_events += event // always add veto
+			continue
 		if(!event.chaos_level || event.chaos_level > EVENT_CHAOS_MED)
 			continue
 		if(!event.can_spawn_vote(players_amt))
@@ -81,7 +84,6 @@
 	for(var/i in 1 to EVENT_VOTABLES)
 		possible_events += pick_n_take(possible_votes)
 
-	// Direct chat link is good.
 	message_admins(span_boldannounce("EVENT: Vote started for next event! (<a href='?src=[REF(src)];[HrefToken()];open_panel=1'>Vote!</a>)"))
 
 	for(var/client/admin_client in GLOB.admins)
@@ -119,6 +121,9 @@
 	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 
 	for(var/datum/round_event_control/event in SSevents.control)
+		if(istype(event, /datum/round_event_control/veto))
+			possible_events += event
+			continue
 		if(event.chaos_level <= EVENT_CHAOS_LOW)
 			continue
 		if(!event.can_spawn_vote(players_amt))
@@ -144,6 +149,9 @@
 	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 
 	for(var/datum/round_event_control/event in SSevents.control)
+		if(istype(event, /datum/round_event_control/veto))
+			possible_events += event
+			continue
 		if(!event.chaos_level || event.chaos_level > EVENT_CHAOS_MED)
 			continue
 		if(!event.can_spawn_vote(players_amt))
@@ -180,6 +188,9 @@
 	var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 
 	for(var/datum/round_event_control/event in SSevents.control)
+		if(istype(event, /datum/round_event_control/veto))
+			possible_events += event
+			continue
 		if(event.chaos_level <= EVENT_CHAOS_LOW)
 			continue
 		if(!event.can_spawn_vote(players_amt))
