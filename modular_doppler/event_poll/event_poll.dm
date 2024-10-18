@@ -226,7 +226,7 @@
 /datum/controller/subsystem/events/proc/get_eligible_players()
 	var/list/eligible_players = list()
 	for(var/mob/iterating_user in GLOB.player_list)
-		if(isdead(iterating_user) || iterating_user.mind?.assigned_role.type == /datum/job/primitive_genemod)
+		if(isdead(iterating_user) || iterating_user.mind?.assigned_role.job_flags & JOB_CREW_MEMBER)
 			continue
 		eligible_players += iterating_user
 	return eligible_players
