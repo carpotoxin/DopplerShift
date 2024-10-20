@@ -58,9 +58,6 @@
 /datum/round_event_control/ion_storm
 	chaos_level = EVENT_CHAOS_LOW
 
-/datum/round_event_control/meteor_wave/major_dust
-	chaos_level = EVENT_CHAOS_LOW
-
 /datum/round_event_control/market_crash
 	chaos_level = EVENT_CHAOS_LOW
 
