@@ -186,6 +186,7 @@
 
 /datum/round_event_control/alien_infestation
 	chaos_level = EVENT_CHAOS_HIGH
+	min_players = 20
 
 /datum/round_event_control/space_ninja
 	chaos_level = EVENT_CHAOS_HIGH
