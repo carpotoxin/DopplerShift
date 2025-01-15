@@ -66,12 +66,19 @@
 */
 
 /datum/loadout_item/undersuit/pants
-	name = "Pants"
-	item_path = /obj/item/clothing/under/pants
+	abstract_type = /datum/loadout_item/undersuit/pants
 
 /datum/loadout_item/undersuit/pants/shorts
 	name = "Shorts"
 	item_path = /obj/item/clothing/under/shorts
+
+/datum/loadout_item/undersuit/pants/shorts/shorter
+	name = "Short Shorts"
+	item_path = /obj/item/clothing/under/shorts/shorter
+
+/datum/loadout_item/undersuit/pants/shorts/shorter/shortest
+	name = "Shortest Shorts"
+	item_path = /obj/item/clothing/under/shorts/shorter/shortest
 
 /datum/loadout_item/undersuit/pants/slacks
 	name = "Slacks"
@@ -81,9 +88,21 @@
 	name = "Jeans"
 	item_path = /obj/item/clothing/under/pants/jeans
 
+/datum/loadout_item/undersuit/pants/moto
+	name = "Moto Pants"
+	item_path = /obj/item/clothing/under/pants/moto_leggings
+
 /datum/loadout_item/undersuit/pants/jeans/shorts
 	name = "Jean Shorts"
 	item_path = /obj/item/clothing/under/shorts/jeanshorts
+
+/datum/loadout_item/undersuit/pants/jeans/shorts/shorter
+	name = "Short Jean Shorts"
+	item_path = /obj/item/clothing/under/shorts/shorter/jeans
+
+/datum/loadout_item/undersuit/pants/jeans/shorts/shorter/shortest
+	name = "Shortest Jean Shorts"
+	item_path = /obj/item/clothing/under/shorts/shorter/jeans/shortest
 
 /datum/loadout_item/undersuit/pants/track
 	name = "Track Pants"
@@ -97,13 +116,72 @@
 	name = "JUNCO megacargo pants"
 	item_path = /obj/item/clothing/under/pants/big_pants
 
+/datum/loadout_item/undersuit/pants/skirt
+	name = "Simple Skirt"
+	item_path = /obj/item/clothing/under/shorts/shorter/skirt
+
+/datum/loadout_item/undersuit/pants/skirt/medium
+	name = "Medium Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/medium
+
+/datum/loadout_item/undersuit/pants/skirt/long
+	name = "Long Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/long
+
+/datum/loadout_item/undersuit/pants/skirt/loincloth
+	name = "Loincloth"
+	item_path = /obj/item/clothing/under/dress/skirt/loincloth
+
+/datum/loadout_item/undersuit/pants/skirt/loincloth/alt
+	name = "Loincloth, Alt"
+	item_path = /obj/item/clothing/under/dress/skirt/loincloth/loincloth_alt
+
+/datum/loadout_item/undersuit/formal
+	name = "Pencilskirt with Shirt"
+	item_path = /obj/item/clothing/under/suit/pencil
+
+/datum/loadout_item/undersuit/formal/pencil
+	name = "Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/pencil/noshirt
+
+/datum/loadout_item/undersuit/formal/pencil/black_really
+	name = "Executive Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/pencil/black_really
+
+/datum/loadout_item/undersuit/formal/pencil/charcoal
+	name = "Charcoal Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/pencil/charcoal
+
+/datum/loadout_item/undersuit/formal/pencil/checkered
+	name = "Checkered Pencilskirt with Shirt"
+	item_path = /obj/item/clothing/under/suit/pencil/checkered
+
+/datum/loadout_item/undersuit/formal/pencil/checkered/noshirt
+	name = "Checkered Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/pencil/checkered/noshirt
+
+/datum/loadout_item/undersuit/formal/pencil/tan
+	name = "Tan Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/pencil/tan
+
+/datum/loadout_item/undersuit/formal/pencil/green
+	name = "Green Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/pencil/green
+
+/datum/loadout_item/undersuit/formal/cowl_neck
+	name = "Cowl Neck Shirt & Trousers"
+	item_path = /obj/item/clothing/under/cowl_neck_shirt
+
+/datum/loadout_item/undersuit/formal/collared_shirt
+	name = "Collared Shirt & Trousers"
+	item_path = /obj/item/clothing/under/collared_shirt
+
 /*
 *	BUTTONDOWNS
 */
 
 /datum/loadout_item/undersuit/buttondown
-	name = "Buttondown"
-	item_path = /obj/item/clothing/under/costume/buttondown
+	abstract_type = /datum/loadout_item/undersuit/buttondown
 
 /datum/loadout_item/undersuit/buttondown/slacks
 	name = "Buttondown w/ Slacks"
@@ -123,8 +201,11 @@
 */
 
 /datum/loadout_item/undersuit/dress
-	name = "Dress"
-	item_path = /obj/item/clothing/under/dress
+	abstract_type = /datum/loadout_item/undersuit/dress
+
+/datum/loadout_item/undersuit/dress/giantscarf
+	name = "Giant Scarf"
+	item_path = /obj/item/clothing/under/dress/doppler/giant_scarf
 
 /datum/loadout_item/undersuit/dress/evening
 	name = "Evening Dress"
@@ -154,10 +235,6 @@
 	name = "Turtle-Skirt Dress"
 	item_path = /obj/item/clothing/under/dress/skirt/turtleskirt
 
-/datum/loadout_item/undersuit/dress/sailor
-	name = "Heretical Dress"
-	item_path = /obj/item/clothing/under/dress/sailor
-
 /datum/loadout_item/undersuit/dress/tutu
 	name = "Pink Tutu"
 	item_path = /obj/item/clothing/under/dress/doppler/pinktutu
@@ -174,6 +251,36 @@
 	name = "Strapless Dress"
 	item_path = /obj/item/clothing/under/dress/doppler/strapless
 
+/datum/loadout_item/undersuit/dress/maid
+	name = "Maid Outfit"
+	item_path = /obj/item/clothing/under/maid_costume
+
+/// JAPANESE/LUNAR BREAKER
+
+/datum/loadout_item/undersuit/dress/qipao
+	name = "Qipao"
+	item_path = /obj/item/clothing/under/dress/doppler/qipao
+
+/datum/loadout_item/undersuit/dress/qipao/customtrim
+	name = "Qipao (Custom Trim)"
+	item_path = /obj/item/clothing/under/dress/doppler/qipao/customtrim
+
+/datum/loadout_item/undersuit/dress/cheongsam
+	name = "Cheongsam"
+	item_path = /obj/item/clothing/under/dress/doppler/cheongsam
+
+/datum/loadout_item/undersuit/dress/cheongsam/customtrim
+	name = "Cheongsam (Custom Trim)"
+	item_path = /obj/item/clothing/under/dress/doppler/cheongsam/customtrim
+
+/datum/loadout_item/undersuit/dress/yukata
+	name = "Custom Yukata"
+	item_path = /obj/item/clothing/under/costume/yukata/greyscale
+
+/datum/loadout_item/undersuit/dress/kimono
+	name = "Custom Kimono"
+	item_path = /obj/item/clothing/under/costume/kimono/greyscale
+
 /*
 *	MISCELLANEOUS
 */
@@ -181,3 +288,61 @@
 /datum/loadout_item/undersuit/gear_harness
 	name = "Gear Harness"
 	item_path = /obj/item/clothing/under/misc/gear_harness
+
+/datum/loadout_item/undersuit/jumpsuit
+	name = "Colorable Jumpsuit"
+	item_path = /obj/item/clothing/under/color
+
+/datum/loadout_item/undersuit/jumpskirt
+	name = "Colorable Jumpskirt"
+	item_path = /obj/item/clothing/under/color/jumpskirt
+
+/datum/loadout_item/undersuit/frontier
+	name = "Frontier Jumpsuit"
+	item_path = /obj/item/clothing/under/frontier_colonist
+
+/datum/loadout_item/undersuit/osi
+	name = "OSI Jumpsuit"
+	item_path = /obj/item/clothing/under/costume/osi
+
+/datum/loadout_item/undersuit/lost_mc
+	name = "Lost MC Clothing"
+	item_path = /obj/item/clothing/under/costume/tmc
+
+/datum/loadout_item/undersuit/bunnysuit
+	name = "Bunny Suit"
+	item_path = /obj/item/clothing/under/costume/bunnysuit
+
+/datum/loadout_item/undersuit/combat
+	name = "Combat Uniform"
+	item_path = /obj/item/clothing/under/syndicate/combat
+
+/datum/loadout_item/undersuit/turtleneck
+	name = "Tactical Turtleneck"
+	item_path = /obj/item/clothing/under/syndicate
+
+/datum/loadout_item/undersuit/athletas_bodysuit
+	name = "ATHLETAS bodysuit"
+	item_path = /obj/item/clothing/under/athletas_bodysuit
+
+// Man in suit gif
+
+/datum/loadout_item/undersuit/detective_suit
+	name = "Hard-Worn Suit"
+	item_path = /obj/item/clothing/under/rank/security/detective
+
+/datum/loadout_item/undersuit/noir_suit
+	name = "Noir Suit"
+	item_path = /obj/item/clothing/under/rank/security/detective/noir
+
+/datum/loadout_item/undersuit/disco
+	name = "Superstar Cop Uniform"
+	item_path = /obj/item/clothing/under/rank/security/detective/disco
+
+/datum/loadout_item/undersuit/aerostatic
+	name = "Aerostatic Suit"
+	item_path = /obj/item/clothing/under/rank/security/detective/kim
+
+/datum/loadout_item/undersuit/disco
+	name = "Executive Suit"
+	item_path = /obj/item/clothing/under/suit/black_really

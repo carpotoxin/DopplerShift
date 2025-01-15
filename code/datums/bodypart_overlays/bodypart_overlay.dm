@@ -8,7 +8,7 @@
 	/// DOPPLER SHIFT ADDITION BEGIN
 	var/static/list/all_layers = list(EXTERNAL_FRONT,EXTERNAL_FRONT_2,EXTERNAL_FRONT_3,
 	EXTERNAL_ADJACENT,EXTERNAL_ADJACENT_2,EXTERNAL_ADJACENT_3,
-	EXTERNAL_BEHIND,EXTERNAL_BEHIND_2,EXTERNAL_BEHIND_3)
+	EXTERNAL_BEHIND,EXTERNAL_BEHIND_2,EXTERNAL_BEHIND_3, EXTERNAL_HAND)
 	/// DOPPLER SHIFT ADDITION END
 
 	///Key of the icon states of all the sprite_datums for easy caching
@@ -21,6 +21,10 @@
 /datum/bodypart_overlay/proc/get_overlay(layer, obj/item/bodypart/limb)
 	layer = bitflag_to_layer(layer)
 	var/image/main_image = get_image(layer, limb)
+	//DOPPLER EDIT START - Sets tails to be the transparency of their limb; mostly for slimepeople.
+	if(limb)
+		main_image.alpha = limb.alpha
+	//DOPPLER EDIT END
 	color_image(main_image, layer, limb)
 	if(blocks_emissive == EMISSIVE_BLOCK_NONE || !limb)
 		return main_image
@@ -75,6 +79,8 @@
 			return "FRONT_2"
 		if(-BODY_FRONT_LAYER_3)
 			return "FRONT_3"
+		if(-BODY_HAND_LAYER)
+			return "HAND"
 		/// DOPPLER SHIFT ADDITION END
 
 ///Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did
@@ -99,6 +105,8 @@
 			return -BODY_FRONT_LAYER_2
 		if(EXTERNAL_FRONT_3)
 			return -BODY_FRONT_LAYER_3
+		if(EXTERNAL_HAND)
+			return -BODY_HAND_LAYER
 		/// DOPPLER SHIFT ADDITION END
 
 ///Check whether we can draw the overlays. You generally don't want lizard snouts to draw over an EVA suit
@@ -106,7 +114,7 @@
 	return TRUE
 
 ///Colorizes the limb it's inserted to, if required.
-/datum/bodypart_overlay/proc/override_color(rgb_value)
+/datum/bodypart_overlay/proc/override_color(obj/item/bodypart/bodypart_owner)
 	CRASH("External organ color set to override with no override proc.")
 
 ///Generate a unique identifier to cache with. If you change something about the image, but the icon cache stays the same, it'll simply pull the unchanged image out of the cache

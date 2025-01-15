@@ -3,7 +3,7 @@
 	lefthand_file = 'modular_doppler/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_doppler/reagent_forging/icons/mob/forge_weapon_r.dmi'
 	worn_icon = 'modular_doppler/reagent_forging/icons/mob/forge_weapon_worn.dmi'
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR
 	obj_flags = UNIQUE_RENAME
 	obj_flags_doppler = ANVIL_REPAIR
 	toolspeed = 0.9 //Slightly better than avg. - A forged hammer or knife is probably better than a standard one
@@ -25,7 +25,7 @@
 	icon_state = "sword"
 	inhand_icon_state = "sword"
 	worn_icon_state = "sword_back"
-	belt_icon_state = "sword_belt"
+	inside_belt_icon_state = "sword_belt"
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	throwforce = 10
 	block_chance = 25
@@ -46,7 +46,7 @@
 	icon_state = "katana"
 	inhand_icon_state = "katana"
 	worn_icon_state = "katana_back"
-	belt_icon_state = "katana_belt"
+	inside_belt_icon_state = "katana_belt"
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	throwforce = 10
 	block_chance = 20
@@ -65,10 +65,10 @@
 	icon_state = "dagger"
 	inhand_icon_state = "dagger"
 	worn_icon_state = "dagger_back"
-	belt_icon_state = "dagger_belt"
+	inside_belt_icon_state = "dagger_belt"
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	throw_speed = 4
-	embed_type = /datum/embed_data/forged_dagger
+	embed_type = /datum/embedding/forged_dagger
 	throwforce = 15
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_SMALL
@@ -78,7 +78,7 @@
 	sharpness = SHARP_EDGED
 	tool_behaviour = TOOL_KNIFE
 
-/datum/embed_data/forged_dagger
+/datum/embedding/forged_dagger
 	embed_chance = 50
 	fall_chance = 1
 	pain_mult = 2
@@ -114,7 +114,7 @@
 	worn_icon_state = "spear_back"
 	throwforce = 22
 	throw_speed = 4
-	embed_data = /datum/embed_data/forged_spear
+	embed_data = /datum/embedding/forged_spear
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FIRE_PROOF
@@ -126,7 +126,7 @@
 	reach = 2
 	sharpness = SHARP_EDGED
 
-/datum/embed_data/forged_spear
+/datum/embedding/forged_spear
 	embed_chance = 75
 	fall_chance = 0
 	pain_mult = 6
@@ -147,7 +147,7 @@
 	worn_icon_state = "axe_back"
 	throwforce = 18
 	throw_speed = 4
-	embed_type = /datum/embed_data/forged_axe
+	embed_type = /datum/embedding/forged_axe
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
@@ -155,7 +155,7 @@
 	attack_verb_simple = list("slash", "bash")
 	sharpness = SHARP_EDGED
 
-/datum/embed_data/forged_axe
+/datum/embedding/forged_axe
 	embed_chance = 65
 	fall_chance = 10
 	pain_mult = 4
@@ -209,7 +209,7 @@
 	transparent = FALSE
 	max_integrity = 150 //over double that of a wooden one
 	w_class = WEIGHT_CLASS_NORMAL
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_AFFECT_STATISTICS
 	obj_flags_doppler = ANVIL_REPAIR
 	shield_break_sound = 'sound/effects/bang.ogg'
 	shield_break_leftover = /obj/item/forging/complete/plate

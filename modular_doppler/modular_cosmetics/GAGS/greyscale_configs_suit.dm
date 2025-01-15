@@ -63,6 +63,32 @@
 	icon_file = 'modular_doppler/modular_cosmetics/GAGS/icons/mob/shirt.dmi'
 	json_config = 'modular_doppler/modular_cosmetics/GAGS/json_configs/suit/dagger_mantle_worn.json'
 
+/datum/greyscale_config/warm_coat
+	name = "Warm Coat"
+	icon_file = 'modular_doppler/modular_cosmetics/GAGS/icons/obj/suit.dmi'
+	json_config = 'modular_doppler/modular_cosmetics/GAGS/json_configs/suit/warm_coat.json'
+
+/datum/greyscale_config/warm_coat/worn
+	name = "Warm Coat (Worn)"
+	icon_file = 'modular_doppler/modular_cosmetics/GAGS/icons/mob/suit.dmi'
+
+/datum/greyscale_config/crop_cold_hoodie
+	name = "Cropped Cold Shoulder Hoodie"
+	icon_file = 'modular_doppler/modular_cosmetics/icons/obj/suit/jacket.dmi'
+	json_config = 'modular_doppler/modular_cosmetics/GAGS/json_configs/suit/crop_cold_hoodie.json'
+
+/datum/greyscale_config/crop_cold_hoodie/worn
+	name = "Cropped Cold Shoulder Hoodie (Worn)"
+	icon_file = 'modular_doppler/modular_cosmetics/icons/mob/suit/jacket.dmi'
+
+/datum/greyscale_config/crop_cold_hoodie_hood
+	name = "Cropped Cold Shoulder Hood"
+	icon_file = 'modular_doppler/modular_cosmetics/icons/mob/suit/jacket.dmi'
+	json_config = 'modular_doppler/modular_cosmetics/GAGS/json_configs/suit/crop_cold_hoodie_hood.json'
+
+/datum/greyscale_config/crop_cold_hoodie_hood/worn
+	name = "Cropped Cold Shoulder Hood (Worn)"
+
 // Apron
 
 /datum/greyscale_config/apron

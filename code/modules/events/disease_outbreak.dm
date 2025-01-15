@@ -27,7 +27,7 @@
 	name = "Disease Outbreak: Classic"
 	typepath = /datum/round_event/disease_outbreak
 	max_occurrences = 1
-	min_players = 10
+	min_players = 5
 	weight = 5
 	category = EVENT_CATEGORY_HEALTH
 	description = "A 'classic' virus will infect some members of the crew."
@@ -111,6 +111,7 @@
 			/datum/disease/flu,
 			/datum/disease/fluspanish,
 			/datum/disease/magnitis,
+			/datum/disease/weightlessness,
 			/// And here are some that will never roll for real, just to mess around.
 			/datum/disease/death_sandwich_poisoning,
 			/datum/disease/dna_retrovirus,
@@ -138,7 +139,7 @@
 		virus_candidates += list(/datum/disease/beesease, /datum/disease/brainrot, /datum/disease/fluspanish)
 
 		//The wacky ones
-		virus_candidates += list(/datum/disease/magnitis, /datum/disease/anxiety)
+		virus_candidates += list(/datum/disease/magnitis, /datum/disease/anxiety, /datum/disease/weightlessness)
 
 		//The rest of the diseases either aren't conventional "diseases" or are too unique/extreme to be considered for a normal event
 		virus_type = pick(virus_candidates)
@@ -166,7 +167,7 @@
 	typepath = /datum/round_event/disease_outbreak/advanced
 	category = EVENT_CATEGORY_HEALTH
 	weight = 15
-	min_players = 35 // To avoid shafting lowpop
+	min_players = 20 // To avoid shafting lowpop
 	earliest_start = 15 MINUTES // give the chemist a chance
 	description = "An 'advanced' disease will infect some members of the crew."
 	min_wizard_trigger_potency = 2

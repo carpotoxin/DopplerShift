@@ -47,7 +47,7 @@
 	return BRUTELOSS
 
 /obj/item/healthanalyzer/attack_self(mob/user)
-	if(!user.can_read(src) || user.is_blind())
+	if(!user.can_read(src)) //DOPPLER EDIT: Blind People Can Analyze Again
 		return
 
 	scanmode = (scanmode + 1) % SCANMODE_COUNT
@@ -80,8 +80,8 @@
 		floor_text += "<span class='alert ml-1'>Subject lacks a brain.</span><br>"
 		floor_text += "<span class='info ml-1'>Body temperature: [scan_turf?.return_air()?.return_temperature() || "???"]</span><br>"
 
-		if(user.can_read(src) && !user.is_blind())
-			to_chat(user, examine_block(floor_text))
+		if(user.can_read(src)) // DOPPLER EDIT - if(user.can_read(src) && !user.is_blind())
+			to_chat(user, custom_boxed_message("blue_box", floor_text))
 		last_scan_text = floor_text
 		return
 
@@ -93,7 +93,7 @@
 	balloon_alert(user, "analyzing vitals")
 	playsound(user.loc, 'sound/items/healthanalyzer.ogg', 50)
 
-	var/readability_check = user.can_read(src) && !user.is_blind()
+	var/readability_check = user.can_read(src) //DOPPLER EDIT - Blind People Can Analyze Again
 	switch (scanmode)
 		if (SCANMODE_HEALTH)
 			last_scan_text = healthscan(user, M, mode, advanced, tochat = readability_check)
@@ -106,7 +106,7 @@
 /obj/item/healthanalyzer/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
 		return NONE
-	if(user.can_read(src) && !user.is_blind())
+	if(user.can_read(src)) //DOPPLER EDIT - Blind People can Analyze Again
 		chemscan(user, interacting_with)
 	return ITEM_INTERACT_SUCCESS
 
@@ -194,6 +194,17 @@
 			if(advanced)
 				render_list += "<span class='info ml-1'>Subject Minor Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, TRUE)].</span><br>"
 
+	// DOPPLER EDIT ADDITION START -- Show increased/decreased brute/burn mods, to "leave a paper trail" for the fragility quirk
+	if(ishuman(target))
+		var/mob/living/carbon/human/humantarget = target
+
+		var/datum/physiology/physiology = humantarget.physiology
+		if (physiology.brute_mod != 1)
+			render_list += "<span class='danger ml-1'>Subject takes [(physiology.brute_mod) * 100]% brute damage.</span>\n"
+		if (physiology.burn_mod != 1)
+			render_list += "<span class='danger ml-1'>Subject takes [(physiology.burn_mod) * 100]% burn damage.</span>\n"
+	// DOPPLER EDIT ADDITION END
+
 	// Body part damage report
 	if(iscarbon(target))
 		var/mob/living/carbon/carbontarget = target
@@ -280,7 +291,7 @@
 		var/list/missing_organs = list()
 		if(!humantarget.get_organ_slot(ORGAN_SLOT_BRAIN))
 			missing_organs[ORGAN_SLOT_BRAIN] = "Brain"
-		if(!humantarget.needs_heart() && !humantarget.get_organ_slot(ORGAN_SLOT_HEART))
+		if(humantarget.needs_heart() && !humantarget.get_organ_slot(ORGAN_SLOT_HEART))
 			missing_organs[ORGAN_SLOT_HEART] = "Heart"
 		if(!HAS_TRAIT_FROM(humantarget, TRAIT_NOBREATH, SPECIES_TRAIT) && !isnull(humantarget.dna.species.mutantlungs) && !humantarget.get_organ_slot(ORGAN_SLOT_LUNGS))
 			missing_organs[ORGAN_SLOT_LUNGS] = "Lungs"
@@ -326,7 +337,7 @@
 
 		// Cybernetics
 		var/list/cyberimps
-		for(var/obj/item/organ/internal/cyberimp/cyberimp in humantarget.organs)
+		for(var/obj/item/organ/cyberimp/cyberimp in humantarget.organs)
 			if(IS_ROBOTIC_ORGAN(cyberimp) && !(cyberimp.organ_flags & ORGAN_HIDDEN))
 				LAZYADD(cyberimps, cyberimp.examine_title(user))
 		if(LAZYLEN(cyberimps))
@@ -410,7 +421,7 @@
 
 	. = jointext(render_list, "")
 	if(tochat)
-		to_chat(user, examine_block(.), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
+		to_chat(user, custom_boxed_message("blue_box", .), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
 	return .
 
 /obj/item/healthanalyzer/click_ctrl_shift(mob/user)
@@ -458,7 +469,7 @@
 				var/datum/reagent/reagent = r
 				if(reagent.chemical_flags & REAGENT_INVISIBLE) //Don't show hidden chems on scanners
 					continue
-				render_block += "<span class='notice ml-2'>[round(reagent.volume, 0.001)] units of [reagent.name][reagent.overdosed ? "</span> - [span_boldannounce("OVERDOSING")]" : ".</span>"]<br>"
+				render_block += "<span class='notice ml-2'>[round(reagent.volume, 0.001)] units of [reagent.name][reagent.overdosed ? "</span> - [span_bolddanger("OVERDOSING")]" : ".</span>"]<br>"
 
 		if(!length(render_block)) //If no VISIBLY DISPLAYED reagents are present, we report as if there is nothing.
 			render_list += "<span class='notice ml-1'>Subject contains no reagents in their blood.</span><br>"
@@ -468,7 +479,7 @@
 			render_block.Cut()
 
 		// Stomach reagents
-		var/obj/item/organ/internal/stomach/belly = target.get_organ_slot(ORGAN_SLOT_STOMACH)
+		var/obj/item/organ/stomach/belly = target.get_organ_slot(ORGAN_SLOT_STOMACH)
 		if(belly)
 			if(belly.reagents.reagent_list.len)
 				for(var/bile in belly.reagents.reagent_list)
@@ -476,11 +487,11 @@
 					if(bit.chemical_flags & REAGENT_INVISIBLE)
 						continue
 					if(!belly.food_reagents[bit.type])
-						render_block += "<span class='notice ml-2'>[round(bit.volume, 0.001)] units of [bit.name][bit.overdosed ? "</span> - [span_boldannounce("OVERDOSING")]" : ".</span>"]<br>"
+						render_block += "<span class='notice ml-2'>[round(bit.volume, 0.001)] units of [bit.name][bit.overdosed ? "</span> - [span_bolddanger("OVERDOSING")]" : ".</span>"]<br>"
 					else
 						var/bit_vol = bit.volume - belly.food_reagents[bit.type]
 						if(bit_vol > 0)
-							render_block += "<span class='notice ml-2'>[round(bit_vol, 0.001)] units of [bit.name][bit.overdosed ? "</span> - [span_boldannounce("OVERDOSING")]" : ".</span>"]<br>"
+							render_block += "<span class='notice ml-2'>[round(bit_vol, 0.001)] units of [bit.name][bit.overdosed ? "</span> - [span_bolddanger("OVERDOSING")]" : ".</span>"]<br>"
 
 			if(!length(render_block))
 				render_list += "<span class='notice ml-1'>Subject contains no reagents in their stomach.</span><br>"
@@ -507,7 +518,7 @@
 				render_list += "<span class='alert ml-2'>[allergies]</span><br>"
 
 		// we handled the last <br> so we don't need handholding
-		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
+		to_chat(user, custom_boxed_message("blue_box", jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
 
 /obj/item/healthanalyzer/click_alt(mob/user)
 	if(mode == SCANNER_NO_MODE)
@@ -558,7 +569,7 @@
 			simple_scanner.show_emotion(AID_EMOTION_HAPPY)
 		to_chat(user, "<span class='notice ml-1'>No wounds detected in subject.</span>")
 	else
-		to_chat(user, examine_block(jointext(render_list, "")), type = MESSAGE_TYPE_INFO)
+		to_chat(user, custom_boxed_message("blue_box", jointext(render_list, "")), type = MESSAGE_TYPE_INFO)
 		if(simple_scan)
 			var/obj/item/healthanalyzer/simple/simple_scanner = scanner
 			simple_scanner.show_emotion(AID_EMOTION_WARN)
@@ -615,7 +626,7 @@
 /obj/item/healthanalyzer/simple/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
 		return NONE
-	if(!user.can_read(src) || user.is_blind())
+	if(!user.can_read(src)) //DOPPLER EDIT - Blind People Can Analyze Again
 		return ITEM_INTERACT_BLOCKING
 
 	add_fingerprint(user)

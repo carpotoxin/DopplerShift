@@ -226,7 +226,7 @@
 		module.emp_act(severity)
 	..()
 
-/obj/item/robot_model/proc/transform_to(new_config_type, forced = FALSE)
+/obj/item/robot_model/proc/transform_to(new_config_type, forced = FALSE, transform = TRUE)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/obj/item/robot_model/new_model = new new_config_type(cyborg)
 	new_model.robot = cyborg
@@ -245,7 +245,10 @@
 	cyborg.diag_hud_set_aishell()
 	log_silicon("CYBORG: [key_name(cyborg)] has transformed into the [new_model] model.")
 
-	INVOKE_ASYNC(new_model, PROC_REF(do_transform_animation))
+	new_model.update_tallborg() // DOPPLER EDIT ADDITION - TALLBORGS
+
+	if(transform)
+		INVOKE_ASYNC(new_model, PROC_REF(do_transform_animation))
 	qdel(src)
 	return new_model
 
@@ -267,6 +270,7 @@
 			cyborg_base_icon = details[SKIN_ICON_STATE]
 		if(!isnull(details[SKIN_ICON]))
 			cyborg.icon = details[SKIN_ICON]
+			cyborg_icon_override = details[SKIN_ICON] // DOPPLER EDIT ADDITION
 		if(!isnull(details[SKIN_PIXEL_X]))
 			cyborg.base_pixel_x = details[SKIN_PIXEL_X]
 		if(!isnull(details[SKIN_PIXEL_Y]))
@@ -277,6 +281,8 @@
 			hat_offset = details[SKIN_HAT_OFFSET]
 		if(!isnull(details[SKIN_TRAITS]))
 			model_traits += details[SKIN_TRAITS]
+		if(!isnull(details[SKIN_FEATURES])) // DOPPLER EDIT ADDITION
+			model_features += details[SKIN_FEATURES] // DOPPLER EDIT ADDITION
 	for(var/i in old_model.added_modules)
 		added_modules += i
 		old_model.added_modules -= i
@@ -303,7 +309,13 @@
 	cyborg.logevent("Chassis model has been set to [name].")
 	sleep(0.1 SECONDS)
 	for(var/i in 1 to 4)
-		playsound(cyborg, pick('sound/items/tools/drill_use.ogg', 'sound/items/tools/jaws_cut.ogg', 'sound/items/tools/jaws_pry.ogg', 'sound/items/tools/welder.ogg', 'sound/items/tools/ratchet.ogg'), 80, TRUE, -1)
+		playsound(cyborg, pick(
+			'sound/items/tools/drill_use.ogg',
+			'sound/items/tools/jaws_cut.ogg',
+			'sound/items/tools/jaws_pry.ogg',
+			'sound/items/tools/welder.ogg',
+			'sound/items/tools/ratchet.ogg',
+			), 80, TRUE, -1)
 		sleep(0.7 SECONDS)
 	cyborg.SetLockdown(FALSE)
 	cyborg.ai_lockdown = FALSE
@@ -391,7 +403,7 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/borg/apparatus/sheet_manipulator,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/stack/tile/iron/base/cyborg,
+		/obj/item/construction/rtd/borg,
 		/obj/item/stack/cable_coil,
 	)
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
@@ -409,7 +421,7 @@
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/screwdriver/cyborg,
 		/obj/item/crowbar/cyborg,
-		/obj/item/stack/tile/iron/base/cyborg,
+		/obj/item/stack/tile/iron/base/cyborg, // haha jani will have old tiles >:D
 		/obj/item/soap/nanotrasen/cyborg,
 		/obj/item/storage/bag/trash/cyborg,
 		/obj/item/melee/flyswatter,
@@ -833,6 +845,7 @@
 		"Kent" = list(SKIN_ICON_STATE = "kent", SKIN_LIGHT_KEY = "medical", SKIN_HAT_OFFSET = list("north" = list(0, 3), "south" = list(0, 3), "east" = list(-1, 3), "west" = list(1, 3))),
 		"Tophat" = list(SKIN_ICON_STATE = "tophat", SKIN_LIGHT_KEY = NONE, SKIN_HAT_OFFSET = INFINITY),
 		"Waitress" = list(SKIN_ICON_STATE = "service_f"),
+		"Gardener" = list(SKIN_ICON_STATE = "gardener", SKIN_HAT_OFFSET = INFINITY),
 	)
 
 /obj/item/robot_model/service/respawn_consumable(mob/living/silicon/robot/cyborg, coeff = 1)
@@ -913,7 +926,7 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/borg/apparatus/sheet_manipulator,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/stack/tile/iron/base/cyborg,
+		/obj/item/construction/rtd/borg,
 		/obj/item/dest_tagger/borg,
 		/obj/item/stack/cable_coil,
 		/obj/item/pinpointer/syndicate_cyborg,

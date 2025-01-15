@@ -9,6 +9,7 @@
 	inhand_icon_state = null
 	armor_type = /datum/armor/utility_hardhat
 	flags_inv = 0
+	hair_mask = HAIR_MASK_HIDE_ABOVE_45_DEG_MEDIUM
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 	clothing_flags = SNUG_FIT | STACKABLE_HELMET_EXEMPT
 	resistance_flags = FIRE_PROOF
@@ -142,15 +143,17 @@
 /obj/item/clothing/head/utility/hardhat/welding/adjust_visor(mob/living/user)
 	. = ..()
 	if(.)
-		playsound(src, 'sound/vehicles/mecha/mechmove03.ogg', 50, TRUE)
+		playsound(src, up ? SFX_VISOR_UP : SFX_VISOR_DOWN, 50, TRUE)
 
 /obj/item/clothing/head/utility/hardhat/welding/worn_overlays(mutable_appearance/standing, isinhands)
 	. = ..()
 	if(isinhands)
 		return
 
-	if(!up)
+	if(!up && !mask_overlay_icon) // DOPPLER EDIT - ORIGINAL - if(!up)
 		. += mutable_appearance('icons/mob/clothing/head/utility.dmi', visor_state)
+	else if(!up) // DOPPLER EDIT ADDITION - SEE modular_doppler/modular_cosmetics/code/hats/doppler_command_hats.dm
+		. += mutable_appearance(mask_overlay_icon, visor_state) // DOPPLER EDIT ADDITION
 
 /obj/item/clothing/head/utility/hardhat/welding/update_overlays()
 	. = ..()
@@ -211,6 +214,7 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	visor_flags_cover = NONE
 	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	hair_mask = ""
 	transparent_protection = HIDEMASK|HIDEEYES
 	visor_flags_inv = NONE
 	visor_state = "weldvisor_atmos"
@@ -230,6 +234,8 @@
 	hat_type = "pumpkin"
 	clothing_flags = SNUG_FIT | STACKABLE_HELMET_EXEMPT
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	hair_mask = ""
+
 	armor_type = /datum/armor/none
 	light_range = 2 //luminosity when on
 	flags_cover = HEADCOVERSEYES
@@ -296,6 +302,7 @@
 	inhand_icon_state = null
 	hat_type = "reindeer"
 	flags_inv = 0
+	hair_mask = ""
 	armor_type = /datum/armor/none
 	light_range = 1 //luminosity when on
 	clothing_traits = list()

@@ -1,3 +1,5 @@
+//for unusual clothing items that don't fit anywhere else
+
 /obj/item/clothing/under/cowl_neck_shirt
 	name = "cowl neck shirt and trousers"
 	desc = "A fairly conventional broadcloth shirt rendered directional with a loose folded neckline in place of a \
@@ -34,11 +36,14 @@
 	desc = "De riguer for techno classicists, these extreme wide leg pants come back into style every \
 		now and then. This pair has generous onboard storage."
 	icon_state = "big_pants"
+	supported_bodyshapes = null
+	bodyshape_icon_files = null
 	greyscale_config = /datum/greyscale_config/big_pants
 	greyscale_config_worn = /datum/greyscale_config/big_pants/worn
 	greyscale_colors = "#874f16"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	alternate_worn_layer = LOW_FACEMASK_LAYER
+	female_sprite_flags = NO_FEMALE_UNIFORM
 
 /obj/item/clothing/under/misc/gear_harness
 	name = "gear harness"
@@ -55,3 +60,26 @@
 /obj/item/clothing/under/misc/gear_harness/Initialize(mapload)
 	. = ..()
 	allowed += GLOB.colonist_suit_allowed
+
+/obj/item/clothing/under/costume/bunnysuit
+	name = "bunny suit"
+	desc = "Makes the wearer more attractive; even and especially men."
+	icon_state = "bunnysuit"
+	icon = 'modular_doppler/modular_cosmetics/icons/obj/under/miscellania.dmi'
+	worn_icon = 'modular_doppler/modular_cosmetics/icons/mob/under/miscellania.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	body_parts_covered = CHEST|GROIN
+	can_adjust = TRUE
+	alt_covers_chest = FALSE
+
+/obj/item/clothing/under/athletas_bodysuit
+	name = "ATHLETAS bodysuit"
+	desc = "Hairfine threads of extruded silver-protein slurry ride from spindle to needle on a single production chain. \
+	The fine jersey wicks and breathes while resisting microbial colonization."
+	icon_state = "athletas_bodysuit"
+	greyscale_config = /datum/greyscale_config/athletas_bodysuit
+	greyscale_config_worn = /datum/greyscale_config/athletas_bodysuit/worn
+	greyscale_colors = "#1c1c1c#c0c0c0"
+	flags_1 = IS_PLAYER_COLORABLE_1
+	body_parts_covered = CHEST|GROIN|ARMS
+	can_adjust = FALSE

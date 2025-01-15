@@ -17,11 +17,12 @@
 	var/reagent_flags = PROCESS_ORGANIC
 	///This is the outfit which will be used by the species its preview portrait
 	var/datum/outfit/preview_outfit = /datum/outfit/job/assistant/consistent
-
+	///Override for the alpha of bodyparts and mutant parts.
+	var/specific_alpha = 255
 
 /// Cybernetic limbs logic here!
 //	Used for most races
-/datum/species/on_species_gain(mob/living/carbon/human/target, datum/species/old_species, pref_load)
+/datum/species/on_species_gain(mob/living/carbon/human/target, datum/species/old_species, pref_load, regenerate_icons = TRUE)
 	var/list/frame_bodyparts = target.dna.features["frame_list"]
 	if(type in GLOB.species_blacklist_no_humanoid)
 		return ..()
@@ -59,17 +60,69 @@
 /datum/species/proc/apply_animal_trait(mob/living/carbon/human/target, animal_trait)
 	if(!ishuman(target) || animal_trait == NO_VARIATION || !animal_trait)
 		return
-	// Organs (or just tongues)
-	/// Find and set our new informed tongue!
-	var/obj/item/organ/tongue = text2path("/obj/item/organ/internal/tongue/[animal_trait]")
+
+	//// Add the organs!
+	// tongue
+	var/obj/item/organ/tongue = text2path("/obj/item/organ/tongue/[animal_trait]")
 	if(tongue) // text2path nulls if it can't find a matching subtype, so don't worry adding an organ for every single trait value
 		mutanttongue = tongue.type
-	//	Adding traits from here on
+
+	// lungs
+	var/obj/item/organ/lungs = text2path("/obj/item/organ/lungs/[animal_trait]")
+	if(lungs)
+		mutantlungs = lungs.type
+	else // If you have an organ that is more specific, you can add it in this switch() list
+		switch(animal_trait)
+			if(FROG)
+				mutantlungs = /obj/item/organ/lungs/fish/amphibious
+
+	// liver
+	var/obj/item/organ/liver = text2path("/obj/item/organ/liver/[animal_trait]")
+	if(liver)
+		mutantliver = liver.type
+	else
+		switch(animal_trait)
+			if(BUG)
+				mutantliver = /obj/item/organ/liver/roach
+
+	// stomach
+	var/obj/item/organ/stomach = text2path("/obj/item/organ/stomach/[animal_trait]")
+	if(stomach)
+		mutantstomach = stomach.type
+	else
+		switch(animal_trait)
+			if(BUG)
+				mutantstomach = /obj/item/organ/stomach/roach
+
+	// appendix
+	var/obj/item/organ/appendix = text2path("/obj/item/organ/appendix/[animal_trait]")
+	if(appendix)
+		mutantappendix = appendix.type
+	else
+		switch(animal_trait)
+			if(BUG)
+				mutantappendix = /obj/item/organ/appendix/roach
+
+	////
+	//	Adding remaining traits, elements, components, and more from here on
 	switch(animal_trait)
+		if(BIRD)
+			target.AddComponent(/datum/component/pinata, candy = list(/obj/item/feather))
+		if(BUG)
+			inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
+			ADD_TRAIT(target, TRAIT_WEB_WEAVER, SPECIES_TRAIT)
+			ADD_TRAIT(target, TRAIT_WEB_SURFER, SPECIES_TRAIT)
 		if(CAT)
 			ADD_TRAIT(target, TRAIT_CATLIKE_GRACE, SPECIES_TRAIT)
 			ADD_TRAIT(target, TRAIT_HATED_BY_DOGS, SPECIES_TRAIT)
-
+			ADD_TRAIT(target, TRAIT_WATER_HATER, SPECIES_TRAIT)
+		if(DEER)
+			target.AddElement(/datum/element/cliff_walking)
+		if(FISH)
+			ADD_TRAIT(target, TRAIT_WATER_ADAPTATION, SPECIES_TRAIT)
+			target.add_quirk(/datum/quirk/item_quirk/breather/water_breather) // this trait necessitates you get this 'item_quirk'
+		if(FROG)
+			ADD_TRAIT(target, TRAIT_WATER_ADAPTATION, SPECIES_TRAIT)
 
 /// spec_revival logic
 /datum/species/proc/spec_revival(mob/living/carbon/human/target)

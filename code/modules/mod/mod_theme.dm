@@ -316,6 +316,7 @@
 	slowdown_active = 1
 	allowed_suit_storage = list(
 		/obj/item/analyzer,
+		/obj/item/extinguisher,
 		/obj/item/fireaxe/metal_h2_axe,
 		/obj/item/pipe_dispenser,
 		/obj/item/t_scanner,
@@ -898,6 +899,7 @@
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,
+		/obj/item/storage/belt/secsword, // DOPPLER EDIT ADDITION
 	)
 	variants = list(
 		"security" = list(

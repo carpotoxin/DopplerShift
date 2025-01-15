@@ -53,7 +53,7 @@
 	to_wear.suit = null
 	to_wear.suit_store = null
 
-	avatar.equipOutfit(to_wear, visualsOnly = TRUE)
+	avatar.equipOutfit(to_wear, visuals_only = TRUE)
 
 	var/obj/item/clothing/under/jumpsuit = avatar.w_uniform
 	if(istype(jumpsuit))
@@ -145,6 +145,9 @@
 		to_chat(neo, span_warning("This domain forbids the use of [english_list(import_ban)], your disk [english_list(disk_ban)] will not be granted!"))
 
 	var/failed = FALSE
+	//DOPPLER EDIT ADDITION BEGIN - BITRUNNING_PREFS_DISKS - Track if we've used multiple avatar preference disks, for avoiding overrides and displaying the failure message.
+	var/duplicate_prefs = FALSE
+	//DOPPLER EDIT ADDITION END
 
 	// We don't need to bother going over the disks if neither of the types can be used.
 	if(domain_forbids_spells && domain_forbids_items)
@@ -175,10 +178,28 @@
 
 			avatar.put_in_hands(new item_disk.granted_item())
 
+		//DOPPLER EDIT ADDITION BEGIN - BITRUNNING_PREFS_DISKS - Handles our avatar preference disks, if present.
+		if(istype(disk, /obj/item/bitrunning_disk/preferences))
+			var/obj/item/bitrunning_disk/preferences/prefs_disk = disk
+			var/datum/preferences/avatar_preference = prefs_disk.chosen_preference
+
+			if(isnull(avatar_preference) || duplicate_prefs)
+				failed = TRUE
+				continue
+
+			if(!domain_forbids_spells)
+				avatar_preference.safe_transfer_prefs_to(avatar)
+				SSquirks.AssignQuirks(avatar, prefs_disk.mock_client)
+			if(!domain_forbids_items && prefs_disk.include_loadout)
+				avatar.equip_outfit_and_loadout(/datum/outfit, avatar_preference)
+
+			duplicate_prefs = TRUE
+		//DOPPLER EDIT ADDITION END
+
 	if(failed)
 		to_chat(neo, span_warning("One of your disks failed to load. Check for duplicate or inactive disks."))
 
-	var/obj/item/organ/internal/brain/neo_brain = neo.get_organ_slot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/brain/neo_brain = neo.get_organ_slot(ORGAN_SLOT_BRAIN)
 	for(var/obj/item/skillchip/skill_chip as anything in neo_brain?.skillchips)
 		if(!skill_chip.active)
 			continue

@@ -37,6 +37,12 @@
 #define TRAIT_PERMITTED_CYBERNETIC "permitted_cybernetic"
 /// No step on glass
 #define TRAIT_HARD_SOLES "hard_soles"
+/// Can detach cybernetic limbs voluntarily
+#define TRAIT_ROBOTIC_LIMBATTACHMENT "robotic_limbattachment"
+/// This person has the same taste in food as a different species
+#define TRAIT_ATYPICAL_TASTER "atypical_taster"
+/// This person is space-acclimated and can "spacer-swim" on zero gravity turfs inside light atmosphere.
+#define TRAIT_SPACER_SWIM "spacer_swim"
 
 ////
 // Jobs
@@ -58,3 +64,9 @@
 /// When someone is fixing electrical damage, this trait is set and prevents the wound from worsening.
 // We use a trait to avoid erronous setting of a variable to false if two people are repairing and one stops.
 #define TRAIT_ELECTRICAL_DAMAGE_REPAIRING "electrical_damage_repairing"
+
+////
+// Speech
+////
+/// Trait for muting only speech, but allowing emotes.
+#define TRAIT_SPEECH_ONLY_MUTE "speech_only_mute"

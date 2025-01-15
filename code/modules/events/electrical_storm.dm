@@ -2,7 +2,7 @@
 	name = "Electrical Storm"
 	typepath = /datum/round_event/electrical_storm
 	earliest_start = 10 MINUTES
-	min_players = 5
+	min_players = 1
 	weight = 20
 	category = EVENT_CATEGORY_ENGINEERING
 	description = "Destroys all lights in a large area."
@@ -22,7 +22,7 @@
 	var/list/epicentreList = list()
 
 	for(var/i in 1 to lightsoutAmount)
-		var/turf/T = get_safe_random_station_turf()
+		var/turf/T = get_safe_random_station_turf_equal_weight()
 		if(istype(T))
 			epicentreList += T
 

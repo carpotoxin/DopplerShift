@@ -20,7 +20,7 @@
 	/// What this thing deconstructs into
 	var/deconstruction_type = /obj/item/flatpacked_machine/stirling_generator
 	/// Maximum efficient heat difference, at what heat difference does more difference stop meaning anything for power?
-	var/max_efficient_heat_difference = 8000
+	var/max_efficient_heat_difference = 6000
 	/// Maximum power output from this machine
 	var/max_power_output = 100 KILO WATTS
 	/// How much power the generator is currently making
@@ -71,11 +71,6 @@
 	if(!(gas_temperature_delta > 0))
 		current_power_generation = 0
 		return
-
-	var/input_capacity = hot_air_from_pipe.heat_capacity()
-	var/output_capacity = environment.heat_capacity()
-	var/cooling_heat_amount = CALCULATE_CONDUCTION_ENERGY(gas_temperature_delta, input_capacity, output_capacity)
-	hot_air_from_pipe.temperature = max(hot_air_from_pipe.temperature - (cooling_heat_amount / input_capacity), TCMB)
 
 	/// Takes the amount of heat moved, and divides it by the maximum temperature difference we expect, creating a number to divide power generation by
 	var/effective_energy_transfer = round((max_efficient_heat_difference / min(gas_temperature_delta, max_efficient_heat_difference)), 0.01)

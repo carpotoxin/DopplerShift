@@ -27,6 +27,12 @@
 
 ///bags drawn beneath the eyes
 /datum/bodypart_overlay/simple/bags
+	icon = 'modular_doppler/modular_quirks/overwrites/icons/bodypart_overlay_simple.dmi' // DOPPLER EDIT - redirect to overwrite to make these less dark
 	icon_state = "bags"
 	draw_color = COLOR_WEBSAFE_DARK_GRAY
 	layers = EXTERNAL_ADJACENT
+
+///PENDING eyes drawn on the face
+/datum/bodypart_overlay/simple/soul_pending_eyes
+	icon_state = "soul_pending_eyes"
+	layers = EXTERNAL_FRONT
