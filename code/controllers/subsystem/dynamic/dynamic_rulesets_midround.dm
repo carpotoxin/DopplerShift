@@ -473,7 +473,7 @@
 	minimum_round_time = 35 MINUTES
 	weight = 3
 	cost = 10
-	minimum_players = 30
+	minimum_players = 35
 	repeatable = TRUE
 
 /datum/dynamic_ruleset/midround/from_living/blob_infection/trim_candidates()
@@ -513,7 +513,7 @@
 	minimum_round_time = 40 MINUTES
 	weight = 5
 	cost = 10
-	minimum_players = 35
+	minimum_players = 40
 	repeatable = TRUE
 	signup_item_path = /mob/living/basic/alien
 	var/list/vents = list()
@@ -720,7 +720,7 @@
 	required_candidates = 0
 	weight = 3
 	cost = 8
-	minimum_players = 25
+	minimum_players = 30
 	repeatable = TRUE
 	var/spawncount = 2
 
