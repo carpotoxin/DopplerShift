@@ -962,6 +962,12 @@
 
 	update_draw_color()
 
+	// DOPPLER EDIT ADDITION - (roundstart slime) limb opacity
+	var/datum/species/owner_species = human_owner.dna.species
+	if(owner_species && owner_species.specific_alpha != 255)
+		alpha = owner_species.specific_alpha
+	// DOPPLER EDIT END
+
 	// Recolors mutant overlays to match new mutant colors
 	for(var/datum/bodypart_overlay/mutant/overlay in bodypart_overlays)
 		overlay.inherit_color(src, force = TRUE)
