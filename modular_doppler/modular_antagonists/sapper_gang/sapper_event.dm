@@ -5,7 +5,7 @@
 	antag_flag = ROLE_SPACE_SAPPER
 	ruleset_category = parent_type::ruleset_category |  RULESET_CATEGORY_NO_WITTING_CREW_ANTAGONISTS
 	signup_item_path = /obj/item/wrench/bolter
-	minimum_players = 20
+	minimum_players = 10
 	delay = 1 HOURS
 	requirements = list(14,10,7,7,7,7,7,7,7,7)
 	enemy_roles = list(

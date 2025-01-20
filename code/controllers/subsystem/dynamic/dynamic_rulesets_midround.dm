@@ -439,7 +439,7 @@
 	minimum_round_time = 35 MINUTES
 	weight = 3
 	cost = 8
-	minimum_players = 25
+	minimum_players = 35
 	repeatable = TRUE
 	signup_item_path = /obj/structure/blob/normal
 
@@ -473,7 +473,7 @@
 	minimum_round_time = 35 MINUTES
 	weight = 3
 	cost = 10
-	minimum_players = 35
+	minimum_players = 40
 	repeatable = TRUE
 
 /datum/dynamic_ruleset/midround/from_living/blob_infection/trim_candidates()
@@ -678,7 +678,7 @@
 	required_candidates = 1
 	weight = 4
 	cost = 8
-	minimum_players = 15
+	minimum_players = 35
 	repeatable = TRUE
 	ruleset_lazy_templates = list(LAZY_TEMPLATE_KEY_NINJA_HOLDING_FACILITY) // I mean, no one uses the nets anymore but whateva
 	signup_item_path = /obj/item/energy_katana
@@ -791,7 +791,7 @@
 	required_candidates = 0
 	weight = 3
 	cost = 8
-	minimum_players = 10
+	minimum_players = 20
 	repeatable = TRUE
 
 /datum/dynamic_ruleset/midround/pirates/acceptable(population=0, threat_level=0)
@@ -814,7 +814,7 @@
 	required_candidates = 0
 	weight = 3
 	cost = 8
-	minimum_players = 15
+	minimum_players = 30
 	repeatable = TRUE
 
 /datum/dynamic_ruleset/midround/dangerous_pirates/acceptable(population=0, threat_level=0)
@@ -886,7 +886,7 @@
 	required_candidates = 1
 	weight = 3
 	cost = 7
-	minimum_players = 10
+	minimum_players = 20
 	repeatable = TRUE
 	signup_item_path = /obj/effect/meteor/meaty/changeling
 
