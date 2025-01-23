@@ -27,7 +27,7 @@
 		new /obj/item/storage/backpack(src)
 	else
 		new /obj/item/storage/backpack/satchel(src)
-	new /obj/item/radio/headset( src )
+/*	new /obj/item/radio/headset( src ) DOPPLER EDIT REMOVAL - Chat on PDA */
 
 /obj/structure/closet/secure_closet/personal/patient
 	name = "patient's closet"
