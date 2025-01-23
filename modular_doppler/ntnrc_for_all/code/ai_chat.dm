@@ -11,6 +11,9 @@
 			continue
 		station_ai = ai_player
 
+	if(!station_ai)
+		return // no one to pass operator to
+
 	var/obj/item/modular_computer/pda/silicon/ai_pda = station_ai.modularInterface
 	var/datum/computer_file/program/chatclient/ai_chat
 	for(var/datum/computer_file/program/chatclient/app_in_stored_files in ai_pda.stored_files)
