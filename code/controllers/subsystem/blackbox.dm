@@ -131,7 +131,7 @@ SUBSYSTEM_DEF(blackbox)
 		return
 	switch(freq)
 		if(FREQ_COMMON)
-			record_feedback("tally", "radio_usage", 1, "common")
+			record_feedback("tally", "radio_usage", 1, "announcements") // DOPPLER EDIT - Chat on PDA - old code: record_feedback("tally", "radio_usage", 1, "common")
 		if(FREQ_SCIENCE)
 			record_feedback("tally", "radio_usage", 1, "science")
 		if(FREQ_COMMAND)

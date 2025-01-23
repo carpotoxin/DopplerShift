@@ -12,7 +12,7 @@
 
 	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = list(
 		UPLINK_PDA = "PDA",
-		UPLINK_RADIO = "Radio",
+	/*	UPLINK_RADIO = "Radio", DOPPLER EDIT REMOVAL - Chat on PDA - temporary edit i'm sure */
 		UPLINK_PEN = "Pen",
 		UPLINK_IMPLANT = "Implant ([UPLINK_IMPLANT_TELECRYSTAL_COST]TC)",
 	)

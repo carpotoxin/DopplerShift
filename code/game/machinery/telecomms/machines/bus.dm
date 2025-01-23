@@ -73,7 +73,7 @@
 	id = "Bus 4"
 	network = "tcommsat"
 	freq_listening = list(FREQ_ENGINEERING)
-	autolinkers = list("processor4", "engineering", "common", "messaging")
+	autolinkers = list("processor4", "engineering", "announcements", "messaging") // DOPPLER EDIT - Chat on PDA - old code: autolinkers = list("processor4", "engineering", "common", "messaging")
 
 /obj/machinery/telecomms/bus/preset_four/Initialize(mapload)
 	. = ..()
@@ -84,5 +84,5 @@
 
 /obj/machinery/telecomms/bus/preset_one/birdstation
 	name = "Bus"
-	autolinkers = list("processor1", "common", "messaging")
+	autolinkers = list("processor1", "announcements", "messaging") // DOPPLER EDIT - Chat on PDA - old code: autolinkers = list("processor1", "common", "messaging")
 	freq_listening = list()

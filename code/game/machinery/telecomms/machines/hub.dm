@@ -67,7 +67,7 @@
 		"medical",
 		"supply",
 		"service",
-		"common",
+		"announcements", // DOPPLER EDIT - Chat on PDA - old code: "common",
 		"command",
 		"engineering",
 		"entertainment",

@@ -105,9 +105,9 @@
 	autolinkers = list("service", "entertainment")
 
 /obj/machinery/telecomms/server/presets/common
-	id = "Common Server"
+	id = "Announcements Server" // DOPPLER EDIT - Chat on PDA - old code: id = "Common Server"
 	freq_listening = list()
-	autolinkers = list("common")
+	autolinkers = list("announcements") // DOPPLER EDIT - Chat on PDA - old code: autolinkers = list("common")
 
 /obj/machinery/telecomms/server/presets/common/Initialize(mapload)
 	. = ..()
