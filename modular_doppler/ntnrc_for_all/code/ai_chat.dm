@@ -27,3 +27,10 @@
 	. = ..()
 	var/datum/ntnet_conversation/ai_channel = SSmodular_computers.get_chat_channel_by_id(1) // the ai channel is loaded on ID '1'
 	ai_channel.changeop()
+
+/// add to the job info to also use chat app
+/datum/job/ai/get_radio_information()
+	return "<b>Prefix your message with :b to speak with cyborgs and other AIs. Use the chat client on your PDA to check for requests.</b>"
+
+/datum/job/cyborg/get_radio_information()
+	return "<b>Prefix your message with :b to speak with cyborgs and other AIs. Use the chat client on your PDA to check for requests.</b>"
