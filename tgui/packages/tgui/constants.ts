@@ -144,7 +144,7 @@ export const RADIO_CHANNELS = [
     color: '#d65d95',
   },
   {
-    name: 'Announcements', // DOPPLER EDIT - Chat on PDA - old code: name: 'Common',
+    name: 'Common',
     freq: 1459,
     color: '#1ecc43',
   },
