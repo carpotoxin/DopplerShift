@@ -15,3 +15,6 @@
 	mode = AREA_SPAWN_MODE_MOUNT_WALL
 
 // Job spawners
+/datum/area_spawn/command_bodyguard
+	target_areas = list(/area/station/command/bridge)
+	desired_atom = /obj/effect/landmark/start/command_bodyguard
