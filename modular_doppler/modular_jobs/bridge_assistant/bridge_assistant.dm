@@ -26,18 +26,13 @@
 		/datum/job_department/command,
 		/datum/job_department/service,
 	)
-	department_for_prefs = /datum/job_department/captain
 
-	family_heirlooms = list(/obj/item/banner/command/mundane)
+	family_heirlooms = list(/obj/item/soap/nanotrasen, /obj/item/pen/fountain)
 
 	mail_goodies = list(
-		/obj/item/storage/fancy/cigarettes = 1,
-		/obj/item/pen/fountain = 1,
+		 = 1,
 	)
 	rpg_title = "Royal Page"
-	allow_bureaucratic_error = FALSE
-	job_flags = STATION_JOB_FLAGS | HEAD_OF_STAFF_JOB_FLAGS
-	human_authority = JOB_AUTHORITY_NON_HUMANS_ALLOWED
 
 /datum/job/bridge_assistant/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
@@ -52,16 +47,17 @@
 	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/bridge_assistant
 	backpack_contents = list(
-		/obj/item/modular_computer/pda/bridge_assistant = 1,
+		/obj/item/storage/toolbox/mechanical = 1,
 		/obj/item/choice_beacon/coffee = 1,
 	)
 
-	uniform = /obj/item/clothing/under/trek/command/next
-	neck = /obj/item/clothing/neck/doppler_mantle/command
-	belt = /obj/item/storage/belt/utility/full/inducer
-	ears = /obj/item/radio/headset/headset_com
-	glasses = /obj/item/clothing/glasses/sunglasses
-	gloves = /obj/item/clothing/gloves/fingerless
-	head = /obj/item/clothing/head/beret/doppler_command/command
+	uniform = /obj/item/clothing/under/misc/doppler_uniform/service
+	belt = /obj/item/storage/bag/tray
+	ears = /obj/item/radio/headset/headset_srv
 	shoes = /obj/item/clothing/shoes/laceup
-	r_pocket = /obj/item/assembly/flash/handheld
+	head = /obj/item/clothing/head/beret/doppler_command
+	belt = /obj/item/modular_computer/pda/bridge_assistant
+
+/datum/id_trim/job/bridge_assistant
+	department_color = COLOR_SERVICE_LIME
+	subdepartment_color = COLOR_COMMAND_BLUE
