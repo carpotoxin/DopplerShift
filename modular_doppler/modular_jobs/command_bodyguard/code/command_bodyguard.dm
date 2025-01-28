@@ -16,6 +16,7 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/security
 	display_order = JOB_DISPLAY_ORDER_COMMAND_BODYGUARD
 	bounty_types = CIV_JOB_SEC
+	allow_bureaucratic_error = FALSE
 
 	department_for_prefs = /datum/job_department/security
 
