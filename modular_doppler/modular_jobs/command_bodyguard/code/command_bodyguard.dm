@@ -59,35 +59,33 @@
 	r_pocket = /obj/item/modular_computer/pda/security
 
 	id = /obj/item/card/id/advanced/black
-	id_trim = /datum/id_trim/job/command_bodyguard
+	id_trim = /datum/id_trim/job/security_officer/command_bodyguard
 
-/datum/id_trim/job/command_bodyguard
+	skillchips = list(/obj/item/skillchip/job/command_bodyguard)
+
+/datum/id_trim/job/security_officer/command_bodyguard
 	assignment = "Command Bodyguard"
 	trim_icon = 'modular_doppler/modular_jobs/command_bodyguard/icons/card.dmi'
 	trim_state = "trim_bodyguard"
-	department_color = COLOR_COMMAND_BLUE
-	subdepartment_color = COLOR_SECURITY_RED // Not the other way around. I think.
 	sechud_icon_state = SECHUD_BODYGUARD
-	extra_access = list(
-		ACCESS_BRIG,
-	)
 	minimal_access = list(
+		ACCESS_BRIG,
 		ACCESS_BRIG_ENTRANCE,
-		ACCESS_COMMAND,
-		ACCESS_CONSTRUCTION,
-		ACCESS_ENGINEERING,
-		ACCESS_EVA,
-		ACCESS_MAINT_TUNNELS,
-		ACCESS_MEDICAL,
-		ACCESS_SCIENCE,
-		ACCESS_TELEPORTER,
-		ACCESS_WEAPONS,
+		ACCESS_COURT,
+		ACCESS_MECH_SECURITY,
+		ACCESS_MINERAL_STOREROOM,
 		ACCESS_SECURITY,
-		ACCESS_CARGO,
-		ACCESS_CAPTAIN,
-	)
+		ACCESS_WEAPONS,
+		ACCESS_COMMAND,
+		)
+	extra_access = list(
+		ACCESS_DETECTIVE,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MORGUE,
+		)
 	template_access = list(
 		ACCESS_CAPTAIN,
 		ACCESS_CHANGE_IDS,
-	)
+		ACCESS_HOS,
+		)
 	job = /datum/job/command_bodyguard
