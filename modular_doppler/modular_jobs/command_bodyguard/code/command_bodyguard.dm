@@ -68,6 +68,7 @@
 	assignment = "Command Bodyguard"
 	trim_icon = 'modular_doppler/modular_jobs/command_bodyguard/icons/card.dmi'
 	trim_state = "trim_bodyguard"
+	subdepartment_color = COLOR_COMMAND_BLUE
 	sechud_icon_state = SECHUD_BODYGUARD
 	minimal_access = list(
 		ACCESS_BRIG,
