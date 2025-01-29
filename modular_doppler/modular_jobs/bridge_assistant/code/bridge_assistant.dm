@@ -24,7 +24,7 @@
 	)
 	liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM)
 
-	family_heirlooms = list(/obj/item/soap/nanotrasen, /obj/item/pen/fountain)
+	family_heirlooms = list(/obj/item/soap/nanotrasen)
 
 	mail_goodies = list(
 		/obj/item/storage/bag/tray = 1,
@@ -44,7 +44,6 @@
 	name = "Bridge Assistant"
 	jobtype = /datum/job/bridge_assistant
 
-	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/bridge_assistant
 	backpack_contents = list(
 		/obj/item/storage/toolbox/mechanical = 1,
