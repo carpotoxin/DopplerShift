@@ -47,7 +47,6 @@
 	implants = list(/obj/item/implant/mindshield)
 	backpack_contents = list(
 		/obj/item/sensor_device/command_bodyguard = 1,
-		/obj/item/clipboard = 1,
 	)
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
