@@ -46,7 +46,6 @@
 
 	id_trim = /datum/id_trim/job/bridge_assistant
 	backpack_contents = list(
-		/obj/item/storage/toolbox/mechanical = 1,
 		/obj/item/choice_beacon/coffee = 1,
 	)
 
