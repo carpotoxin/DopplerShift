@@ -1,26 +1,25 @@
-import { Feature, FeatureTriColorInput } from '../base';
+import {
+  CheckboxInput,
+  Feature,
+  FeatureColorInput,
+  FeatureToggle,
+  FeatureTriColorInput,
+} from '../base';
 
 export const fluff_color: Feature<string[]> = {
   name: 'Fluff Color',
   component: FeatureTriColorInput,
 };
 
-export const ipc_antenna_color: Feature<string[]> = {
-  name: 'Synth Antenna Color',
-  component: FeatureTriColorInput,
+export const default_legs_color: FeatureToggle = {
+  name: 'Legs Custom Color',
+  description: `
+    When toggled, pick a color for the legs different from the skintone.
+  `,
+  component: CheckboxInput,
 };
 
-export const taur_color: Feature<string[]> = {
-  name: 'Taur Color',
-  component: FeatureTriColorInput,
-};
-
-export const xenodorsal_color: Feature<string[]> = {
-  name: 'Xenodorsal Color',
-  component: FeatureTriColorInput,
-};
-
-export const xenohead_color: Feature<string[]> = {
-  name: 'Xenohead Color',
-  component: FeatureTriColorInput,
+export const legs_color: Feature<string> = {
+  name: 'Legs Color',
+  component: FeatureColorInput,
 };

@@ -7065,6 +7065,7 @@
 #include "modular_doppler\modular_customization\tri_color\fluff.dm"
 #include "modular_doppler\modular_customization\tri_color\frills.dm"
 #include "modular_doppler\modular_customization\tri_color\horns.dm"
+#include "modular_doppler\modular_customization\tri_color\legs.dm"
 #include "modular_doppler\modular_customization\tri_color\snout.dm"
 #include "modular_doppler\modular_customization\tri_color\spines.dm"
 #include "modular_doppler\modular_customization\tri_color\tail.dm"
