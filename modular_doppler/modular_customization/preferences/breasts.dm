@@ -1,3 +1,21 @@
+/datum/species/get_features()
+	var/list/features = ..()
+
+	features += /datum/preference/choiced/breasts
+
+	GLOB.features_by_species[type] = features
+
+	return features
+
+/// SSAccessories setup
+/datum/controller/subsystem/accessories
+	var/list/breasts_list
+
+/datum/controller/subsystem/accessories/setup_lists()
+	. = ..()
+	breasts_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/breasts)["default_sprites"] // FLAKY DEFINE: this should be using DEFAULT_SPRITE_LIST
+
+
 /datum/species/regenerate_organs(mob/living/carbon/target, datum/species/old_species, replace_current = TRUE, list/excluded_zones, visual_only = FALSE)
 	. = ..()
 	if(target.dna.features["breasts"])
@@ -10,6 +28,7 @@
 	if(old_part)
 		old_part.Remove(target, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 		old_part.moveToNullspace()
+
 
 /// Main breast prefs
 //core toggle
@@ -55,3 +74,23 @@
 	if(has_breasts == TRUE)
 		return TRUE
 	return FALSE
+
+
+/proc/generate_breasts_shot(datum/sprite_accessory/sprite_accessory, key)
+	var/icon/final_icon = icon('icons/mob/human/bodyparts_greyscale.dmi', "human_chest_f", SOUTH)
+
+	if (!isnull(sprite_accessory))
+		var/icon/accessory_icon = icon(sprite_accessory.icon, "m_[key]_[sprite_accessory.icon_state]_ADJ", SOUTH)
+		var/icon/accessory_icon_2 = icon(sprite_accessory.icon, "m_[key]_[sprite_accessory.icon_state]_ADJ_2", SOUTH)
+		accessory_icon_2.Blend(COLOR_RED, ICON_MULTIPLY)
+		var/icon/accessory_icon_3 = icon(sprite_accessory.icon, "m_[key]_[sprite_accessory.icon_state]_ADJ_3", SOUTH)
+		accessory_icon_3.Blend(COLOR_VIBRANT_LIME, ICON_MULTIPLY)
+		final_icon.Blend(accessory_icon, ICON_OVERLAY)
+		final_icon.Blend(accessory_icon_2, ICON_OVERLAY)
+		final_icon.Blend(accessory_icon_3, ICON_OVERLAY)
+
+	final_icon.Crop(10, 8, 22, 23)
+	final_icon.Scale(26, 32)
+	final_icon.Crop(-2, 1, 29, 32)
+
+	return final_icon
