@@ -1996,12 +1996,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		final_bodypart_overrides[BODY_ZONE_L_LEG] = new_species.digi_leg_overrides[BODY_ZONE_L_LEG] /// DOPPLER SHIFT EDIT: allows digilegs to be overridden
 	// DOPPLER ADDITION START - allows for different digitigrade leg types
 	switch(target.dna.features["legs"])
-		if(DIGI_HOOF)
+	/*	if(DIGI_HOOF)
 			final_bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade/hoof
 			final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade/hoof
 		if(DIGI_TALON)
 			final_bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade/talon
-			final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade/talon
+			final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade/talon */
 		if(DIGI_BUG)
 			final_bodypart_overrides[BODY_ZONE_R_LEG] = /obj/item/bodypart/leg/right/digitigrade/insectoid
 			final_bodypart_overrides[BODY_ZONE_L_LEG] = /obj/item/bodypart/leg/left/digitigrade/insectoid
