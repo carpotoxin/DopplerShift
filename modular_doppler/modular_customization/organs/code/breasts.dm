@@ -2,6 +2,7 @@
 /obj/item/organ/breasts
 	name = "breasts"
 	desc = "Super-effective at deterring ice dragons."
+	icon = 'modular_doppler/modular_customization/organs/icons/organs.dmi'
 	icon_state = "breasts"
 
 	slot = ORGAN_SLOT_EXTERNAL_BREASTS
