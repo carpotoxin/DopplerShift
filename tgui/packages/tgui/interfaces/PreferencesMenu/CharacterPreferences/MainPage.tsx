@@ -12,10 +12,12 @@ import {
   Popper,
   Stack,
 } from 'tgui-core/components';
+import { exhaustiveCheck } from 'tgui-core/exhaustive'; // DOPPLER ADDITION
 import { classes } from 'tgui-core/react';
 import { createSearch } from 'tgui-core/string';
 
 import { CharacterPreview } from '../../common/CharacterPreview';
+import { PageButton } from '../components/PageButton'; // DOPPLER ADDITION
 import { RandomizationButton } from '../components/RandomizationButton';
 import { features } from '../preferences/features';
 import {
@@ -503,6 +505,19 @@ export function MainPage(props: MainPageProps) {
   const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
   const [randomToggleEnabled] = useRandomToggleState();
 
+  {
+    /* DOPPLER ADDITION START */
+  }
+  enum PrefPage {
+    Character, // The generic character options
+    Markings, // Markings
+  }
+
+  const [currentPrefPage, setCurrentPrefPage] = useState(PrefPage.Character);
+  {
+    /* DOPPLER ADDITION END */
+  }
+
   const serverData = useServerPrefs();
 
   const currentSpeciesData =
@@ -538,6 +553,16 @@ export function MainPage(props: MainPageProps) {
     ...data.character_preferences.non_contextual,
   };
 
+  {
+    /* DOPPLER ADDITION START */
+  }
+  const MarkingPreferences = {
+    ...data.character_preferences.markings,
+  };
+  {
+    /* DOPPLER ADDITION END */
+  }
+
   if (randomBodyEnabled) {
     nonContextualPreferences['random_species'] =
       data.character_preferences.randomization['species'];
@@ -545,6 +570,40 @@ export function MainPage(props: MainPageProps) {
     // We can't use random_name/is_accessible because the
     // server doesn't know whether the random toggle is on.
     delete nonContextualPreferences['random_name'];
+  }
+
+  let prefPageContents;
+  switch (currentPrefPage) {
+    case PrefPage.Character:
+      prefPageContents = (
+        <PreferenceList
+          act={act}
+          randomizations={getRandomization(
+            contextualPreferences,
+            serverData,
+            randomBodyEnabled,
+          )}
+          preferences={contextualPreferences}
+          maxHeight="auto"
+        />
+      );
+      break;
+    case PrefPage.Markings:
+      prefPageContents = (
+        <PreferenceList
+          act={act}
+          randomizations={getRandomization(
+            MarkingPreferences,
+            serverData,
+            randomBodyEnabled,
+          )}
+          preferences={MarkingPreferences}
+          maxHeight="auto"
+        />
+      );
+      break;
+    default:
+      exhaustiveCheck(currentPrefPage);
   }
 
   return (
@@ -662,16 +721,30 @@ export function MainPage(props: MainPageProps) {
         </Stack.Item>
 
         <Stack.Item grow basis={0}>
+          {/* DOPPLER EDIT BEGIN */}
+          <Stack>
+            <Stack.Item grow>
+              <PageButton
+                currentPage={currentPrefPage}
+                page={PrefPage.Character}
+                setPage={setCurrentPrefPage}
+              >
+                Character
+              </PageButton>
+            </Stack.Item>
+            <Stack.Item grow>
+              <PageButton
+                currentPage={currentPrefPage}
+                page={PrefPage.Markings}
+                setPage={setCurrentPrefPage}
+              >
+                Markings
+              </PageButton>
+            </Stack.Item>
+          </Stack>
           <Stack vertical fill>
-            <PreferenceList
-              randomizations={getRandomization(
-                contextualPreferences,
-                serverData,
-                randomBodyEnabled,
-              )}
-              preferences={contextualPreferences}
-              maxHeight="auto"
-            />
+            <Stack.Divider />
+            {prefPageContents}
 
             <PreferenceList
               randomizations={getRandomization(
@@ -698,6 +771,7 @@ export function MainPage(props: MainPageProps) {
             </PreferenceList>
           </Stack>
         </Stack.Item>
+        {/* DOPPLER EDIT END */}
       </Stack>
     </>
   );
