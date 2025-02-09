@@ -186,7 +186,7 @@ SUBSYSTEM_DEF(economy)
 		earning_report += "Our GMM Spotlight would like to alert you that <b>[moneybags.account_holder]</b> is your station's most affulent crewmate! They've hit it big with [moneybags.account_balance] credits saved. "
 		update_alerts = TRUE
 		inflict_moneybags(moneybags)
-	earning_report += "That's all from the <i>Nanotrasen Economist Division</i>."
+	earning_report += "That's all from the <i>Port Authority Economist Division</i>." // DOPPLER EDIT, NT > PA - old code: earning_report += "That's all from the <i>Nanotrasen Economist Division</i>."
 	GLOB.news_network.submit_article(earning_report, "Station Earnings Report", "Station Announcements", null, update_alert = update_alerts)
 	return TRUE
 
