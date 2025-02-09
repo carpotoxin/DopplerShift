@@ -1,7 +1,7 @@
 import { LabeledList, Stack } from 'tgui-core/components';
 
 import { sendAct } from '../../backend';
-import features from './preferences/features';
+import { features } from './preferences/features';
 import { FeatureValueInput } from './preferences/features/base';
 
 export const PreferenceSingle = (props: {

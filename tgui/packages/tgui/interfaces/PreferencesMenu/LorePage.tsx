@@ -1,8 +1,8 @@
 import { Box, LabeledList, Section, Stack } from 'tgui-core/components';
 
 import { useBackend } from '../../backend';
-import { PreferencesMenuData } from './data';
 import { PreferenceSingle } from './SinglePreference';
+import { PreferencesMenuData } from './types';
 
 export const LorePage = () => {
   const { act, data } = useBackend<PreferencesMenuData>();

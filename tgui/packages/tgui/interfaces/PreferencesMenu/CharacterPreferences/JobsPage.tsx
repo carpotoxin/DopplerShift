@@ -184,7 +184,8 @@ type JobRowProps = {
 };
 
 function JobRow(props: JobRowProps) {
-  const { data } = useBackend<PreferencesMenuData>();
+  const { data, act } =
+    useBackend<PreferencesMenuData>(); /* DOPPLER EDIT: Adds in act */
   const { className, job, name } = props;
 
   const isOverflow = data.overflow_role === name;
@@ -200,7 +201,7 @@ function JobRow(props: JobRowProps) {
   const alt_title_selected = data.job_alt_titles[name]
     ? data.job_alt_titles[name]
     : name;
-  // NOVA EDIT END
+  // DOPPLER EDIT END
 
   let rightSide: ReactNode;
 

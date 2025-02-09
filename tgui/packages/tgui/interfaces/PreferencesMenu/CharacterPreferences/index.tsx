@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
-import { Button, Stack } from 'tgui-core/components';
+import {
+  Dropdown,
+  Flex,
+  Stack,
+} from 'tgui-core/components'; /* DOPPLER EDIT: Adds in Dropdown and Flex */
 import { exhaustiveCheck } from 'tgui-core/exhaustive';
 
 import { PageButton } from '../components/PageButton';
+import { LorePage } from '../LorePage'; /* DOPPLER EDIT ADDITION */
 import { PreferencesMenuData } from '../types';
 import { AntagsPage } from './AntagsPage';
 import { JobsPage } from './JobsPage';
@@ -19,6 +24,7 @@ enum Page {
   Species,
   Quirks,
   Loadout,
+  Lore /* DOPPLER EDIT ADDITION */,
 }
 
 type ProfileProps = {
@@ -31,21 +37,25 @@ function CharacterProfiles(props: ProfileProps) {
   const { activeSlot, onClick, profiles } = props;
 
   return (
-    <Stack justify="center" wrap>
-      {profiles.map((profile, slot) => (
-        <Stack.Item key={slot} mb={1}>
-          <Button
-            selected={slot === activeSlot}
-            onClick={() => {
-              onClick(slot);
-            }}
-            fluid
-          >
-            {profile ?? 'New Character'}
-          </Button>
-        </Stack.Item>
-      ))}
-    </Stack>
+    <Flex /* DOPPLER EDIT START: Dropdown instead of using buttons */
+      align="center"
+      justify="center"
+    >
+      <Flex.Item width="25%">
+        <Dropdown
+          width="100%"
+          selected={activeSlot as unknown as string}
+          displayText={profiles[activeSlot]}
+          options={profiles.map((profile, slot) => ({
+            value: slot,
+            displayText: profile ?? 'New Character',
+          }))}
+          onSelected={(slot) => {
+            onClick(slot);
+          }}
+        />
+      </Flex.Item>
+    </Flex> /* DOPPLER EDIT END */
   );
 }
 
@@ -82,7 +92,11 @@ export function CharacterPreferenceWindow(props) {
     case Page.Loadout:
       pageContents = <LoadoutPage />;
       break;
-
+    /* DOPPLER ADDITION START */
+    case Page.Lore:
+      pageContents = <LorePage />;
+      break;
+    /* DOPPLER ADDITION END */
     default:
       exhaustiveCheck(currentPage);
   }
@@ -100,11 +114,15 @@ export function CharacterPreferenceWindow(props) {
           profiles={data.character_profiles}
         />
       </Stack.Item>
+      {/* // DOPPLER EDIT: Hide Byond premium banner
+
       {!data.content_unlocked && (
         <Stack.Item align="center">
           Buy BYOND premium for more slots!
         </Stack.Item>
       )}
+
+      */}
       <Stack.Divider />
       <Stack.Item>
         <Stack fill>
@@ -116,6 +134,16 @@ export function CharacterPreferenceWindow(props) {
               otherActivePages={[Page.Species]}
             >
               Character
+            </PageButton>
+          </Stack.Item>
+
+          <Stack.Item grow>
+            <PageButton
+              currentPage={currentPage}
+              page={Page.Lore}
+              setPage={setCurrentPage}
+            >
+              Lore
             </PageButton>
           </Stack.Item>
 

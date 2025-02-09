@@ -98,13 +98,14 @@ export function FeatureColorInput(props: FeatureValueProps<string>) {
 }
 
 /* DOPPLER SHIFT ADDITION BEGIN: tricolor inputs */
-export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
+export function FeatureTriColorInput(props: FeatureValueProps<string[]>) {
+  const { act } = useBackend<PreferencesMenuData>();
   const buttonFromValue = (index) => {
     return (
       <Stack.Item>
         <Button
           onClick={() => {
-            props.act('set_tricolor_preference', {
+            act('set_tricolor_preference', {
               preference: props.featureId,
               value: index + 1,
             });
@@ -143,7 +144,7 @@ export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
       {buttonFromValue(2)}
     </Stack>
   );
-};
+}
 /* DOPPLER SHIFT ADDITION END */
 
 export type FeatureToggle = Feature<BooleanLike, boolean>;
