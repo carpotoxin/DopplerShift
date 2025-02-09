@@ -8,6 +8,7 @@ import {
 import { exhaustiveCheck } from 'tgui-core/exhaustive';
 
 import { PageButton } from '../components/PageButton';
+import { LanguagesPage } from '../LanguagesMenu'; /* DOPPLER EDIT ADDITION */
 import { LorePage } from '../LorePage'; /* DOPPLER EDIT ADDITION */
 import { PreferencesMenuData } from '../types';
 import { AntagsPage } from './AntagsPage';
@@ -24,6 +25,7 @@ enum Page {
   Species,
   Quirks,
   Loadout,
+  Languages /* DOPPLER EDIT ADDITION */,
   Lore /* DOPPLER EDIT ADDITION */,
 }
 
@@ -73,6 +75,11 @@ export function CharacterPreferenceWindow(props) {
     case Page.Jobs:
       pageContents = <JobsPage />;
       break;
+    // DOPPLER EDIT
+    case Page.Languages:
+      pageContents = <LanguagesPage />;
+      break;
+    // DOPPLER EDIT END
     case Page.Main:
       pageContents = (
         <MainPage openSpecies={() => setCurrentPage(Page.Species)} />
@@ -168,6 +175,16 @@ export function CharacterPreferenceWindow(props) {
                     catches your eyes, because it's really important!
                   */}
               Occupations
+            </PageButton>
+          </Stack.Item>
+
+          <Stack.Item grow>
+            <PageButton
+              currentPage={currentPage}
+              page={Page.Languages}
+              setPage={setCurrentPage}
+            >
+              Languages
             </PageButton>
           </Stack.Item>
 
