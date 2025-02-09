@@ -577,7 +577,6 @@ export function MainPage(props: MainPageProps) {
     case PrefPage.Character:
       prefPageContents = (
         <PreferenceList
-          act={act}
           randomizations={getRandomization(
             contextualPreferences,
             serverData,
@@ -591,7 +590,6 @@ export function MainPage(props: MainPageProps) {
     case PrefPage.Markings:
       prefPageContents = (
         <PreferenceList
-          act={act}
           randomizations={getRandomization(
             MarkingPreferences,
             serverData,
