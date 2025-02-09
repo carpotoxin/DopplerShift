@@ -131,6 +131,10 @@
 /obj/machinery/quantum_server/proc/stock_gear(mob/living/carbon/human/avatar, mob/living/carbon/human/neo, datum/lazy_template/virtual_domain/generated_domain)
 	var/domain_forbids_flags = generated_domain.external_load_flags
 
+	//DOPPLER EDIT ADDITION BEGIN - BITRUNNING_PREFS_DISKS - Track if we've used multiple avatar preference disks, for avoiding overrides and displaying the failure message.
+	var/duplicate_prefs = FALSE
+	//DOPPLER EDIT ADDITION END
+
 	var/import_ban = list()
 	var/disk_ban = list()
 	if(domain_forbids_flags & DOMAIN_FORBIDS_ITEMS)
@@ -150,6 +154,23 @@
 		to_chat(neo, span_warning("At least one of your external data sources has encountered a failure in its loading process. Check for overlapping or inactive disks."))
 	if(return_flags & BITRUNNER_GEAR_LOAD_BLOCKED)
 		to_chat(neo, span_warning("At least one of your external data sources has been blocked from fully loading. Check domain restrictions."))
+
+	//DOPPLER EDIT ADDITION BEGIN - BITRUNNING_PREFS_DISKS - Handles our avatar preference disks, if present.
+	for(var/obj/item/bitrunning_disk/disk in neo.get_contents())
+		if(istype(disk, /obj/item/bitrunning_disk/preferences))
+			var/obj/item/bitrunning_disk/preferences/prefs_disk = disk
+			var/datum/preferences/avatar_preference = prefs_disk.chosen_preference
+
+			if(isnull(avatar_preference) || duplicate_prefs)
+				continue
+			if(!(domain_forbids_flags & DOMAIN_FORBIDS_ABILITIES))
+				avatar_preference.safe_transfer_prefs_to(avatar)
+				SSquirks.AssignQuirks(avatar, prefs_disk.mock_client)
+			if(!(domain_forbids_flags & DOMAIN_FORBIDS_ITEMS) && prefs_disk.include_loadout)
+				avatar.equip_outfit_and_loadout(/datum/outfit, avatar_preference)
+
+			duplicate_prefs = TRUE
+	//DOPPLER EDIT ADDITION END
 
 	var/obj/item/organ/brain/neo_brain = neo.get_organ_slot(ORGAN_SLOT_BRAIN)
 	for(var/obj/item/skillchip/skill_chip as anything in neo_brain?.skillchips)
