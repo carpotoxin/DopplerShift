@@ -24,7 +24,7 @@
 	/// Resistance against loud noises
 	var/bang_protect = 0
 	/// Multiplier for both long term and short term ear damage
-	var/damage_multiplier = 1
+	var/damage_multiplier = 0.10 // DOPPLER EDIT, makes deafness last less long - old code: var/damage_multiplier = 1
 
 /obj/item/organ/ears/on_life(seconds_per_tick, times_fired)
 	// only inform when things got worse, needs to happen before we heal
