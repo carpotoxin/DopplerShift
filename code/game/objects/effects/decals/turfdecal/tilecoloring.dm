@@ -162,6 +162,30 @@ TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/holiday/rainbow)
 
 TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/holiday/random)
 
+// DOPPLER ADDITION START - Department tile colors
+/// Chemistry tiles
+/obj/effect/turf_decal/tile/light_yellow
+	name = "hazard-yellow tile decal"
+	color = "#fcff38"
+
+TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/light_yellow)
+
+/// Medbay tiles
+/obj/effect/turf_decal/tile/pine_green
+	name = "pine-green tile decal"
+	color = "#4b8d16"
+
+TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/pine_green)
+
+/// Engineering tiles
+/obj/effect/turf_decal/tile/violet
+	name = "violet tile decal"
+	color = "#4e2d61"
+
+TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/violet)
+
+// DOPPLER ADDITION END
+
 #undef TILE_DECAL_SUBTYPE_HELPER
 
 /// Trimlines
@@ -334,6 +358,27 @@ TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/tram)
 	color = "#0e0f0f"
 
 TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/dark)
+
+// DOPPLER ADDITION START - Department tile colors
+/// Chemistry trimlines
+/obj/effect/turf_decal/trimline/light_yellow
+	color = "#fcff38"
+
+TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/light_yellow)
+
+/// Medbay trimlines
+/obj/effect/turf_decal/trimline/pine_green
+	color = "#4b8d16"
+
+TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/pine_green)
+
+/// Engineering trimlines
+/obj/effect/turf_decal/trimline/violet
+	color = "#4e2d61"
+
+TRIMLINE_SUBTYPE_HELPER(/obj/effect/turf_decal/trimline/violet)
+
+// DOPPLER ADDITION END
 
 #undef TRIMLINE_SUBTYPE_HELPER
 #undef DECAL_ALPHA
