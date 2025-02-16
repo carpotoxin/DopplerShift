@@ -181,7 +181,7 @@ TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/electric_yellow)
 /// Science tiles
 /obj/effect/turf_decal/tile/office_blue
 	name = "office-blue tile decal"
-	alpha = 144
+	alpha = 155
 	color = "#3a77e7"
 
 TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/office_blue)
