@@ -4873,7 +4873,7 @@
 /obj/effect/turf_decal/tile/dark_green/half/contrasted{
 	dir = 1
 	},
-/turf/open/floor/iron/white/smooth_corner,
+/turf/open/floor/iron/white,
 /area/station/command/bridge)
 "asR" = (
 /obj/structure/chair/office{
@@ -4896,9 +4896,7 @@
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 1
 	},
-/turf/open/floor/iron/white/smooth_corner{
-	dir = 8
-	},
+/turf/open/floor/iron/white,
 /area/station/command/bridge)
 "asV" = (
 /obj/structure/closet/crate/goldcrate,
@@ -5438,14 +5436,6 @@
 	},
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark,
-/area/station/command/bridge)
-"auO" = (
-/obj/effect/turf_decal/tile/electric_yellow/half/contrasted{
-	dir = 1
-	},
-/turf/open/floor/iron/white/smooth_edge{
-	dir = 8
-	},
 /area/station/command/bridge)
 "auP" = (
 /turf/open/floor/iron/white,
@@ -8285,10 +8275,9 @@
 /obj/structure/table/wood,
 /obj/item/camera,
 /obj/effect/turf_decal/siding/wood,
-/obj/machinery/door/window/left/directional/west{
+/obj/machinery/door/window/left/directional/south{
 	name = "Captain's Desk";
-	req_access = list("captain");
-	dir = 2
+	req_access = list("captain")
 	},
 /turf/open/floor/carpet/green,
 /area/station/command/heads_quarters/captain)
@@ -26805,7 +26794,6 @@
 	},
 /area/station/medical/medbay)
 "cqe" = (
-/obj/effect/turf_decal/plaque,
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=Med";
 	location = "Sci9"
@@ -32353,9 +32341,7 @@
 /obj/effect/turf_decal/siding/dark_blue{
 	dir = 4
 	},
-/obj/effect/turf_decal/siding{
-	layer = 10005
-	},
+/obj/effect/turf_decal/siding,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 8
 	},
@@ -32368,16 +32354,6 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted,
 /turf/open/floor/iron/white,
 /area/station/engineering/atmos)
-"fSV" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/white/smooth_corner{
-	dir = 4
-	},
-/area/station/command/bridge)
 "fTp" = (
 /turf/open/floor/iron,
 /area/station/security/prison/garden)
@@ -38052,9 +38028,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "bridge-right"
 	},
-/obj/machinery/door/airlock/command/glass{
-	name = "Bridge"
-	},
 /obj/effect/mapping_helpers/airlock/access/all/command/general,
 /obj/machinery/door/airlock/multi_tile/public/glass{
 	name = "Bridge";
@@ -41557,6 +41530,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/maintenance/department/medical/morgue)
+"nLq" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/plaque,
+/turf/open/floor/carpet/blue,
+/area/station/hallway/primary/aft)
 "nLM" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -41620,8 +41602,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 4;
-	layer = 10005
+	dir = 4
 	},
 /turf/open/floor/iron/white/smooth_edge,
 /area/station/science/xenobiology)
@@ -43530,7 +43511,7 @@
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 1
 	},
-/turf/open/floor/iron/white/smooth_corner,
+/turf/open/floor/iron/white,
 /area/station/command/bridge)
 "piI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -48327,9 +48308,7 @@
 /obj/effect/turf_decal/tile/office_blue/half/contrasted{
 	dir = 1
 	},
-/turf/open/floor/iron/white/smooth_corner{
-	dir = 8
-	},
+/turf/open/floor/iron/white,
 /area/station/command/bridge)
 "sNv" = (
 /obj/structure/cable,
@@ -84923,8 +84902,8 @@ ala
 arF
 arA
 atP
-auO
-fSV
+ooa
+ikv
 awR
 awR
 awR
@@ -91392,7 +91371,7 @@ bKM
 bkr
 blC
 cqe
-erf
+nLq
 jXw
 bqe
 njH
