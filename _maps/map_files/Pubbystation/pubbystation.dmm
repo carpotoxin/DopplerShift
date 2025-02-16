@@ -20088,8 +20088,6 @@
 /area/station/engineering/atmos)
 "bIL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/yellow/visible,
-/obj/machinery/airalarm/directional/south,
-/obj/effect/mapping_helpers/airalarm/mixingchamber_access,
 /obj/effect/turf_decal/tile/office_blue/half/contrasted,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 1
@@ -20281,9 +20279,7 @@
 "bJQ" = (
 /obj/effect/mapping_helpers/airlock/access/all/science/ordnance,
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/hatch{
-	name = "Burn Chamber Interior Airlock"
-	},
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_exterior,
 /turf/open/floor/engine,
 /area/station/science/ordnance/burnchamber)
 "bJR" = (
@@ -20768,9 +20764,7 @@
 "bMl" = (
 /obj/effect/mapping_helpers/airlock/access/all/science/ordnance,
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/hatch{
-	name = "Burn Chamber Exterior Airlock"
-	},
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_interior,
 /turf/open/floor/engine,
 /area/station/science/ordnance/burnchamber)
 "bMm" = (
@@ -29195,9 +29189,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
 	},
-/obj/machinery/cryopod/prison/directional/east,
-/obj/machinery/computer/cryopod/directional/south,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/station/security/prison)
 "drQ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -32970,12 +32962,6 @@
 /obj/machinery/status_display/evac/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
-"gqp" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 9
-	},
-/turf/open/floor/iron/dark,
-/area/station/security/prison)
 "gqx" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
@@ -34270,8 +34256,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
 	},
-/obj/machinery/cryopod/prison/directional/east,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/station/security/prison)
 "hsQ" = (
 /obj/effect/turf_decal/siding/wood{
@@ -34429,7 +34414,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/station/security/prison)
 "hAF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -37712,6 +37697,20 @@
 "kpM" = (
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/tile/office_blue/anticorner/contrasted,
+/obj/machinery/airalarm/directional/east,
+/obj/machinery/button/ignition/incinerator/ordmix{
+	pixel_x = -6;
+	pixel_y = -24
+	},
+/obj/machinery/button/door/incinerator_vent_ordmix{
+	pixel_x = 8;
+	pixel_y = -24
+	},
+/obj/machinery/airlock_controller/incinerator_ordmix{
+	pixel_x = -7;
+	pixel_y = -36
+	},
+/obj/effect/mapping_helpers/airalarm/mixingchamber_access,
 /turf/open/floor/iron/white,
 /area/station/science/ordnance)
 "kqc" = (
@@ -41609,7 +41608,7 @@
 "nDH" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/red/filled/corner,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/station/security/prison)
 "nDP" = (
 /obj/item/radio/intercom/directional/south,
@@ -42245,15 +42244,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
 /area/station/maintenance/department/cargo)
-"odI" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 1
-	},
-/area/station/security/prison)
 "oei" = (
 /obj/structure/chair{
 	dir = 8
@@ -44113,14 +44103,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/central)
-"pvi" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 1
-	},
-/area/station/security/prison)
 "pvK" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -54762,25 +54744,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
-"xea" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
-/obj/machinery/button/ignition/incinerator/ordmix{
-	pixel_x = -6;
-	pixel_y = -24
-	},
-/obj/machinery/button/door/incinerator_vent_ordmix{
-	pixel_x = 8;
-	pixel_y = -24
-	},
-/obj/machinery/airlock_controller/incinerator_ordmix{
-	pixel_x = -7;
-	pixel_y = -36
-	},
-/obj/effect/turf_decal/tile/office_blue/anticorner/contrasted{
-	dir = 8
-	},
-/turf/open/floor/iron/white,
-/area/station/science/ordnance)
 "xee" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/warning/vacuum/external,
@@ -77031,9 +76994,9 @@ aaa
 aaa
 aht
 acM
-gqp
-tqM
-pvi
+sfh
+clK
+clK
 clK
 wPr
 kmV
@@ -77290,7 +77253,7 @@ kdf
 acM
 hAp
 nDH
-odI
+gtR
 gtR
 czK
 pEg
@@ -98463,7 +98426,7 @@ vDo
 psV
 yaW
 wmv
-xea
+rUq
 dpM
 epA
 dpM
