@@ -33523,7 +33523,6 @@
 	name = "Morgue Waste Chute";
 	req_access = list("morgue_secure")
 	},
-/obj/effect/spawner/random/trash/grime,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "gQU" = (
@@ -42161,7 +42160,6 @@
 /area/station/security/brig)
 "okk" = (
 /obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/trash/grime,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "okl" = (
@@ -55181,7 +55179,6 @@
 "xCF" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/trash/grime,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "xDl" = (
