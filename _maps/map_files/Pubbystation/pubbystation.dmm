@@ -17631,6 +17631,10 @@
 	},
 /obj/structure/disposalpipe/sorting/mail/flip,
 /obj/effect/mapping_helpers/mail_sorting/science/ordnance,
+/obj/structure/railing/corner/end{
+	dir = 1
+	},
+/obj/structure/railing/corner/end/flip,
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
 "bxp" = (
@@ -33305,6 +33309,17 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
+"gEe" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/railing/corner/end/flip,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/command)
 "gEg" = (
 /obj/structure/chair/comfy{
 	dir = 8
@@ -39963,6 +39978,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/structure/railing/corner/end{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
 "mfu" = (
@@ -44025,10 +44043,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/tcommsat/computer)
-"pnz" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/space/basic,
-/area/station/hallway/secondary/entry)
 "pnU" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
 	dir = 4;
@@ -50475,6 +50489,12 @@
 /area/station/hallway/primary/central/aft)
 "tWh" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/railing/corner/end{
+	dir = 4
+	},
+/obj/structure/railing/corner/end/flip{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
 "tWt" = (
@@ -74423,9 +74443,9 @@ aaa
 aaa
 aaa
 aaa
-pnz
+aZx
 hxD
-pnz
+aZx
 aaa
 aaa
 aaa
@@ -92113,7 +92133,7 @@ arX
 ata
 auf
 ava
-jeG
+gEe
 ayh
 ayh
 mew
