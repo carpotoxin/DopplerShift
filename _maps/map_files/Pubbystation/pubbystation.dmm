@@ -15458,11 +15458,12 @@
 "bmO" = (
 /obj/structure/table,
 /obj/item/bodypart/head/robot/android/zhp{
-	pixel_y = -11;
+	pixel_y = -6;
 	pixel_x = 5
 	},
 /obj/item/bodypart/arm/left/robot/android/zhp{
-	pixel_x = -11
+	pixel_x = -6;
+	dir = 8
 	},
 /obj/item/mmi{
 	pixel_x = 5;
@@ -18422,8 +18423,7 @@
 	name = "Research Director's Office"
 	},
 /obj/structure/curtain/bounty{
-	color = "BACAFF";
-	id = "rdprivacy"
+	color = "BACAFF"
 	},
 /turf/open/floor/iron/white/small,
 /area/station/command/heads_quarters/rd)
@@ -37941,9 +37941,6 @@
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/science/genetics)
-"kuZ" = (
-/turf/open/space/basic,
-/area/station/engineering/atmos/office)
 "kvp" = (
 /obj/machinery/door/window/left/directional/north{
 	name = "Medbay Delivery";
@@ -45015,19 +45012,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/monastery)
-"qcu" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "rdprivacy";
-	name = "Privacy Shutters"
-	},
-/obj/structure/cable,
-/obj/structure/curtain/bounty{
-	color = "BACAFF";
-	id = "rdprivacy"
-	},
-/turf/open/floor/plating,
-/area/station/command/heads_quarters/rd)
 "qcD" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /obj/machinery/portable_atmospherics/canister/bz,
@@ -47414,16 +47398,6 @@
 /obj/structure/window/spawner/directional/south,
 /turf/open/floor/grass,
 /area/station/medical/treatment_center)
-"rNO" = (
-/obj/effect/turf_decal/tile/office_blue{
-	dir = 4
-	},
-/obj/structure/curtain/bounty{
-	color = "BACAFF";
-	id = "research_shutters_2"
-	},
-/turf/open/floor/iron,
-/area/station/hallway/primary/aft)
 "rOV" = (
 /obj/machinery/button/door/directional/east{
 	id = "armory";
@@ -90105,7 +90079,7 @@ mdr
 mdr
 bxc
 nIU
-qcu
+bAo
 xLS
 bCE
 bDB
@@ -90619,7 +90593,7 @@ buq
 bvx
 bxe
 byH
-qcu
+bAo
 bBs
 bCG
 qOD
@@ -90876,7 +90850,7 @@ bur
 bvy
 bxf
 vXf
-qcu
+bAo
 qgk
 bDD
 bDE
@@ -91133,7 +91107,7 @@ wOt
 qeP
 bxg
 mdL
-qcu
+bAo
 bBu
 bCI
 bDF
@@ -91920,7 +91894,7 @@ bOj
 bKY
 wBF
 wBF
-kuZ
+wBF
 wBF
 wBF
 wBF
@@ -92156,7 +92130,7 @@ dbI
 uQY
 uea
 hoz
-rNO
+hoz
 hoz
 bmD
 vvn
