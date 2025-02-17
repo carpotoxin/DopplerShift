@@ -173,7 +173,6 @@ TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/pine_green)
 /// Engineering tiles
 /obj/effect/turf_decal/tile/electric_yellow
 	name = "electric-yellow tile decal"
-	alpha = 144
 	color = "#f1cc24"
 
 TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/electric_yellow)
@@ -181,7 +180,6 @@ TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/electric_yellow)
 /// Science tiles
 /obj/effect/turf_decal/tile/office_blue
 	name = "office-blue tile decal"
-	alpha = 155
 	color = "#3a77e7"
 
 TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/office_blue)
