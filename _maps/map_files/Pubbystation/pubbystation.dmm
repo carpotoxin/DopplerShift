@@ -7507,9 +7507,7 @@
 /obj/machinery/camera/directional/south{
 	c_tag = "Dormitories Aft"
 	},
-/obj/machinery/status_display/ai{
-	pixel_y = -32
-	},
+/obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "aDi" = (
@@ -7812,7 +7810,7 @@
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "aEc" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public{
+/obj/machinery/door/airlock/public/glass{
 	name = "Dormitories"
 	},
 /turf/open/floor/iron,
@@ -12141,10 +12139,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
-"aXV" = (
-/obj/machinery/airalarm/directional/south,
-/turf/open/floor/iron,
-/area/station/commons/dorms)
 "aXY" = (
 /obj/machinery/hydroponics/constructable,
 /obj/machinery/light/directional/north,
@@ -15526,16 +15520,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/central)
-"bnq" = (
-/obj/item/beacon,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
 "bns" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
@@ -16904,7 +16888,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 2"
+	name = "Exterior Airlock"
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
@@ -16913,7 +16897,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 2"
+	name = "Exterior Airlock"
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
@@ -19689,10 +19673,10 @@
 /turf/open/space,
 /area/space/nearstation)
 "bGF" = (
-/obj/machinery/door/airlock/external{
-	name = "Pod Docking Bay"
-	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	name = "Exterior Airlock"
+	},
 /turf/open/floor/plating,
 /area/station/service/chapel/dock)
 "bGG" = (
@@ -26405,7 +26389,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/machinery/door/airlock/public{
+/obj/machinery/door/airlock/public/glass{
 	name = "Dormitories"
 	},
 /turf/open/floor/iron,
@@ -26422,6 +26406,7 @@
 /area/station/commons/storage/emergency/starboard)
 "cot" = (
 /obj/machinery/light/small/directional/east,
+/obj/machinery/status_display/ai/directional/east,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
 "coy" = (
@@ -32337,15 +32322,6 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
-"fLM" = (
-/obj/effect/turf_decal/tile/pine_green{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/iron/white/corner,
-/area/station/hallway/secondary/entry)
 "fLV" = (
 /obj/machinery/computer/holodeck{
 	dir = 4
@@ -32496,7 +32472,6 @@
 /area/station/hallway/secondary/exit/departure_lounge)
 "fTZ" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/effect/landmark/navigate_destination/dockarrival,
 /obj/machinery/door/airlock/external{
 	name = "Arrival Airlock"
 	},
@@ -34380,6 +34355,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/theater)
+"hxD" = (
+/obj/machinery/door/airlock/external{
+	name = "Personal Shuttle Dock"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/hallway/secondary/entry)
 "hyZ" = (
 /obj/machinery/vending/coffee,
 /turf/open/floor/iron/kitchen/small,
@@ -35169,13 +35153,13 @@
 /turf/open/floor/iron/dark/small,
 /area/station/science/xenobiology)
 "igK" = (
-/obj/effect/turf_decal/stripes/line{
+/obj/effect/turf_decal/tile/pine_green{
 	dir = 8
 	},
-/obj/machinery/computer/personal_shuttle_order/station{
-	dir = 4
+/obj/structure/table,
+/turf/open/floor/iron/white/corner{
+	dir = 1
 	},
-/turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "igX" = (
 /obj/structure/disposalpipe/trunk{
@@ -35457,6 +35441,15 @@
 /obj/machinery/holopad,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
+"itA" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "iuM" = (
 /obj/machinery/door/window/left/directional/west{
 	name = "Test Chamber";
@@ -35585,10 +35578,9 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "iAf" = (
-/obj/effect/turf_decal/stripes/line{
+/obj/effect/turf_decal/tile/pine_green{
 	dir = 8
 	},
-/obj/structure/table,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "iAA" = (
@@ -37123,6 +37115,17 @@
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/xenobiology)
+"jRR" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 11;
+	height = 24;
+	name = "SS13: Auxiliary Dock, Station-Port";
+	shuttle_id = "whiteship_home";
+	width = 35
+	},
+/turf/open/space/basic,
+/area/space)
 "jRZ" = (
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/tile/red{
@@ -37357,16 +37360,6 @@
 	dir = 4
 	},
 /area/station/security/prison/workout)
-"kaH" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
 "kbi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
@@ -39996,6 +39989,15 @@
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+"mfU" = (
+/obj/machinery/door/airlock/external{
+	name = "Personal Shuttle Dock"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/station/hallway/secondary/entry)
 "mgW" = (
 /obj/machinery/cryo_cell,
 /obj/effect/turf_decal/tile/pine_green/full,
@@ -40678,6 +40680,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/effect/landmark/navigate_destination/dockarrival,
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
 "mKg" = (
@@ -41489,9 +41492,6 @@
 /turf/closed/wall,
 /area/station/cargo/bitrunning/den)
 "ntG" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
@@ -42788,6 +42788,10 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
+"ovd" = (
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "ovf" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/effect/spawner/structure/window/reinforced,
@@ -42997,6 +43001,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
+"oDJ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/item/beacon,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/entry)
 "oDP" = (
 /obj/machinery/camera/directional/east{
 	c_tag = "Experimentation Lab East";
@@ -43596,11 +43610,11 @@
 /turf/open/floor/iron/terracotta/small,
 /area/station/service/kitchen)
 "pbm" = (
-/obj/machinery/door/airlock/external{
-	name = "Pod Docking Bay"
-	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	name = "Exterior Airlock"
 	},
 /turf/open/floor/plating,
 /area/station/service/chapel/dock)
@@ -44011,6 +44025,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/tcommsat/computer)
+"pnz" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/space/basic,
+/area/station/hallway/secondary/entry)
 "pnU" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
 	dir = 4;
@@ -44471,6 +44489,17 @@
 /obj/structure/table,
 /turf/open/floor/iron/white/textured_edge,
 /area/station/medical/pharmacy)
+"pGD" = (
+/obj/effect/turf_decal/tile/pine_green{
+	dir = 8
+	},
+/obj/item/flashlight/lamp{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/structure/table,
+/turf/open/floor/iron/white/corner,
+/area/station/hallway/secondary/entry)
 "pGF" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -44829,15 +44858,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
 /area/station/maintenance/department/engine)
-"pVS" = (
-/obj/effect/turf_decal/tile/pine_green{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/iron/white/corner,
-/area/station/hallway/secondary/entry)
 "pWb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -46702,6 +46722,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
+"rrI" = (
+/obj/effect/turf_decal/tile/pine_green{
+	dir = 8
+	},
+/obj/machinery/computer/personal_shuttle_order/station{
+	dir = 1
+	},
+/turf/open/floor/iron/white/corner,
+/area/station/hallway/secondary/entry)
 "rrU" = (
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 1
@@ -47027,13 +47056,6 @@
 /obj/effect/spawner/random/vending/colavend,
 /turf/open/floor/iron,
 /area/station/cargo/office)
-"rCg" = (
-/obj/machinery/holopad,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
 "rCl" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -48110,6 +48132,16 @@
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/chemistry)
+"ssk" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	name = "Monestary Dock";
+	shuttle_id = "monestary_dock";
+	height = 30;
+	width = 30
+	},
+/turf/open/space/basic,
+/area/space)
 "ssx" = (
 /obj/item/shard,
 /turf/open/floor/plating,
@@ -49432,6 +49464,10 @@
 /obj/machinery/power/energy_accumulator/tesla_coil,
 /turf/open/floor/plating,
 /area/station/engineering/storage_shared)
+"tkO" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/station/commons/dorms)
 "tkQ" = (
 /obj/item/toy/cattoy{
 	desc = "Accursed to rest here and be obliterated by a tormentor.!";
@@ -50730,12 +50766,6 @@
 "ufa" = (
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
-"uff" = (
-/obj/structure/chair/office{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
 "ufk" = (
 /obj/effect/turf_decal/tile/pine_green/half/contrasted{
 	dir = 4
@@ -64947,7 +64977,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+ssk
 aaa
 aaa
 aaa
@@ -74137,7 +74167,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+jRR
 aaa
 aaa
 aaa
@@ -74393,9 +74423,9 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
+pnz
+hxD
+pnz
 aaa
 aaa
 aaa
@@ -74649,10 +74679,10 @@ aaa
 aaa
 aaa
 aaa
-aZx
-aZx
-aZx
-aZx
+aaa
+hXW
+bcX
+hXW
 aaa
 aaa
 aaa
@@ -74907,10 +74937,10 @@ aaa
 aaa
 aaa
 aZx
-bop
-bon
 aZx
-aaa
+mfU
+aZx
+aZx
 aaa
 aaa
 aaa
@@ -75164,10 +75194,10 @@ aaa
 aZx
 aZx
 aZx
-wmY
-pVS
+bop
+bop
+pGD
 aZx
-aaa
 aaa
 aaa
 aaa
@@ -75422,9 +75452,9 @@ enF
 xeP
 mKd
 ntG
-bon
+bop
+rrI
 aZx
-aaa
 aaa
 aaa
 aaa
@@ -75678,10 +75708,10 @@ aaa
 aZx
 hXW
 hXW
-wmY
+bop
+bop
 uib
 aZx
-aaa
 aaa
 aaa
 aaa
@@ -75935,10 +75965,10 @@ aaa
 aZx
 bkQ
 bbR
-wmY
+bop
+slb
 bon
 aZx
-aaa
 aaa
 aaa
 aaa
@@ -76192,10 +76222,10 @@ aaa
 hXW
 bkR
 bop
-rCg
+baL
+wmY
 bon
 aZx
-aaa
 aaa
 aaa
 aaa
@@ -76449,10 +76479,10 @@ aaa
 aZx
 bkS
 bbS
+bop
 wmY
 bon
 aZx
-aaa
 aaa
 aaa
 aaa
@@ -76706,10 +76736,10 @@ aaa
 aZx
 hXW
 hXW
-kaH
-fLM
+ntG
+wmY
+bon
 aZx
-aaa
 aaa
 aaa
 aaa
@@ -76963,10 +76993,10 @@ aaa
 bbQ
 hGg
 bdV
-jsa
+bop
+wmY
 bon
 aZx
-aaa
 aaa
 aaa
 aaa
@@ -77220,9 +77250,9 @@ aaa
 aZx
 aZx
 aZx
-jsa
+bop
+wmY
 bon
-aZx
 aZx
 aZx
 btL
@@ -77475,13 +77505,13 @@ aaa
 aaa
 aaa
 hXW
-bbR
-bbR
-jsa
+ovd
+ovd
 bop
+itA
 iAf
 igK
-aZx
+hXW
 bcX
 hXW
 hXW
@@ -77734,10 +77764,10 @@ hXW
 hXW
 kya
 bop
-bnq
+bop
+oDJ
 bop
 bop
-uff
 aZx
 btM
 aZx
@@ -77989,10 +78019,10 @@ slb
 bop
 cBT
 bdX
-baL
+bop
+bop
 bop
 jsa
-bop
 bop
 bop
 bop
@@ -95430,8 +95460,8 @@ azv
 azv
 rlR
 tQy
-aXV
-apX
+com
+tkO
 ozz
 riB
 riB
