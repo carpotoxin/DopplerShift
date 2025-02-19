@@ -5905,7 +5905,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/wood{
-	name = "Dorm 3"
+	name = "Dorm 3";
+	id = "Dorm3"
 	},
 /turf/open/floor/iron/dark,
 /area/station/commons/dorms)
@@ -6666,7 +6667,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/wood{
-	name = "Dorm 2"
+	name = "Dorm 2";
+	id = "Dorm2"
 	},
 /turf/open/floor/iron/dark,
 /area/station/commons/dorms)
@@ -7498,7 +7500,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/wood{
-	name = "Dorm 1"
+	name = "Dorm 1";
+	id = "Dorm1"
 	},
 /turf/open/floor/iron/dark,
 /area/station/commons/dorms)
@@ -8053,7 +8056,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/wood/large,
 /area/station/command/heads_quarters/hop)
 "aEM" = (
@@ -8069,7 +8072,7 @@
 	},
 /obj/item/storage/box/silver_ids,
 /obj/item/storage/box/ids,
-/obj/machinery/firealarm/directional/south,
+/obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/wood/large,
 /area/station/command/heads_quarters/hop)
 "aEO" = (
@@ -23147,7 +23150,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/engineering)
 "bVQ" = (
@@ -23348,7 +23350,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red/half/contrasted,
-/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/engineering)
 "bWC" = (
@@ -23699,7 +23700,7 @@
 	name = "Privacy Shutters"
 	},
 /obj/structure/window/reinforced/plasma/spawner/directional/south,
-/obj/effect/spawner/structure/electrified_grille,
+/obj/effect/spawner/random/structure/grille,
 /turf/open/floor/plating,
 /area/station/command/heads_quarters/ce)
 "bYa" = (
@@ -29950,11 +29951,11 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/surgery,
-/obj/machinery/door/airlock/virology/glass{
-	name = "Surgical Theatres"
-	},
 /obj/effect/turf_decal/tile/pine_green/half/contrasted{
 	dir = 4
+	},
+/obj/machinery/door/airlock/virology{
+	name = "Surgical Theatres"
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
@@ -31021,7 +31022,7 @@
 /area/station/security/prison/garden)
 "ePW" = (
 /obj/structure/window/reinforced/plasma/spawner/directional/east,
-/obj/effect/spawner/structure/electrified_grille,
+/obj/effect/spawner/random/structure/grille,
 /turf/open/floor/plating,
 /area/station/engineering/storage_shared)
 "eQe" = (
@@ -40534,7 +40535,7 @@
 	name = "Engineering Security Door"
 	},
 /obj/structure/window/reinforced/plasma/spawner/directional/south,
-/obj/effect/spawner/structure/electrified_grille,
+/obj/effect/spawner/random/structure/grille,
 /turf/open/floor/plating,
 /area/station/security/checkpoint/engineering)
 "mDo" = (
@@ -42833,7 +42834,6 @@
 	},
 /obj/structure/sign/departments/telecomms/directional/south,
 /obj/effect/turf_decal/tile/electric_yellow/half/contrasted,
-/obj/structure/cable,
 /obj/structure/tank_holder/extinguisher,
 /turf/open/floor/iron/dark/textured,
 /area/station/engineering/main)
@@ -46501,7 +46501,6 @@
 /obj/effect/turf_decal/tile/electric_yellow{
 	dir = 1
 	},
-/obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/engineering/main)
 "rjN" = (
@@ -50357,7 +50356,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/plasma/spawner/directional/east,
-/obj/effect/spawner/structure/electrified_grille,
+/obj/effect/spawner/random/structure/grille,
 /turf/open/floor/plating,
 /area/station/engineering/storage_shared)
 "tQi" = (
